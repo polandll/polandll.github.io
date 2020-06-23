@@ -1242,74 +1242,67 @@ though we have added no table data yet.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ find -name backups
----
-results in
-[source,none]</code></pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="title">/cassandra/data/data/cqlkeyspace/t-d132e240c21711e9bbee19821dcea330/backups</div>
-<div class="content">
-<pre>Change directory to the `backups` directory and list files and no files
-get listed as no table data has been added yet:
-
-[source,bash]</pre>
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ find -name backups</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>$ cd ./cassandra/data/data/cqlkeyspace/t-d132e240c21711e9bbee19821dcea330/backups
-$ ls -l</p>
+<p>results in</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>results in
-[source,none]</pre>
+<pre class="highlightjs highlight"><code class="language-none hljs" data-lang="none">./cassandra/data/data/cqlkeyspace/t-d132e240c21711e9bbee19821dcea330/backups</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>total 0</p>
+<p>Change directory to the <code>backups</code> directory and list files and no files
+get listed as no table data has been added yet:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>Next, add a row of data to table `t` that we created:
-
-[source,cql]</pre>
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ cd ./cassandra/data/data/cqlkeyspace/t-d132e240c21711e9bbee19821dcea330/backups
+$ ls -l</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>INSERT INTO t (id, k, v) VALUES (0, 0, 'val0');</p>
+<p>results in</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>Run the `nodetool flush` command to flush table data:
-
-[source,bash]</pre>
+<pre class="highlightjs highlight"><code class="language-none hljs" data-lang="none">total 0</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>$ nodetool flush cqlkeyspace t</p>
+<p>Next, add a row of data to table <code>t</code> that we created:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>List the files and directories in the `backups` directory and SSTable
-files for an incremental backup get listed:
-
-[source,bash]</pre>
+<pre class="highlightjs highlight"><code class="language-cql hljs" data-lang="cql">INSERT INTO t (id, k, v) VALUES (0, 0, 'val0');</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>$ cd ./cassandra/data/data/cqlkeyspace/t-d132e240c21711e9bbee19821dcea330/backups
-$ ls -l</p>
+<p>Run the <code>nodetool flush</code> command to flush table data:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>results in
-[source,none]</pre>
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ nodetool flush cqlkeyspace t</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>total 36
+<p>List the files and directories in the <code>backups</code> directory and SSTable
+files for an incremental backup get listed:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ cd ./cassandra/data/data/cqlkeyspace/t-d132e240c21711e9bbee19821dcea330/backups
+$ ls -l</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>results in</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs" data-lang="none">total 36
 -rw-rw-r--. 2 ec2-user ec2-user   47 Aug 19 00:32 na-1-big-CompressionInfo.db
 -rw-rw-r--. 2 ec2-user ec2-user   43 Aug 19 00:32 na-1-big-Data.db
 -rw-rw-r--. 2 ec2-user ec2-user   10 Aug 19 00:32 na-1-big-Digest.crc32
@@ -1317,50 +1310,43 @@ $ ls -l</p>
 -rw-rw-r--. 2 ec2-user ec2-user    8 Aug 19 00:32 na-1-big-Index.db
 -rw-rw-r--. 2 ec2-user ec2-user 4673 Aug 19 00:32 na-1-big-Statistics.db
 -rw-rw-r--. 2 ec2-user ec2-user   56 Aug 19 00:32 na-1-big-Summary.db
--rw-rw-r--. 2 ec2-user ec2-user   92 Aug 19 00:32 na-1-big-TOC.txt</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>Add another row of data:
-
-[source,cql]</pre>
+-rw-rw-r--. 2 ec2-user ec2-user   92 Aug 19 00:32 na-1-big-TOC.txt</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>INSERT INTO t (id, k, v) VALUES (1, 1, 'val1');</p>
+<p>Add another row of data:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>Again, run the `nodetool flush` command:
-
-[source,bash]</pre>
+<pre class="highlightjs highlight"><code class="language-cql hljs" data-lang="cql">INSERT INTO t (id, k, v) VALUES (1, 1, 'val1');</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>$  nodetool flush cqlkeyspace t</p>
+<p>Again, run the <code>nodetool flush</code> command:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>A new incremental backup gets created for the new data added. List the
-files in the `backups` directory for table `t` and two sets of SSTable
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$  nodetool flush cqlkeyspace t</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>A new incremental backup gets created for the new data added. List the
+files in the <code>backups</code> directory for table <code>t</code> and two sets of SSTable
 files get listed, one for each incremental backup. The SSTable files are
 timestamped, which distinguishes the first incremental backup from the
-second:
-
-[source,bash]</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>$ ls -l</p>
+second:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>results in
-[source,none]</pre>
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ ls -l</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>total 72
+<p>results in</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs" data-lang="none">total 72
 -rw-rw-r--. 2 ec2-user ec2-user   47 Aug 19 00:32 na-1-big-CompressionInfo.db
 -rw-rw-r--. 2 ec2-user ec2-user   43 Aug 19 00:32 na-1-big-Data.db
 -rw-rw-r--. 2 ec2-user ec2-user   10 Aug 19 00:32 na-1-big-Digest.crc32
@@ -1376,28 +1362,24 @@ second:
 -rw-rw-r--. 2 ec2-user ec2-user    8 Aug 19 00:35 na-2-big-Index.db
 -rw-rw-r--. 2 ec2-user ec2-user 4673 Aug 19 00:35 na-2-big-Statistics.db
 -rw-rw-r--. 2 ec2-user ec2-user   56 Aug 19 00:35 na-2-big-Summary.db
--rw-rw-r--. 2 ec2-user ec2-user   92 Aug 19 00:35 na-2-big-TOC.txt
-[ec2-user@ip-10-0-2-238 backups]$</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>The `backups` directory for table `cqlkeyspace/t` is created within the
-`data` directory for the table:
-
-[source,bash]</pre>
+-rw-rw-r--. 2 ec2-user ec2-user   92 Aug 19 00:35 na-2-big-TOC.txt</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>$ cd ./cassandra/data/data/cqlkeyspace/t-d132e240c21711e9bbee19821dcea330 &amp;&amp; ls -l</p>
+<p>The <code>backups</code> directory for table <code>cqlkeyspace/t</code> is created within the
+<code>data</code> directory for the table:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>results in
-[source,none]</pre>
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ cd ./cassandra/data/data/cqlkeyspace/t-d132e240c21711e9bbee19821dcea330 &amp;&amp; ls -l</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>total 36
+<p>results in</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs" data-lang="none">total 36
 drwxrwxr-x. 2 ec2-user ec2-user  226 Aug 19 02:30 backups
 -rw-rw-r--. 2 ec2-user ec2-user   47 Aug 19 02:30 na-1-big-CompressionInfo.db
 -rw-rw-r--. 2 ec2-user ec2-user   79 Aug 19 02:30 na-1-big-Data.db
@@ -1406,28 +1388,25 @@ drwxrwxr-x. 2 ec2-user ec2-user  226 Aug 19 02:30 backups
 -rw-rw-r--. 2 ec2-user ec2-user   16 Aug 19 02:30 na-1-big-Index.db
 -rw-rw-r--. 2 ec2-user ec2-user 4696 Aug 19 02:30 na-1-big-Statistics.db
 -rw-rw-r--. 2 ec2-user ec2-user   56 Aug 19 02:30 na-1-big-Summary.db
--rw-rw-r--. 2 ec2-user ec2-user   92 Aug 19 02:30 na-1-big-TOC.txt</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>The incremental backups for the other keyspaces/tables get created
-similarly. As an example the `backups` directory for table
-`catalogkeyspace/magazine` is created within the data directory:
-
-[source,none]</pre>
+-rw-rw-r--. 2 ec2-user ec2-user   92 Aug 19 02:30 na-1-big-TOC.txt</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>$ cd ./cassandra/data/data/catalogkeyspace/magazine-446eae30c22a11e9b1350d927649052c &amp;&amp; ls -l</p>
+<p>The incremental backups for the other keyspaces/tables get created
+similarly. As an example the <code>backups</code> directory for table
+<code>catalogkeyspace/magazine</code> is created within the data directory:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>results in
-[source,none]</pre>
+<pre class="highlightjs highlight"><code class="language-none hljs" data-lang="none">$ cd ./cassandra/data/data/catalogkeyspace/magazine-446eae30c22a11e9b1350d927649052c &amp;&amp; ls -l</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>total 36
+<p>results in</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs" data-lang="none">total 36
 drwxrwxr-x. 2 ec2-user ec2-user  226 Aug 19 02:38 backups
 -rw-rw-r--. 2 ec2-user ec2-user   47 Aug 19 02:38 na-1-big-CompressionInfo.db
 -rw-rw-r--. 2 ec2-user ec2-user   97 Aug 19 02:38 na-1-big-Data.db
@@ -1436,25 +1415,35 @@ drwxrwxr-x. 2 ec2-user ec2-user  226 Aug 19 02:38 backups
 -rw-rw-r--. 2 ec2-user ec2-user   16 Aug 19 02:38 na-1-big-Index.db
 -rw-rw-r--. 2 ec2-user ec2-user 4687 Aug 19 02:38 na-1-big-Statistics.db
 -rw-rw-r--. 2 ec2-user ec2-user   56 Aug 19 02:38 na-1-big-Summary.db
--rw-rw-r--. 2 ec2-user ec2-user   92 Aug 19 02:38 na-1-big-TOC.txt</p>
+-rw-rw-r--. 2 ec2-user ec2-user   92 Aug 19 02:38 na-1-big-TOC.txt</code></pre>
 </div>
-<div class="listingblock">
-<div class="content">
-<pre>== Restoring from Incremental Backups and Snapshots
-
-The two main tools/commands for restoring a table after it has been
-dropped are:
-
-* sstableloader
-* nodetool import
-
-A snapshot contains essentially the same set of SSTable files as an
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="restoring-from-incremental-backups-and-snapshots"><a class="anchor" href="#restoring-from-incremental-backups-and-snapshots"></a>Restoring from Incremental Backups and Snapshots</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The two main tools/commands for restoring a table after it has been
+dropped are:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>sstableloader</p>
+</li>
+<li>
+<p>nodetool import</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>A snapshot contains essentially the same set of SSTable files as an
 incremental backup does with a few additional files. A snapshot includes
-a `schema.cql` file for the schema DDL to create a table in CQL. A table
+a <code>schema.cql</code> file for the schema DDL to create a table in CQL. A table
 backup does not include DDL which must be obtained from a snapshot when
-restoring from an incremental backup.</pre>
-</div>
-</div>
+restoring from an incremental backup.</p>
 </div>
 </div>
 </div>

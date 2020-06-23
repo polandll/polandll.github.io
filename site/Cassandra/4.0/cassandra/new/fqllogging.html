@@ -1323,57 +1323,51 @@ comparing document formats:</p>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>-------------------
-version: int16
+<pre>version: int16
 type: column_definitions
 column_count: int32;
 column_definition: text, text
 column_definition: text, text</pre>
 </div>
 </div>
-<div class="listingblock">
+<div class="paragraph">
+<p>To mark a failed query set:</p>
+</div>
+<div class="literalblock">
 <div class="content">
-<pre>....
-
-To mark a failed query set:
-
-....
----------------------
-version: int16
+<pre>version: int16
 type: query_failed
-message: text
----------------------
-....
-
-To mark a row set:
-
-....
---------------------
-version: int16
-type: row
-row_column_count: int32
-column: bytes
---------------------
-....
-
-To mark the end of a result set:
-
-....</pre>
+message: text</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>version: int16
-type: end_resultset</p>
+<p>To mark a row set:</p>
 </div>
-<div class="listingblock">
+<div class="literalblock">
 <div class="content">
-<pre>....
-
-== Performance Overhead of FQL
-
-In performance testing FQL appears to have little or no overhead in
-`WRITE` only workloads, and a minor overhead in `MIXED` workload.</pre>
+<pre>version: int16
+type: row
+row_column_count: int32
+column: bytes</pre>
 </div>
+</div>
+<div class="paragraph">
+<p>To mark the end of a result set:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>version: int16
+type: end_resultset</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="performance-overhead-of-fql"><a class="anchor" href="#performance-overhead-of-fql"></a>Performance Overhead of FQL</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In performance testing FQL appears to have little or no overhead in
+<code>WRITE</code> only workloads, and a minor overhead in <code>MIXED</code> workload.</p>
 </div>
 </div>
 </div>

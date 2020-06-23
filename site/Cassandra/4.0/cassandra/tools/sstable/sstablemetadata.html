@@ -727,70 +727,157 @@ Estimated droppable tombstones: 0.0</pre>
 <div class="sect1">
 <h2 id="explanation-of-each-value-printed-above"><a class="anchor" href="#explanation-of-each-value-printed-above"></a>Explanation of each value printed above</h2>
 <div class="sectionbody">
-<div class="exampleblock">
-<div class="content">
-<div class="dlist">
-<dl>
-<dt class="hdlist1">================================================================================</dt>
-<dd>
-<p>Value Explanation</p>
-</dd>
-</dl>
-</div>
-</div>
-</div>
-<div class="exampleblock">
-<div class="content">
-<div class="paragraph">
-<p>SSTable prefix of the sstable filenames related to this sstable
-Partitioner partitioner type used to distribute data across nodes;
-defined in cassandra.yaml Bloom Filter FP precision of Bloom filter used
-in reads; defined in the table definition Minimum timestamp minimum
-timestamp of any entry in this sstable, in epoch microseconds Maximum
-timestamp maximum timestamp of any entry in this sstable, in epoch
-microseconds SSTable min local deletion time minimum timestamp of
-deletion date, based on TTL, in epoch seconds SSTable max local deletion
-time maximum timestamp of deletion date, based on TTL, in epoch seconds
-Compressor blank (-) by default; if not blank, indicates type of
-compression enabled on the table TTL min time-to-live in seconds;
-default 0 unless defined in the table definition TTL max time-to-live in
-seconds; default 0 unless defined in the table definition First token
-lowest token and related key found in the sstable summary Last token
-highest token and related key found in the sstable summary Estimated
-droppable tombstones ratio of tombstones to columns, using configured gc
-grace seconds if relevant SSTable level compaction level of this
-sstable, if leveled compaction (LCS) is used Repaired at the timestamp
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Value</th>
+<th class="tableblock halign-left valign-top">Explanation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">SSTable</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">prefix of the sstable filenames related to this sstable</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Partitioner</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">partitioner type used to distribute data across nodes;
+defined in cassandra.yaml</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Bloom Filter FP</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">precision of Bloom filter used
+in reads; defined in the table definition</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Minimum timestamp</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">minimum
+timestamp of any entry in this sstable, in epoch microseconds</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Maximum
+timestamp</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">maximum timestamp of any entry in this sstable, in epoch
+microseconds</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">SSTable min local deletion time</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">minimum timestamp of
+deletion date, based on TTL, in epoch seconds</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">SSTable max local deletion
+time</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">maximum timestamp of deletion date, based on TTL, in epoch seconds</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Compressor</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">blank (-) by default; if not blank, indicates type of
+compression enabled on the table</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TTL min</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">time-to-live in seconds;
+default 0 unless defined in the table definition</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TTL max</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">time-to-live in
+seconds; default 0 unless defined in the table definition</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">First token</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">lowest token and related key found in the sstable summary</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Last token</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">highest token and related key found in the sstable summary</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Estimated
+droppable tombstones</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ratio of tombstones to columns, using configured gc
+grace seconds if relevant</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">SSTable level</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">compaction level of this
+sstable, if leveled compaction (LCS) is used</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Repaired at</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">the timestamp
 this sstable was marked as repaired via sstablerepairedset, in epoch
-milliseconds Replay positions covered the interval of time and commitlog
-positions related to this sstable totalColumnsSet number of cells in the
-table totalRows number of rows in the table Estimated tombstone drop
-times approximate number of rows that will expire, ordered by epoch
-seconds Count Row Size Cell Count two histograms in two columns; one
+milliseconds</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Replay positions covered</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">the interval of time and commitlog
+positions related to this sstable</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">totalColumnsSet</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">number of cells in the
+table</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">totalRows</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">number of rows in the table</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Estimated tombstone drop
+times</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">approximate number of rows that will expire, ordered by epoch
+seconds</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Count Row Size Cell Count</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">two histograms in two columns; one
 represents distribution of Row Size and the other represents
-distribution of Cell Count Estimated cardinality an estimate of unique
-values, used for compaction EncodingStats* minTTL in epoch milliseconds
-EncodingStats* minLocalDeletionTime in epoch seconds EncodingStats*
-minTimestamp in epoch microseconds KeyType the type of partition key,
+distribution of Cell Count</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Estimated cardinality an estimate of unique
+values, used for compaction</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">EncodingStats* minTTL</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">in epoch milliseconds</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">EncodingStats* minLocalDeletionTime</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">in epoch seconds</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">EncodingStats*
+minTimestamp</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">in epoch microseconds</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">KeyType</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">the type of partition key,
 useful in reading and writing data from/to storage; defined in the table
-definition ClusteringTypes the type of clustering key, useful in reading
-and writing data from/to storage; defined in the table definition
-StaticColumns a list of the shared columns in the table RegularColumns a
-list of non-static, non-key columns in the table</p>
-</div>
-<div class="exampleblock">
-<div class="content">
-
-</div>
-</div>
-</div>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>For the encoding stats values, the delta of this and the current epoch
+definition</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ClusteringTypes</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">the type of clustering key, useful in reading
+and writing data from/to storage; defined in the table definition</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">StaticColumns</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">a list of the shared columns in the table</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">RegularColumns</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><code>*</code> For the encoding stats values, the delta of this and the current epoch
 time is used when encoding and storing data in the most optimal way.</p>
-</li>
-</ul>
 </div>
 </div>
 </div>
