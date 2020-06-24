@@ -549,7 +549,7 @@ binaries and configuration files as the <code>cassandra</code> OS user.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-none hljs" data-lang="none">openjdk version "1.8.0_222"
+<pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">openjdk version "1.8.0_222"
 OpenJDK Runtime Environment (build 1.8.0_222-8u222-b10-1ubuntu1~16.04.1-b10)
 OpenJDK 64-Bit Server VM (build 25.222-b10, mixed mode)</code></pre>
 </div>
@@ -601,7 +601,7 @@ example, to verify the hash of the downloaded file using GPG:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-none hljs" data-lang="none">apache-cassandra-4.0.0-bin.tar.gz: 28757DDE 589F7041 0F9A6A95 C39EE7E6
+<pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">apache-cassandra-4.0.0-bin.tar.gz: 28757DDE 589F7041 0F9A6A95 C39EE7E6
                                    CDE63440 E2B06B91 AE6B2006 14FA364D</code></pre>
 </div>
 </div>
@@ -618,7 +618,7 @@ example, to verify the hash of the downloaded file using GPG:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-none hljs" data-lang="none">28757dde589f70410f9a6a95c39ee7e6cde63440e2b06b91ae6b200614fa364d</code></pre>
+<pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">28757dde589f70410f9a6a95c39ee7e6cde63440e2b06b91ae6b200614fa364d</code></pre>
 </div>
 </div>
 <div class="olist arabic">
@@ -630,7 +630,7 @@ example, to verify the hash of the downloaded file using GPG:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-none hljs" data-lang="none">$ tar xzvf apache-cassandra-4.0.0-bin.tar.gz</code></pre>
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ tar xzvf apache-cassandra-4.0.0-bin.tar.gz</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -647,7 +647,7 @@ the scripts, binaries, utilities, configuration, data and log files:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-none hljs" data-lang="none">&lt;tarball_installation&gt;/
+<pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">&lt;tarball_installation&gt;/
     bin/
     conf/
     data/
@@ -694,7 +694,7 @@ This will run Cassandra as the authenticated Linux user.
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-none hljs" data-lang="none">$ tail -f logs/system.log</code></pre>
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ tail -f logs/system.log</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -702,7 +702,7 @@ This will run Cassandra as the authenticated Linux user.
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-none hljs" data-lang="none">INFO  [main] 2019-12-17 03:03:37,526 Server.java:156 - Starting listening for CQL clients on localhost/127.0.0.1:9042 (unencrypted)...</code></pre>
+<pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">INFO  [main] 2019-12-17 03:03:37,526 Server.java:156 - Starting listening for CQL clients on localhost/127.0.0.1:9042 (unencrypted)...</code></pre>
 </div>
 </div>
 <div class="olist arabic">
@@ -751,7 +751,7 @@ This will run Cassandra as the authenticated Linux user.
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-none hljs" data-lang="none">openjdk version "1.8.0_222"
+<pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">openjdk version "1.8.0_222"
 OpenJDK Runtime Environment (build 1.8.0_222-8u222-b10-1ubuntu1~16.04.1-b10)
 OpenJDK 64-Bit Server VM (build 25.222-b10, mixed mode)</code></pre>
 </div>
@@ -770,7 +770,7 @@ version 4.0 (<code>40x</code>):</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-none hljs" data-lang="none">$ echo "deb http://www.apache.org/dist/cassandra/debian 40x main" | sudo tee -a /etc/apt/sources.list.d/cassandra.sources.list
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ echo "deb http://www.apache.org/dist/cassandra/debian 40x main" | sudo tee -a /etc/apt/sources.list.d/cassandra.sources.list
 deb http://www.apache.org/dist/cassandra/debian 40x main</code></pre>
 </div>
 </div>
@@ -784,8 +784,12 @@ on the server:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-none hljs" data-lang="none">$ curl https://www.apache.org/dist/cassandra/KEYS | sudo apt-key add -
-  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ curl https://www.apache.org/dist/cassandra/KEYS | sudo apt-key add -</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
                                  Dload  Upload   Total   Spent    Left  Speed
 100  266k  100  266k    0     0   320k      0 --:--:-- --:--:-- --:--:--  320k
 OK</code></pre>
@@ -800,7 +804,7 @@ OK</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-none hljs" data-lang="none">$ sudo apt-get update</code></pre>
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ sudo apt-get update</code></pre>
 </div>
 </div>
 <div class="olist arabic">
@@ -812,7 +816,7 @@ OK</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-none hljs" data-lang="none">$ sudo apt-get install cassandra</code></pre>
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ sudo apt-get install cassandra</code></pre>
 </div>
 </div>
 <div class="admonitionblock note">
@@ -838,7 +842,7 @@ Monitor the progress of the startup with:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-none hljs" data-lang="none">$ tail -f /var/log/cassandra/system.log</code></pre>
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ tail -f /var/log/cassandra/system.log</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -846,7 +850,7 @@ Monitor the progress of the startup with:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-none hljs" data-lang="none">INFO  [main] 2019-12-17 03:03:37,526 Server.java:156 - Starting listening for CQL clients on localhost/127.0.0.1:9042 (unencrypted)...</code></pre>
+<pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">INFO  [main] 2019-12-17 03:03:37,526 Server.java:156 - Starting listening for CQL clients on localhost/127.0.0.1:9042 (unencrypted)...</code></pre>
 </div>
 </div>
 <div class="admonitionblock note">
@@ -872,7 +876,7 @@ Cassandra</a>.
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-none hljs" data-lang="none">$ nodetool status</code></pre>
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ nodetool status</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -884,7 +888,7 @@ Cassandra</a>.
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-none hljs" data-lang="none">$ cqlsh</code></pre>
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ cqlsh</code></pre>
 </div>
 </div>
 </div>
@@ -901,8 +905,12 @@ Cassandra</a>.
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-none hljs" data-lang="none">$ java -version
-openjdk version "1.8.0_222"
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ java -version</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">openjdk version "1.8.0_222"
 OpenJDK Runtime Environment (build 1.8.0_232-b09)
 OpenJDK 64-Bit Server VM (build 25.232-b09, mixed mode)</code></pre>
 </div>
@@ -921,7 +929,7 @@ repository for version 4.0 (<code>40x</code>):</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-none hljs" data-lang="none">[cassandra]
+<pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">[cassandra]
 name=Apache Cassandra
 baseurl=https://downloads.apache.org/cassandra/redhat/40x/
 gpgcheck=1
@@ -938,7 +946,7 @@ gpgkey=https://downloads.apache.org/cassandra/KEYS</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-none hljs" data-lang="none">$ sudo yum update</code></pre>
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ sudo yum update</code></pre>
 </div>
 </div>
 <div class="olist arabic">
@@ -950,7 +958,7 @@ gpgkey=https://downloads.apache.org/cassandra/KEYS</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-none hljs" data-lang="none">$ sudo yum install cassandra</code></pre>
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ sudo yum install cassandra</code></pre>
 </div>
 </div>
 <div class="admonitionblock note">
@@ -975,7 +983,7 @@ installation. The Cassandra service will also be run as this user.
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-none hljs" data-lang="none">$ sudo service cassandra start</code></pre>
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ sudo service cassandra start</code></pre>
 </div>
 </div>
 <div class="olist arabic">
@@ -987,7 +995,7 @@ installation. The Cassandra service will also be run as this user.
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-none hljs" data-lang="none">$ tail -f /var/log/cassandra/system.log</code></pre>
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ tail -f /var/log/cassandra/system.log</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -995,7 +1003,7 @@ installation. The Cassandra service will also be run as this user.
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-none hljs" data-lang="none">INFO  [main] 2019-12-17 03:03:37,526 Server.java:156 - Starting listening for CQL clients on localhost/127.0.0.1:9042 (unencrypted)...</code></pre>
+<pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">INFO  [main] 2019-12-17 03:03:37,526 Server.java:156 - Starting listening for CQL clients on localhost/127.0.0.1:9042 (unencrypted)...</code></pre>
 </div>
 </div>
 <div class="admonitionblock note">
@@ -1021,7 +1029,7 @@ Cassandra</a>.
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-none hljs" data-lang="none">$ nodetool status</code></pre>
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ nodetool status</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1033,7 +1041,7 @@ Cassandra</a>.
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-none hljs" data-lang="none">$ cqlsh</code></pre>
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ cqlsh</code></pre>
 </div>
 </div>
 </div>
@@ -1056,8 +1064,17 @@ section.</p>
 </main>
 </div>
 <footer class="footer">
-  <p>This page was built using the Antora default UI.</p>
-  <p>The source code for this UI is licensed under the terms of the MPL-2.0 license.</p>
+  <p> © 2020 <a href="https://apache.org">The Apache Software Foundation.</a> Apache, the Apache feather logo, and Apache Cassandra are trademarks of The Apache Software Foundation.
+   <a href="https://twitter.com/cassandra"
+           class="twitter-follow-button"
+           data-show-count="false" data-size="large">Follow @cassandra</a>
+           <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+  <a href="https://twitter.com/intent/tweet?button_hashtag=cassandra"
+           class="twitter-hashtag-button"
+           data-size="large"
+           data-related="ApacheCassandra">Tweet #cassandra</a>
+  <a class="subscribe-rss" href="/feed.xml" title="Subscribe to Blog via RSS"><img src="../../../../_/img/Feed-icon.svg"></a>
+  </p>
 </footer>
 <script>
   window.antora = window.antora || {}
@@ -1069,5 +1086,9 @@ section.</p>
 <script src="../../../../_/js/vendor/search.js"></script>
 <script async src="../../../../_/../search-index.js"></script>
 <script async src="../../../../_/js/vendor/highlight.js"></script>
+<!-- Javascript. Placed here so pages load faster -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="js/underscore-min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
   </body>
 </html>
