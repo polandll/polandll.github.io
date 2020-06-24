@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Find The Misbehaving Nodes :: Apache Cassandra Documentation</title>
+    <link rel="canonical" href="file:///Users/lorina.poland/docs-site/build/site/Cassandra/4.0/Cassandra/3.11/cassandra/troubleshooting/finding_nodes.html">
+    <meta name="generator" content="Antora 2.3.1">
+    <link rel="stylesheet" href="../../../../_/css/site.css">
+<link rel="stylesheet" href="../../../../_/css/search.css">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="file:///Users/lorina.poland/docs-site/build/site/Cassandra/4.0">&nbsp;&nbsp;&nbsp;<img src="../../../../_/img/cassandra_logo.png"></a>
+        <div class="navbar-item">
+          <input id="search-input" type="text" placeholder="Search docs">
+        </div>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="https://cassandra.apache.org">Home</a>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="https://cassandra.apache.org/download/">Download</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="https://www.apache.org/dyn/closer.lua/cassandra/3.11.6/apache-cassandra-3.11.6-bin.tar.gz">Latest</a>
+            <a class="navbar-item" href="https://www.apache.org/dyn/closer.lua/cassandra/3.11.6/apache-cassandra-3.11.6-bin.tar.gz">3.x</a>
+            <a class="navbar-item" href="https://www.apache.org/dyn/closer.lua/cassandra/3.0.20/apache-cassandra-3.0.20-bin.tar.gz">3.0</a>
+            <a class="navbar-item" href="https://www.apache.org/dyn/closer.lua/cassandra/2.1.21/apache-cassandra-2.1.21-bin.tar.gz">2.1</a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="https://cassandra.apache.org/doc/">Documentation</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="https://cassandra.apache.org/doc/">Latest</a>
+            <a class="navbar-item" href="">3.x</a>
+            <a class="navbar-item" href="https://cassandra.apache.org/doc/old/CQL-3.0.html">3.0</a>
+            <a class="navbar-item" href="https://cassandra.apache.org/doc/old/CQL-2.1.html">2.1</a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="https://cassandra.apache.org/community/">Community</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="https://lists.apache.org/list.html?dev@cassandra.apache.org">Developer Mailing List</a>
+            <a class="navbar-item" href="https://lists.apache.org/list.html?user@cassandra.apache.org">User Mailing List</a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="https://cassandra.apache.org/blog/">Blog</a>
+	</div>
+          </span>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <nav class="navbar2">
+    <div class="navbar2-brand">
+      <a class="navbar2-item href="https://asf.org"><img src="../../../../_/img/asf_feather.png" height="70%">&nbsp;&nbsp;&nbsp;Apache Software Foundation / Apache Cassandra</a>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="Cassandra" data-version="3.11">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../../index.html">Cassandra</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../index.html">Main</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../glossary.html">Glossary</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../bugs.html">How to report bugs</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../contactus.html">Contact us</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Cassandra</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../getting_started/index.html">Getting Started</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../getting_started/installing.html">Installing Cassandra</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../getting_started/configuring.html">Configuring Cassandra</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../getting_started/querying.html">Inserting and querying</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../getting_started/drivers.html">Client drivers</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../getting_started/production.html">Production recommendations</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../new/index.html">What&#8217;s new</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../new/java11.html">Support for Java 11</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../new/virtualtables.html">Virtual tables</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../new/auditlogging.html">Audit logging</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../new/fqllogging.html">Full query logging</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../new/messaging.html">Improved internode Messaging</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../new/streaming.html">Improved streaming</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../new/transientreplication.html">Transient replication</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../architecture/index.html">Architecture</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../architecture/overview.html">Overview</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../architecture/dynamo.html">Dynamo</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../architecture/storage_engine.html">Storage engine</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../architecture/guarantees.html">Guarantees</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../data_modeling/index.html">Data modeling</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../data_modeling/intro.html">Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../data_modeling/data_modeling_conceptual.html">Conceptual data modeling</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../data_modeling/data_modeling_rdbms.html">RDBMS design</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../data_modeling/data_modeling_queries.html">Defining application queries</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../data_modeling/data_modeling_logical.html">Logical data modeling</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../data_modeling/data_modeling_physical.html">Physical data modeling</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../data_modeling/data_modeling_refining.html">Evaluating and refining data models</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../data_modeling/data_modeling_schema.html">Defining database schema</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../data_modeling/data_modeling_tools.html">Cassandra data modeling tools</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="#cql/index.adoc{">CQL</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../cql/definitions.html">Definitions</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../cql/types.html">Data types</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../cql/ddl.html">DDL</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../cql/dml.html">DML</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../cql/indexes.html">Secondary indexes</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../cql/mvs.html">Materialized views</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../cql/security.html">Security</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../cql/functions.html">Functions</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../cql/operators.html">Operators</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../cql/json.html">JSON</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../cql/triggers.html">Triggers</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../cql/appendices.html">Appendices</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../cql/changes.html">Changes</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../configuration/index.html">Configuration</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../configuration/cass_yaml_file.html">cassandra.yaml</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../configuration/cass_rackdc_file.html">cassandra-rackdc.properties</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../configuration/cass_env_sh_file.html">cassandra-env.sh</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../configuration/cass_topo_file.html">cassandra-topologies.properties</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../configuration/cass_cl_archive_file.html">commitlog-archiving.properties</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../configuration/cass_logback_xml_file.html">logback.xml</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../configuration/cass_jvm_options_file.html">jvm-* files</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../operating/index.html">Operating</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../operating/snitch.html">Snitches</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../operating/topo_changes.html">Topology changes</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../operating/repair.html">Repair</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../operating/read_repair.html">Read repair</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../operating/hints.html">Hints</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../operating/bloom_filters.html">Bloom filters</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../operating/compression.html">Compression</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../operating/cdc.html">Change Data Capture (CDC)</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../operating/backups.html">Backups</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../operating/bulk_loading.html">Bulk loading</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../operating/metrics.html">Metrics</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../operating/security.html">Security</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../operating/hardware.html">Hardware</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../operating/audit_logging.html">Audit logging</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../operating/compaction/index.html">Compaction</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../tools/index.html">Tools</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tools/cqlsh.html">cqlsh: the CQL shell</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tools/nodetool/nodetool.html">nodetool</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tools/sstable/index.html">SSTable tools</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tools/cassandra_stress.html">cassandra-stress</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="index.html">Troubleshooting</a>
+<ul class="nav-list">
+  <li class="nav-item is-current-page" data-depth="3">
+    <a class="nav-link" href="finding_nodes.html">Finding misbehaving nodes</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="reading_logs.html">Reading Cassandra logs</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="use_nodetool.html">Using nodetool</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="use_tools.html">Using external tools to deep-dive</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../development/index.html">Development</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../development/gettingstarted.html">Getting started</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../development/ide.html">Building and IDE integration</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../development/testing.html">Testing</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../development/patches.html">Contributing code changes</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../development/code_style.html">Code style</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../development/how_to_review.html">Review checklist</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../development/how_to_commit.html">How to commit</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../development/documentation.html">Working on documentation</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../development/ci.html">Jenkins CI environment</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../development/dependencies.html">Dependency management</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../development/release_process.html">Release process</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../faq/index.html">FAQ</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/index.html">Plug-ins</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Cassandra</span>
+    <span class="version">3.11</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <span class="title">Cassandra</span>
+      <ul class="versions">
+        <li class="version">
+          <a href="../../../4.0/index.html">4.0-rc.5</a>
+        </li>
+        <li class="version is-current is-latest">
+          <a href="../../index.html">3.11</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li>Cassandra</li>
+    <li><a href="index.html">Troubleshooting</a></li>
+    <li><a href="finding_nodes.html">Finding misbehaving nodes</a></li>
+  </ul>
+</nav>
+<div class="page-versions">
+  <button class="version-menu-toggle" title="Show other versions of page">3.11</button>
+  <div class="version-menu">
+    <a class="version" href="../../../4.0/cassandra/troubleshooting/finding_nodes.html">4.0-rc.5</a>
+    <a class="version is-current" href="finding_nodes.html">3.11</a>
+  </div>
+</div>
+  <div class="edit-this-page"><a href="file:///Users/lorina.poland/CLONES/cassandra-examples/rst-to-asciidoc-tests/ASCIIDOC/modules/cassandra/pages/troubleshooting/finding_nodes.adoc">Edit this Page</a></div>
+</div>
+  <div class="content">
+<article class="doc">
+<h1 class="page">Find The Misbehaving Nodes</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>The first step to troubleshooting a Cassandra issue is to use error
+messages, metrics and monitoring information to identify if the issue
+lies with the clients or the server and if it does lie with the server
+find the problematic nodes in the Cassandra cluster. The goal is to
+determine if this is a systemic issue (e.g. a query pattern that affects
+the entire cluster) or isolated to a subset of nodes (e.g. neighbors
+holding a shared token range or even a single node with bad hardware).</p>
+</div>
+<div class="paragraph">
+<p>There are many sources of information that help determine where the
+problem lies. Some of the most common are mentioned below.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="client-logs-and-errors"><a class="anchor" href="#client-logs-and-errors"></a>Client Logs and Errors</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Clients of the cluster often leave the best breadcrumbs to follow.
+Perhaps client latencies or error rates have increased in a particular
+datacenter (likely eliminating other datacenter&#8217;s nodes), or clients are
+receiving a particular kind of error code indicating a particular kind
+of problem. Troubleshooters can often rule out many failure modes just
+by reading the error messages. In fact, many Cassandra error messages
+include the last coordinator contacted to help operators find nodes to
+start with.</p>
+</div>
+<div class="paragraph">
+<p>Some common errors (likely culprit in parenthesis) assuming the client
+has similar error names as the Datastax <code>drivers &lt;client-drivers&gt;</code>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>SyntaxError</code> (<strong>client</strong>). This and other <code>QueryValidationException</code>
+indicate that the client sent a malformed request. These are rarely
+server issues and usually indicate bad queries.</p>
+</li>
+<li>
+<p><code>UnavailableException</code> (<strong>server</strong>): This means that the Cassandra
+coordinator node has rejected the query as it believes that insufficent
+replica nodes are available. If many coordinators are throwing this
+error it likely means that there really are (typically) multiple nodes
+down in the cluster and you can identify them using <code>nodetool status
+&lt;nodetool-status&gt;</code> If only a single coordinator is throwing this error
+it may mean that node has been partitioned from the rest.</p>
+</li>
+<li>
+<p><code>OperationTimedOutException</code> (<strong>server</strong>): This is the most frequent
+timeout message raised when clients set timeouts and means that the
+query took longer than the supplied timeout. This is a <em>client side</em>
+timeout meaning that it took longer than the client specified timeout.
+The error message will include the coordinator node that was last tried
+which is usually a good starting point. This error usually indicates
+either aggressive client timeout values or latent server
+coordinators/replicas.</p>
+</li>
+<li>
+<p><code>ReadTimeoutException</code> or <code>WriteTimeoutException</code> (<strong>server</strong>): These
+are raised when clients do not specify lower timeouts and there is a
+<em>coordinator</em> timeouts based on the values supplied in the
+<code>cassandra.yaml</code> configuration file. They usually indicate a serious
+server side problem as the default values are usually multiple seconds.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="metrics"><a class="anchor" href="#metrics"></a>Metrics</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>If you have Cassandra <code>metrics &lt;monitoring-metrics&gt;</code> reporting to a
+centralized location such as <a href="https://graphiteapp.org/">Graphite</a> or
+<a href="https://grafana.com/">Grafana</a> you can typically use those to narrow down
+the problem. At this stage narrowing down the issue to a particular
+datacenter, rack, or even group of nodes is the main goal. Some helpful
+metrics to look at are:</p>
+</div>
+<div class="sect2">
+<h3 id="errors"><a class="anchor" href="#errors"></a>Errors</h3>
+<div class="paragraph">
+<p>Cassandra refers to internode messaging errors as "drops", and provided
+a number of <code>Dropped Message Metrics &lt;dropped-metrics&gt;</code> to help narrow
+down errors. If particular nodes are dropping messages actively, they
+are likely related to the issue.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="latency"><a class="anchor" href="#latency"></a>Latency</h3>
+<div class="paragraph">
+<p>For timeouts or latency related issues you can start with <code>Table
+Metrics &lt;table-metrics&gt;</code> by comparing Coordinator level metrics e.g.
+<code>CoordinatorReadLatency</code> or <code>CoordinatorWriteLatency</code> with their
+associated replica metrics e.g. <code>ReadLatency</code> or <code>WriteLatency</code>. Issues
+usually show up on the <code>99th</code> percentile before they show up on the
+<code>50th</code> percentile or the <code>mean</code>. While <code>maximum</code> coordinator latencies
+are not typically very helpful due to the exponentially decaying
+reservoir used internally to produce metrics, <code>maximum</code> replica
+latencies that correlate with increased <code>99th</code> percentiles on
+coordinators can help narrow down the problem.</p>
+</div>
+<div class="paragraph">
+<p>There are usually three main possibilities:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Coordinator latencies are high on all nodes, but only a few node&#8217;s
+local read latencies are high. This points to slow replica nodes and the
+coordinator&#8217;s are just side-effects. This usually happens when clients
+are not token aware.</p>
+</li>
+<li>
+<p>Coordinator latencies and replica latencies increase at the same time
+on the a few nodes. If clients are token aware this is almost always
+what happens and points to slow replicas of a subset of token ranges
+(only part of the ring).</p>
+</li>
+<li>
+<p>Coordinator and local latencies are high on many nodes. This usually
+indicates either a tipping point in the cluster capacity (too many
+writes or reads per second), or a new query pattern.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>It&#8217;s important to remember that depending on the client&#8217;s load balancing
+behavior and consistency levels coordinator and replica metrics may or
+may not correlate. In particular if you use <code>TokenAware</code> policies the
+same node&#8217;s coordinator and replica latencies will often increase
+together, but if you just use normal <code>DCAwareRoundRobin</code> coordinator
+latencies can increase with unrelated replica node&#8217;s latencies. For
+example:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>TokenAware</code> + <code>LOCAL_ONE</code>: should always have coordinator and replica
+latencies on the same node rise together</p>
+</li>
+<li>
+<p><code>TokenAware</code> + <code>LOCAL_QUORUM</code>: should always have coordinator and
+multiple replica latencies rise together in the same datacenter.</p>
+</li>
+<li>
+<p><code>TokenAware</code> + <code>QUORUM</code>: replica latencies in other datacenters can
+affect coordinator latencies.</p>
+</li>
+<li>
+<p><code>DCAwareRoundRobin</code> + <code>LOCAL_ONE</code>: coordinator latencies and unrelated
+replica node&#8217;s latencies will rise together.</p>
+</li>
+<li>
+<p><code>DCAwareRoundRobin</code> + <code>LOCAL_QUORUM</code>: different coordinator and
+replica latencies will rise together with little correlation.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="query-rates"><a class="anchor" href="#query-rates"></a>Query Rates</h3>
+<div class="paragraph">
+<p>Sometimes the <code>Table &lt;table-metrics&gt;</code> query rate metrics can help narrow
+down load issues as "small" increase in coordinator queries per second
+(QPS) may correlate with a very large increase in replica level QPS.
+This most often happens with <code>BATCH</code> writes, where a client may send a
+single <code>BATCH</code> query that might contain 50 statements in it, which if
+you have 9 copies (RF=3, three datacenters) means that every coordinator
+<code>BATCH</code> write turns into 450 replica writes! This is why keeping
+`BATCH&#8217;s to the same partition is so critical, otherwise you can
+exhaust significant CPU capacitity with a "single" query.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="next-step-investigate-the-nodes"><a class="anchor" href="#next-step-investigate-the-nodes"></a>Next Step: Investigate the Node(s)</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Once you have narrowed down the problem as much as possible (datacenter,
+rack , node), login to one of the nodes using SSH and proceed to debug
+using <code>logs &lt;reading-logs&gt;</code>, <code>nodetool &lt;use-nodetool&gt;</code>, and
+<code>os tools &lt;use-os-tools&gt;</code>. If you are not able to login you may still
+have access to <code>logs &lt;reading-logs&gt;</code> and <code>nodetool &lt;use-nodetool&gt;</code>
+remotely.</p>
+</div>
+</div>
+</div>
+</article>
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p> © 2020 <a href="https://apache.org">The Apache Software Foundation.</a> Apache, the Apache feather logo, and Apache Cassandra are trademarks of The Apache Software Foundation.
+   <a href="https://twitter.com/cassandra"
+           class="twitter-follow-button"
+           data-show-count="false" data-size="large">Follow @cassandra</a>
+           <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+  <a href="https://twitter.com/intent/tweet?button_hashtag=cassandra"
+           class="twitter-hashtag-button"
+           data-size="large"
+           data-related="ApacheCassandra">Tweet #cassandra</a>
+  <a class="subscribe-rss" href="/feed.xml" title="Subscribe to Blog via RSS"><img src="../../../../_/img/Feed-icon.svg"></a>
+  </p>
+</footer>
+<script>
+  window.antora = window.antora || {}
+  window.antora.basePath = '../../../..'
+  window.antora.pagePath = '/Cassandra/3.11/cassandra/troubleshooting/finding_nodes.html'
+</script>
+<script src="../../../../_/js/site.js"></script>
+<script src="../../../../_/js/vendor/lunr.js"></script>
+<script src="../../../../_/js/vendor/search.js"></script>
+<script async src="../../../../_/../search-index.js"></script>
+<script async src="../../../../_/js/vendor/highlight.js"></script>
+<!-- Javascript. Placed here so pages load faster -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="js/underscore-min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+  </body>
+</html>

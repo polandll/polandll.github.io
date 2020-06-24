@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Adding, replacing, moving and removing nodes :: Apache Cassandra Documentation</title>
+    <link rel="canonical" href="file:///Users/lorina.poland/docs-site/build/site/Cassandra/4.0/Cassandra/3.11/cassandra/operating/topo_changes.html">
+    <meta name="generator" content="Antora 2.3.1">
+    <link rel="stylesheet" href="../../../../_/css/site.css">
+<link rel="stylesheet" href="../../../../_/css/search.css">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="file:///Users/lorina.poland/docs-site/build/site/Cassandra/4.0">&nbsp;&nbsp;&nbsp;<img src="../../../../_/img/cassandra_logo.png"></a>
+        <div class="navbar-item">
+          <input id="search-input" type="text" placeholder="Search docs">
+        </div>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="https://cassandra.apache.org">Home</a>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="https://cassandra.apache.org/download/">Download</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="https://www.apache.org/dyn/closer.lua/cassandra/3.11.6/apache-cassandra-3.11.6-bin.tar.gz">Latest</a>
+            <a class="navbar-item" href="https://www.apache.org/dyn/closer.lua/cassandra/3.11.6/apache-cassandra-3.11.6-bin.tar.gz">3.x</a>
+            <a class="navbar-item" href="https://www.apache.org/dyn/closer.lua/cassandra/3.0.20/apache-cassandra-3.0.20-bin.tar.gz">3.0</a>
+            <a class="navbar-item" href="https://www.apache.org/dyn/closer.lua/cassandra/2.1.21/apache-cassandra-2.1.21-bin.tar.gz">2.1</a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="https://cassandra.apache.org/doc/">Documentation</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="https://cassandra.apache.org/doc/">Latest</a>
+            <a class="navbar-item" href="">3.x</a>
+            <a class="navbar-item" href="https://cassandra.apache.org/doc/old/CQL-3.0.html">3.0</a>
+            <a class="navbar-item" href="https://cassandra.apache.org/doc/old/CQL-2.1.html">2.1</a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="https://cassandra.apache.org/community/">Community</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="https://lists.apache.org/list.html?dev@cassandra.apache.org">Developer Mailing List</a>
+            <a class="navbar-item" href="https://lists.apache.org/list.html?user@cassandra.apache.org">User Mailing List</a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="https://cassandra.apache.org/blog/">Blog</a>
+	</div>
+          </span>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <nav class="navbar2">
+    <div class="navbar2-brand">
+      <a class="navbar2-item href="https://asf.org"><img src="../../../../_/img/asf_feather.png" height="70%">&nbsp;&nbsp;&nbsp;Apache Software Foundation / Apache Cassandra</a>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="Cassandra" data-version="3.11">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../../index.html">Cassandra</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../index.html">Main</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../glossary.html">Glossary</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../bugs.html">How to report bugs</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../contactus.html">Contact us</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Cassandra</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../getting_started/index.html">Getting Started</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../getting_started/installing.html">Installing Cassandra</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../getting_started/configuring.html">Configuring Cassandra</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../getting_started/querying.html">Inserting and querying</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../getting_started/drivers.html">Client drivers</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../getting_started/production.html">Production recommendations</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../new/index.html">What&#8217;s new</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../new/java11.html">Support for Java 11</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../new/virtualtables.html">Virtual tables</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../new/auditlogging.html">Audit logging</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../new/fqllogging.html">Full query logging</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../new/messaging.html">Improved internode Messaging</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../new/streaming.html">Improved streaming</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../new/transientreplication.html">Transient replication</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../architecture/index.html">Architecture</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../architecture/overview.html">Overview</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../architecture/dynamo.html">Dynamo</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../architecture/storage_engine.html">Storage engine</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../architecture/guarantees.html">Guarantees</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../data_modeling/index.html">Data modeling</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../data_modeling/intro.html">Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../data_modeling/data_modeling_conceptual.html">Conceptual data modeling</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../data_modeling/data_modeling_rdbms.html">RDBMS design</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../data_modeling/data_modeling_queries.html">Defining application queries</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../data_modeling/data_modeling_logical.html">Logical data modeling</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../data_modeling/data_modeling_physical.html">Physical data modeling</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../data_modeling/data_modeling_refining.html">Evaluating and refining data models</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../data_modeling/data_modeling_schema.html">Defining database schema</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../data_modeling/data_modeling_tools.html">Cassandra data modeling tools</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="#cql/index.adoc{">CQL</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../cql/definitions.html">Definitions</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../cql/types.html">Data types</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../cql/ddl.html">DDL</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../cql/dml.html">DML</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../cql/indexes.html">Secondary indexes</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../cql/mvs.html">Materialized views</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../cql/security.html">Security</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../cql/functions.html">Functions</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../cql/operators.html">Operators</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../cql/json.html">JSON</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../cql/triggers.html">Triggers</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../cql/appendices.html">Appendices</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../cql/changes.html">Changes</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../configuration/index.html">Configuration</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../configuration/cass_yaml_file.html">cassandra.yaml</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../configuration/cass_rackdc_file.html">cassandra-rackdc.properties</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../configuration/cass_env_sh_file.html">cassandra-env.sh</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../configuration/cass_topo_file.html">cassandra-topologies.properties</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../configuration/cass_cl_archive_file.html">commitlog-archiving.properties</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../configuration/cass_logback_xml_file.html">logback.xml</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../configuration/cass_jvm_options_file.html">jvm-* files</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="index.html">Operating</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="snitch.html">Snitches</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="3">
+    <a class="nav-link" href="topo_changes.html">Topology changes</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="repair.html">Repair</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="read_repair.html">Read repair</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="hints.html">Hints</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="bloom_filters.html">Bloom filters</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="compression.html">Compression</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="cdc.html">Change Data Capture (CDC)</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="backups.html">Backups</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="bulk_loading.html">Bulk loading</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="metrics.html">Metrics</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="security.html">Security</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="hardware.html">Hardware</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="audit_logging.html">Audit logging</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="compaction/index.html">Compaction</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../tools/index.html">Tools</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tools/cqlsh.html">cqlsh: the CQL shell</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tools/nodetool/nodetool.html">nodetool</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tools/sstable/index.html">SSTable tools</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tools/cassandra_stress.html">cassandra-stress</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../troubleshooting/index.html">Troubleshooting</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../troubleshooting/finding_nodes.html">Finding misbehaving nodes</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../troubleshooting/reading_logs.html">Reading Cassandra logs</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../troubleshooting/use_nodetool.html">Using nodetool</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../troubleshooting/use_tools.html">Using external tools to deep-dive</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../development/index.html">Development</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../development/gettingstarted.html">Getting started</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../development/ide.html">Building and IDE integration</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../development/testing.html">Testing</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../development/patches.html">Contributing code changes</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../development/code_style.html">Code style</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../development/how_to_review.html">Review checklist</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../development/how_to_commit.html">How to commit</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../development/documentation.html">Working on documentation</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../development/ci.html">Jenkins CI environment</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../development/dependencies.html">Dependency management</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../development/release_process.html">Release process</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../faq/index.html">FAQ</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/index.html">Plug-ins</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Cassandra</span>
+    <span class="version">3.11</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <span class="title">Cassandra</span>
+      <ul class="versions">
+        <li class="version">
+          <a href="../../../4.0/index.html">4.0-rc.5</a>
+        </li>
+        <li class="version is-current is-latest">
+          <a href="../../index.html">3.11</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li>Cassandra</li>
+    <li><a href="index.html">Operating</a></li>
+    <li><a href="topo_changes.html">Topology changes</a></li>
+  </ul>
+</nav>
+<div class="page-versions">
+  <button class="version-menu-toggle" title="Show other versions of page">3.11</button>
+  <div class="version-menu">
+    <a class="version" href="../../../4.0/cassandra/operating/topo_changes.html">4.0-rc.5</a>
+    <a class="version is-current" href="topo_changes.html">3.11</a>
+  </div>
+</div>
+  <div class="edit-this-page"><a href="file:///Users/lorina.poland/CLONES/cassandra-examples/rst-to-asciidoc-tests/ASCIIDOC/modules/cassandra/pages/operating/topo_changes.adoc">Edit this Page</a></div>
+</div>
+  <div class="content">
+<article class="doc">
+<h1 class="page">Adding, replacing, moving and removing nodes</h1>
+<div class="sect1">
+<h2 id="bootstrap"><a class="anchor" href="#bootstrap"></a>Bootstrap</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Adding new nodes is called "bootstrapping". The <code>num_tokens</code> parameter
+will define the amount of virtual nodes (tokens) the joining node will
+be assigned during bootstrap. The tokens define the sections of the ring
+(token ranges) the node will become responsible for.</p>
+</div>
+<div class="sect2">
+<h3 id="token-allocation"><a class="anchor" href="#token-allocation"></a>Token allocation</h3>
+<div class="paragraph">
+<p>With the default token allocation algorithm the new node will pick
+<code>num_tokens</code> random tokens to become responsible for. Since tokens are
+distributed randomly, load distribution improves with a higher amount of
+virtual nodes, but it also increases token management overhead. The
+default of 256 virtual nodes should provide a reasonable load balance
+with acceptable overhead.</p>
+</div>
+<div class="paragraph">
+<p>On 3.0+ a new token allocation algorithm was introduced to allocate
+tokens based on the load of existing virtual nodes for a given keyspace,
+and thus yield an improved load distribution with a lower number of
+tokens. To use this approach, the new node must be started with the JVM
+option <code>-Dcassandra.allocate_tokens_for_keyspace=&lt;keyspace&gt;</code>, where
+<code>&lt;keyspace&gt;</code> is the keyspace from which the algorithm can find the load
+information to optimize token assignment for.</p>
+</div>
+<div class="sect3">
+<h4 id="manual-token-assignment"><a class="anchor" href="#manual-token-assignment"></a>Manual token assignment</h4>
+<div class="paragraph">
+<p>You may specify a comma-separated list of tokens manually with the
+<code>initial_token</code> <code>cassandra.yaml</code> parameter, and if that is specified
+Cassandra will skip the token allocation process. This may be useful
+when doing token assignment with an external tool or when restoring a
+node with its previous tokens.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="range-streaming"><a class="anchor" href="#range-streaming"></a>Range streaming</h3>
+<div class="paragraph">
+<p>After the tokens are allocated, the joining node will pick current
+replicas of the token ranges it will become responsible for to stream
+data from. By default it will stream from the primary replica of each
+token range in order to guarantee data in the new node will be
+consistent with the current state.</p>
+</div>
+<div class="paragraph">
+<p>In the case of any unavailable replica, the consistent bootstrap process
+will fail. To override this behavior and potentially miss data from an
+unavailable replica, set the JVM flag
+<code>-Dcassandra.consistent.rangemovement=false</code>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="resuming-failedhanged-bootstrap"><a class="anchor" href="#resuming-failedhanged-bootstrap"></a>Resuming failed/hanged bootstrap</h3>
+<div class="paragraph">
+<p>On 2.2+, if the bootstrap process fails, it&#8217;s possible to resume
+bootstrap from the previous saved state by calling
+<code>nodetool bootstrap resume</code>. If for some reason the bootstrap hangs or
+stalls, it may also be resumed by simply restarting the node. In order
+to cleanup bootstrap state and start fresh, you may set the JVM startup
+flag <code>-Dcassandra.reset_bootstrap_progress=true</code>.</p>
+</div>
+<div class="paragraph">
+<p>On lower versions, when the bootstrap proces fails it is recommended to
+wipe the node (remove all the data), and restart the bootstrap process
+again.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="manual-bootstrapping"><a class="anchor" href="#manual-bootstrapping"></a>Manual bootstrapping</h3>
+<div class="paragraph">
+<p>It&#8217;s possible to skip the bootstrapping process entirely and join the
+ring straight away by setting the hidden parameter
+<code>auto_bootstrap: false</code>. This may be useful when restoring a node from a
+backup or creating a new data-center.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="removing-nodes"><a class="anchor" href="#removing-nodes"></a>Removing nodes</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You can take a node out of the cluster with <code>nodetool decommission</code> to a
+live node, or <code>nodetool removenode</code> (to any other machine) to remove a
+dead one. This will assign the ranges the old node was responsible for
+to other nodes, and replicate the appropriate data there. If
+decommission is used, the data will stream from the decommissioned node.
+If removenode is used, the data will stream from the remaining replicas.</p>
+</div>
+<div class="paragraph">
+<p>No data is removed automatically from the node being decommissioned, so
+if you want to put the node back into service at a different token on
+the ring, it should be removed manually.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="moving-nodes"><a class="anchor" href="#moving-nodes"></a>Moving nodes</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>When <code>num_tokens: 1</code> it&#8217;s possible to move the node position in the ring
+with <code>nodetool move</code>. Moving is both a convenience over and more
+efficient than decommission + bootstrap. After moving a node,
+<code>nodetool cleanup</code> should be run to remove any unnecessary data.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="replacing-a-dead-node"><a class="anchor" href="#replacing-a-dead-node"></a>Replacing a dead node</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In order to replace a dead node, start cassandra with the JVM startup
+flag <code>-Dcassandra.replace_address_first_boot=&lt;dead_node_ip&gt;</code>. Once this
+property is enabled the node starts in a hibernate state, during which
+all the other nodes will see this node to be DOWN (DN), however this
+node will see itself as UP (UN). Accurate replacement state can be found
+in <code>nodetool netstats</code>.</p>
+</div>
+<div class="paragraph">
+<p>The replacing node will now start to bootstrap the data from the rest of
+the nodes in the cluster. A replacing node will only receive writes
+during the bootstrapping phase if it has a different ip address to the
+node that is being replaced. (See CASSANDRA-8523 and CASSANDRA-12344)</p>
+</div>
+<div class="paragraph">
+<p>Once the bootstrapping is complete the node will be marked "UP".</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="title">Note</div>
+<div class="paragraph">
+<p>If any of the following cases apply, you <strong>MUST</strong> run repair to make the
+replaced node consistent again, since it missed ongoing writes
+during/prior to bootstrapping. The <em>replacement</em> timeframe refers to the
+period from when the node initially dies to when a new node completes
+the replacement process.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The node is down for longer than <code>max_hint_window_in_ms</code> before being
+replaced.</p>
+</li>
+<li>
+<p>You are replacing using the same IP address as the dead node <strong>and</strong>
+replacement takes longer than <code>max_hint_window_in_ms</code>.</p>
+</li>
+</ol>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="monitoring-progress"><a class="anchor" href="#monitoring-progress"></a>Monitoring progress</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Bootstrap, replace, move and remove progress can be monitored using
+<code>nodetool netstats</code> which will show the progress of the streaming
+operations.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="cleanup-data-after-range-movements"><a class="anchor" href="#cleanup-data-after-range-movements"></a>Cleanup data after range movements</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>As a safety measure, Cassandra does not automatically remove data from
+nodes that "lose" part of their token range due to a range movement
+operation (bootstrap, move, replace). Run <code>nodetool cleanup</code> on the
+nodes that lost ranges to the joining node when you are satisfied the
+new node is up and working. If you do not do this the old data will
+still be counted against the load on that node.</p>
+</div>
+</div>
+</div>
+</article>
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p> © 2020 <a href="https://apache.org">The Apache Software Foundation.</a> Apache, the Apache feather logo, and Apache Cassandra are trademarks of The Apache Software Foundation.
+   <a href="https://twitter.com/cassandra"
+           class="twitter-follow-button"
+           data-show-count="false" data-size="large">Follow @cassandra</a>
+           <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+  <a href="https://twitter.com/intent/tweet?button_hashtag=cassandra"
+           class="twitter-hashtag-button"
+           data-size="large"
+           data-related="ApacheCassandra">Tweet #cassandra</a>
+  <a class="subscribe-rss" href="/feed.xml" title="Subscribe to Blog via RSS"><img src="../../../../_/img/Feed-icon.svg"></a>
+  </p>
+</footer>
+<script>
+  window.antora = window.antora || {}
+  window.antora.basePath = '../../../..'
+  window.antora.pagePath = '/Cassandra/3.11/cassandra/operating/topo_changes.html'
+</script>
+<script src="../../../../_/js/site.js"></script>
+<script src="../../../../_/js/vendor/lunr.js"></script>
+<script src="../../../../_/js/vendor/search.js"></script>
+<script async src="../../../../_/../search-index.js"></script>
+<script async src="../../../../_/js/vendor/highlight.js"></script>
+<!-- Javascript. Placed here so pages load faster -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="js/underscore-min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+  </body>
+</html>

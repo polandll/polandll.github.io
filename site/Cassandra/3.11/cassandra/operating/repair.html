@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Repair :: Apache Cassandra Documentation</title>
+    <link rel="canonical" href="file:///Users/lorina.poland/docs-site/build/site/Cassandra/4.0/Cassandra/3.11/cassandra/operating/repair.html">
+    <meta name="generator" content="Antora 2.3.1">
+    <link rel="stylesheet" href="../../../../_/css/site.css">
+<link rel="stylesheet" href="../../../../_/css/search.css">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="file:///Users/lorina.poland/docs-site/build/site/Cassandra/4.0">&nbsp;&nbsp;&nbsp;<img src="../../../../_/img/cassandra_logo.png"></a>
+        <div class="navbar-item">
+          <input id="search-input" type="text" placeholder="Search docs">
+        </div>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="https://cassandra.apache.org">Home</a>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="https://cassandra.apache.org/download/">Download</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="https://www.apache.org/dyn/closer.lua/cassandra/3.11.6/apache-cassandra-3.11.6-bin.tar.gz">Latest</a>
+            <a class="navbar-item" href="https://www.apache.org/dyn/closer.lua/cassandra/3.11.6/apache-cassandra-3.11.6-bin.tar.gz">3.x</a>
+            <a class="navbar-item" href="https://www.apache.org/dyn/closer.lua/cassandra/3.0.20/apache-cassandra-3.0.20-bin.tar.gz">3.0</a>
+            <a class="navbar-item" href="https://www.apache.org/dyn/closer.lua/cassandra/2.1.21/apache-cassandra-2.1.21-bin.tar.gz">2.1</a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="https://cassandra.apache.org/doc/">Documentation</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="https://cassandra.apache.org/doc/">Latest</a>
+            <a class="navbar-item" href="">3.x</a>
+            <a class="navbar-item" href="https://cassandra.apache.org/doc/old/CQL-3.0.html">3.0</a>
+            <a class="navbar-item" href="https://cassandra.apache.org/doc/old/CQL-2.1.html">2.1</a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="https://cassandra.apache.org/community/">Community</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="https://lists.apache.org/list.html?dev@cassandra.apache.org">Developer Mailing List</a>
+            <a class="navbar-item" href="https://lists.apache.org/list.html?user@cassandra.apache.org">User Mailing List</a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="https://cassandra.apache.org/blog/">Blog</a>
+	</div>
+          </span>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <nav class="navbar2">
+    <div class="navbar2-brand">
+      <a class="navbar2-item href="https://asf.org"><img src="../../../../_/img/asf_feather.png" height="70%">&nbsp;&nbsp;&nbsp;Apache Software Foundation / Apache Cassandra</a>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="Cassandra" data-version="3.11">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../../index.html">Cassandra</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../index.html">Main</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../glossary.html">Glossary</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../bugs.html">How to report bugs</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../contactus.html">Contact us</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Cassandra</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../getting_started/index.html">Getting Started</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../getting_started/installing.html">Installing Cassandra</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../getting_started/configuring.html">Configuring Cassandra</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../getting_started/querying.html">Inserting and querying</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../getting_started/drivers.html">Client drivers</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../getting_started/production.html">Production recommendations</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../new/index.html">What&#8217;s new</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../new/java11.html">Support for Java 11</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../new/virtualtables.html">Virtual tables</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../new/auditlogging.html">Audit logging</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../new/fqllogging.html">Full query logging</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../new/messaging.html">Improved internode Messaging</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../new/streaming.html">Improved streaming</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../new/transientreplication.html">Transient replication</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../architecture/index.html">Architecture</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../architecture/overview.html">Overview</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../architecture/dynamo.html">Dynamo</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../architecture/storage_engine.html">Storage engine</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../architecture/guarantees.html">Guarantees</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../data_modeling/index.html">Data modeling</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../data_modeling/intro.html">Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../data_modeling/data_modeling_conceptual.html">Conceptual data modeling</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../data_modeling/data_modeling_rdbms.html">RDBMS design</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../data_modeling/data_modeling_queries.html">Defining application queries</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../data_modeling/data_modeling_logical.html">Logical data modeling</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../data_modeling/data_modeling_physical.html">Physical data modeling</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../data_modeling/data_modeling_refining.html">Evaluating and refining data models</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../data_modeling/data_modeling_schema.html">Defining database schema</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../data_modeling/data_modeling_tools.html">Cassandra data modeling tools</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="#cql/index.adoc{">CQL</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../cql/definitions.html">Definitions</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../cql/types.html">Data types</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../cql/ddl.html">DDL</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../cql/dml.html">DML</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../cql/indexes.html">Secondary indexes</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../cql/mvs.html">Materialized views</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../cql/security.html">Security</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../cql/functions.html">Functions</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../cql/operators.html">Operators</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../cql/json.html">JSON</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../cql/triggers.html">Triggers</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../cql/appendices.html">Appendices</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../cql/changes.html">Changes</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../configuration/index.html">Configuration</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../configuration/cass_yaml_file.html">cassandra.yaml</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../configuration/cass_rackdc_file.html">cassandra-rackdc.properties</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../configuration/cass_env_sh_file.html">cassandra-env.sh</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../configuration/cass_topo_file.html">cassandra-topologies.properties</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../configuration/cass_cl_archive_file.html">commitlog-archiving.properties</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../configuration/cass_logback_xml_file.html">logback.xml</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../configuration/cass_jvm_options_file.html">jvm-* files</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="index.html">Operating</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="snitch.html">Snitches</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="topo_changes.html">Topology changes</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="3">
+    <a class="nav-link" href="repair.html">Repair</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="read_repair.html">Read repair</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="hints.html">Hints</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="bloom_filters.html">Bloom filters</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="compression.html">Compression</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="cdc.html">Change Data Capture (CDC)</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="backups.html">Backups</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="bulk_loading.html">Bulk loading</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="metrics.html">Metrics</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="security.html">Security</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="hardware.html">Hardware</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="audit_logging.html">Audit logging</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="compaction/index.html">Compaction</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../tools/index.html">Tools</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tools/cqlsh.html">cqlsh: the CQL shell</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tools/nodetool/nodetool.html">nodetool</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tools/sstable/index.html">SSTable tools</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tools/cassandra_stress.html">cassandra-stress</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../troubleshooting/index.html">Troubleshooting</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../troubleshooting/finding_nodes.html">Finding misbehaving nodes</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../troubleshooting/reading_logs.html">Reading Cassandra logs</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../troubleshooting/use_nodetool.html">Using nodetool</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../troubleshooting/use_tools.html">Using external tools to deep-dive</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../development/index.html">Development</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../development/gettingstarted.html">Getting started</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../development/ide.html">Building and IDE integration</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../development/testing.html">Testing</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../development/patches.html">Contributing code changes</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../development/code_style.html">Code style</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../development/how_to_review.html">Review checklist</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../development/how_to_commit.html">How to commit</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../development/documentation.html">Working on documentation</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../development/ci.html">Jenkins CI environment</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../development/dependencies.html">Dependency management</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../development/release_process.html">Release process</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../faq/index.html">FAQ</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/index.html">Plug-ins</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Cassandra</span>
+    <span class="version">3.11</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <span class="title">Cassandra</span>
+      <ul class="versions">
+        <li class="version">
+          <a href="../../../4.0/index.html">4.0-rc.5</a>
+        </li>
+        <li class="version is-current is-latest">
+          <a href="../../index.html">3.11</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li>Cassandra</li>
+    <li><a href="index.html">Operating</a></li>
+    <li><a href="repair.html">Repair</a></li>
+  </ul>
+</nav>
+<div class="page-versions">
+  <button class="version-menu-toggle" title="Show other versions of page">3.11</button>
+  <div class="version-menu">
+    <a class="version" href="../../../4.0/cassandra/operating/repair.html">4.0-rc.5</a>
+    <a class="version is-current" href="repair.html">3.11</a>
+  </div>
+</div>
+  <div class="edit-this-page"><a href="file:///Users/lorina.poland/CLONES/cassandra-examples/rst-to-asciidoc-tests/ASCIIDOC/modules/cassandra/pages/operating/repair.adoc">Edit this Page</a></div>
+</div>
+  <div class="content">
+<article class="doc">
+<h1 class="page">Repair</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>Cassandra is designed to remain available if one of it&#8217;s nodes is down
+or unreachable. However, when a node is down or unreachable, it needs to
+eventually discover the writes it missed. Hints attempt to inform a node
+of missed writes, but are a best effort, and aren&#8217;t guaranteed to inform
+a node of 100% of the writes it missed. These inconsistencies can
+eventually result in data loss as nodes are replaced or tombstones
+expire.</p>
+</div>
+<div class="paragraph">
+<p>These inconsistencies are fixed with the repair process. Repair
+synchronizes the data between nodes by comparing their respective
+datasets for their common token ranges, and streaming the differences
+for any out of sync sections between the nodes. It compares the data
+with merkle trees, which are a hierarchy of hashes.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="incremental-and-full-repairs"><a class="anchor" href="#incremental-and-full-repairs"></a>Incremental and Full Repairs</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>There are 2 types of repairs: full repairs, and incremental repairs.
+Full repairs operate over all of the data in the token range being
+repaired. Incremental repairs only repair data that&#8217;s been written since
+the previous incremental repair.</p>
+</div>
+<div class="paragraph">
+<p>Incremental repairs are the default repair type, and if run regularly,
+can significantly reduce the time and io cost of performing a repair.
+However, it&#8217;s important to understand that once an incremental repair
+marks data as repaired, it won&#8217;t try to repair it again. This is fine
+for syncing up missed writes, but it doesn&#8217;t protect against things like
+disk corruption, data loss by operator error, or bugs in Cassandra. For
+this reason, full repairs should still be run occasionally.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="usage-and-best-practices"><a class="anchor" href="#usage-and-best-practices"></a>Usage and Best Practices</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Since repair can result in a lot of disk and network io, it&#8217;s not run
+automatically by Cassandra. It is run by the operator via nodetool.</p>
+</div>
+<div class="paragraph">
+<p>Incremental repair is the default and is run with the following command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs" data-lang="none">nodetool repair</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>A full repair can be run with the following command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs" data-lang="none">nodetool repair --full</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Additionally, repair can be run on a single keyspace:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs" data-lang="none">nodetool repair [options] &lt;keyspace_name&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Or even on specific tables:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs" data-lang="none">nodetool repair [options] &lt;keyspace_name&gt; &lt;table1&gt; &lt;table2&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The repair command only repairs token ranges on the node being repaired,
+it doesn&#8217;t repair the whole cluster. By default, repair will operate on
+all token ranges replicated by the node you&#8217;re running repair on, which
+will cause duplicate work if you run it on every node. The <code>-pr</code> flag
+will only repair the "primary" ranges on a node, so you can repair your
+entire cluster by running <code>nodetool repair -pr</code> on each node in a single
+datacenter.</p>
+</div>
+<div class="paragraph">
+<p>The specific frequency of repair that&#8217;s right for your cluster, of
+course, depends on several factors. However, if you&#8217;re just starting out
+and looking for somewhere to start, running an incremental repair every
+1-3 days, and a full repair every 1-3 weeks is probably reasonable. If
+you don&#8217;t want to run incremental repairs, a full repair every 5 days is
+a good place to start.</p>
+</div>
+<div class="paragraph">
+<p>At a minimum, repair should be run often enough that the gc grace period
+never expires on unrepaired data. Otherwise, deleted data could
+reappear. With a default gc grace period of 10 days, repairing every
+node in your cluster at least once every 7 days will prevent this, while
+providing enough slack to allow for delays.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="other-options"><a class="anchor" href="#other-options"></a>Other Options</h2>
+<div class="sectionbody">
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>-pr, --partitioner-range</code></dt>
+<dd>
+<p>Restricts repair to the 'primary' token ranges of the node being
+repaired. A primary range is just a token range for which a node is
+the first replica in the ring.</p>
+</dd>
+<dt class="hdlist1"><code>-prv, --preview</code></dt>
+<dd>
+<p>Estimates the amount of streaming that would occur for the given
+repair command. This builds the merkle trees, and prints the expected
+streaming activity, but does not actually do any streaming. By
+default, incremental repairs are estimated, add the <code>--full</code> flag to
+estimate a full repair.</p>
+</dd>
+<dt class="hdlist1"><code>-vd, --validate</code></dt>
+<dd>
+<p>Verifies that the repaired data is the same across all nodes. Similiar
+to <code>--preview</code>, this builds and compares merkle trees of repaired
+data, but doesn&#8217;t do any streaming. This is useful for
+troubleshooting. If this shows that the repaired data is out of sync,
+a full repair should be run.</p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p><code>nodetool repair docs &lt;nodetool_repair&gt;</code></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="full-repair-example"><a class="anchor" href="#full-repair-example"></a>Full Repair Example</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Full repair is typically needed to redistribute data after increasing
+the replication factor of a keyspace or after adding a node to the
+cluster. Full repair involves streaming SSTables. To demonstrate full
+repair start with a three node cluster.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs" data-lang="none">[ec2-user@ip-10-0-2-238 ~]$ nodetool status
+Datacenter: us-east-1
+=====================
+Status=Up/Down
+|/ State=Normal/Leaving/Joining/Moving
+--  Address   Load        Tokens  Owns  Host ID                              Rack
+UN  10.0.1.115  547 KiB     256    ?  b64cb32a-b32a-46b4-9eeb-e123fa8fc287  us-east-1b
+UN  10.0.3.206  617.91 KiB  256    ?  74863177-684b-45f4-99f7-d1006625dc9e  us-east-1d
+UN  10.0.2.238  670.26 KiB  256    ?  4dcdadd2-41f9-4f34-9892-1f20868b27c7  us-east-1c</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Create a keyspace with replication factor 3:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs" data-lang="none">cqlsh&gt; DROP KEYSPACE cqlkeyspace;
+cqlsh&gt; CREATE KEYSPACE CQLKeyspace
+  ... WITH replication = {'class': 'SimpleStrategy', 'replication_factor' : 3};</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Add a table to the keyspace:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs" data-lang="none">cqlsh&gt; use cqlkeyspace;
+cqlsh:cqlkeyspace&gt; CREATE TABLE t (
+           ...   id int,
+           ...   k int,
+           ...   v text,
+           ...   PRIMARY KEY (id)
+           ... );</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Add table data:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs" data-lang="none">cqlsh:cqlkeyspace&gt; INSERT INTO t (id, k, v) VALUES (0, 0, 'val0');
+cqlsh:cqlkeyspace&gt; INSERT INTO t (id, k, v) VALUES (1, 1, 'val1');
+cqlsh:cqlkeyspace&gt; INSERT INTO t (id, k, v) VALUES (2, 2, 'val2');</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>A query lists the data added:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs" data-lang="none">cqlsh:cqlkeyspace&gt; SELECT * FROM t;
+
+id | k | v
+----+---+------
+ 1 | 1 | val1
+ 0 | 0 | val0
+ 2 | 2 | val2
+(3 rows)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Make the following changes to a three node cluster:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Increase the replication factor from 3 to 4.</p>
+</li>
+<li>
+<p>Add a 4th node to the cluster</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>When the replication factor is increased the following message gets
+output indicating that a full repair is needed as per
+(<a href="https://issues.apache.org/jira/browse/CASSANDRA-13079">CASSANDRA-13079</a>):</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs" data-lang="none">cqlsh:cqlkeyspace&gt; ALTER KEYSPACE CQLKeyspace
+           ... WITH replication = {'class': 'SimpleStrategy', 'replication_factor' : 4};
+Warnings :
+When increasing replication factor you need to run a full (-full) repair to distribute the
+data.</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Perform a full repair on the keyspace <code>cqlkeyspace</code> table <code>t</code> with
+following command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs" data-lang="none">nodetool repair -full cqlkeyspace t</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Full repair completes in about a second as indicated by the output:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs" data-lang="none">[ec2-user@ip-10-0-2-238 ~]$ nodetool repair -full cqlkeyspace t
+[2019-08-17 03:06:21,445] Starting repair command #1 (fd576da0-c09b-11e9-b00c-1520e8c38f00), repairing keyspace cqlkeyspace with repair options (parallelism: parallel, primary range: false, incremental: false, job threads: 1, ColumnFamilies: [t], dataCenters: [], hosts: [], previewKind: NONE, # of ranges: 1024, pull repair: false, force repair: false, optimise streams: false)
+[2019-08-17 03:06:23,059] Repair session fd8e5c20-c09b-11e9-b00c-1520e8c38f00 for range [(-8792657144775336505,-8786320730900698730], (-5454146041421260303,-5439402053041523135], (4288357893651763201,4324309707046452322], ... , (4350676211955643098,4351706629422088296]] finished (progress: 0%)
+[2019-08-17 03:06:23,077] Repair completed successfully
+[2019-08-17 03:06:23,077] Repair command #1 finished in 1 second
+[ec2-user@ip-10-0-2-238 ~]$</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <code>nodetool  tpstats</code> command should list a repair having been
+completed as <code>Repair-Task</code> &gt; <code>Completed</code> column value of 1:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs" data-lang="none">[ec2-user@ip-10-0-2-238 ~]$ nodetool tpstats
+Pool Name Active   Pending Completed   Blocked  All time blocked
+ReadStage  0           0           99       0              0
+…
+Repair-Task 0       0           1        0              0
+RequestResponseStage                  0        0        2078        0               0</code></pre>
+</div>
+</div>
+</div>
+</div>
+</article>
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p> © 2020 <a href="https://apache.org">The Apache Software Foundation.</a> Apache, the Apache feather logo, and Apache Cassandra are trademarks of The Apache Software Foundation.
+   <a href="https://twitter.com/cassandra"
+           class="twitter-follow-button"
+           data-show-count="false" data-size="large">Follow @cassandra</a>
+           <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+  <a href="https://twitter.com/intent/tweet?button_hashtag=cassandra"
+           class="twitter-hashtag-button"
+           data-size="large"
+           data-related="ApacheCassandra">Tweet #cassandra</a>
+  <a class="subscribe-rss" href="/feed.xml" title="Subscribe to Blog via RSS"><img src="../../../../_/img/Feed-icon.svg"></a>
+  </p>
+</footer>
+<script>
+  window.antora = window.antora || {}
+  window.antora.basePath = '../../../..'
+  window.antora.pagePath = '/Cassandra/3.11/cassandra/operating/repair.html'
+</script>
+<script src="../../../../_/js/site.js"></script>
+<script src="../../../../_/js/vendor/lunr.js"></script>
+<script src="../../../../_/js/vendor/search.js"></script>
+<script async src="../../../../_/../search-index.js"></script>
+<script async src="../../../../_/js/vendor/highlight.js"></script>
+<!-- Javascript. Placed here so pages load faster -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="js/underscore-min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+  </body>
+</html>
