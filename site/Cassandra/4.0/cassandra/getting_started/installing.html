@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Installing Cassandra :: Apache Cassandra Documentation</title>
-    <link rel="canonical" href="file:///Users/lorina.poland/docs-site/build/site/Cassandra/4.0/Cassandra/3.11/cassandra/getting_started/installing.html">
+    <link rel="canonical" href="file:///Users/lorina.poland/CLONES/cassandra/build/html/Cassandra/4.0/Cassandra/3.11/cassandra/getting_started/installing.html">
     <meta name="generator" content="Antora 2.3.1">
     <link rel="stylesheet" href="../../../../_/css/site.css">
 <link rel="stylesheet" href="../../../../_/css/search.css">
@@ -13,7 +13,7 @@
 <header class="header">
   <nav class="navbar">
     <div class="navbar-brand">
-      <a class="navbar-item" href="file:///Users/lorina.poland/docs-site/build/site/Cassandra/4.0">&nbsp;&nbsp;&nbsp;<img src="../../../../_/img/cassandra_logo.png"></a>
+      <a class="navbar-item" href="file:///Users/lorina.poland/CLONES/cassandra/build/html/Cassandra/4.0">&nbsp;&nbsp;&nbsp;<img src="../../../../_/img/cassandra_logo.png"></a>
         <div class="navbar-item">
           <input id="search-input" type="text" placeholder="Search docs">
         </div>
@@ -199,7 +199,7 @@
   </li>
   <li class="nav-item" data-depth="2">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="#cql/index.adoc{">CQL</a>
+    <a class="nav-link" href="../cql/index.html">Cassandra Query Language (CQL)</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="../cql/definitions.html">Definitions</a>
@@ -208,10 +208,13 @@
     <a class="nav-link" href="../cql/types.html">Data types</a>
   </li>
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="../cql/ddl.html">DDL</a>
+    <a class="nav-link" href="../cql/ddl.html">Data definition (DDL)</a>
   </li>
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="../cql/dml.html">DML</a>
+    <a class="nav-link" href="../cql/dml.html">Data manipulation (DML)</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../cql/operators.html">Operators</a>
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="../cql/indexes.html">Secondary indexes</a>
@@ -220,16 +223,13 @@
     <a class="nav-link" href="../cql/mvs.html">Materialized views</a>
   </li>
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="../cql/security.html">Security</a>
-  </li>
-  <li class="nav-item" data-depth="3">
     <a class="nav-link" href="../cql/functions.html">Functions</a>
   </li>
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="../cql/operators.html">Operators</a>
+    <a class="nav-link" href="../cql/json.html">JSON</a>
   </li>
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="../cql/json.html">JSON</a>
+    <a class="nav-link" href="../cql/security.html">Security</a>
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="../cql/triggers.html">Triggers</a>
@@ -411,14 +411,14 @@
 <div class="nav-panel-explore" data-panel="explore">
   <div class="context">
     <span class="title">Cassandra</span>
-    <span class="version">4.0-rc.5</span>
+    <span class="version">4.0-beta1</span>
   </div>
   <ul class="components">
     <li class="component is-current">
       <span class="title">Cassandra</span>
       <ul class="versions">
         <li class="version is-current">
-          <a href="../../index.html">4.0-rc.5</a>
+          <a href="../../index.html">4.0-beta1</a>
         </li>
         <li class="version is-latest">
           <a href="../../../3.11/index.html">3.11</a>
@@ -441,14 +441,14 @@
   </ul>
 </nav>
 <div class="page-versions">
-  <button class="version-menu-toggle" title="Show other versions of page">4.0-rc.5</button>
+  <button class="version-menu-toggle" title="Show other versions of page">4.0-beta1</button>
   <div class="version-menu">
-    <a class="version is-current" href="installing.html">4.0-rc.5</a>
+    <a class="version is-current" href="installing.html">4.0-beta1</a>
     <a class="version" href="../../../3.11/cassandra/getting_started/installing.html">3.11</a>
   </div>
 </div>
-  <div class="edit-this-page"><a href="https://github.com/polandll/cassandra-examples/edit/4.0-rc5/rst-to-asciidoc-tests/ASCIIDOC/modules/cassandra/pages/getting_started/installing.adoc">Edit this Page</a></div>
-  </div>
+  <div class="edit-this-page"><a href="file:///Users/lorina.poland/CLONES/cassandra/doc/source/modules/cassandra/pages/getting_started/installing.adoc">Edit this Page</a></div>
+</div>
   <div class="content">
 <article class="doc">
 <h1 class="page">Installing Cassandra</h1>
@@ -544,25 +544,40 @@ binaries and configuration files as the <code>cassandra</code> OS user.</p>
 <h2 id="installing-the-binary-tarball"><a class="anchor" href="#installing-the-binary-tarball"></a>Installing the binary tarball</h2>
 <div class="sectionbody">
 <div class="olist arabic">
-<ol class="arabic">
+<ol class="arabic" start="1">
 <li>
 <p>Verify the version of Java installed. For example:</p>
 </li>
 </ol>
 </div>
+<div class="tabset is-loading">
+<div class="ulist tabs">
+<ul>
+<li>
+<p><a id="tabset1_command"></a>Command</p>
+</li>
+<li>
+<p><a id="tabset1_result"></a>Result</p>
+</li>
+</ul>
+</div>
+<div class="content">
+<div class="tab-pane" aria-labelledby="tabset1_command">
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ java -version</code></pre>
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">$ java -version</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>should return:</p>
 </div>
+<div class="tab-pane" aria-labelledby="tabset1_result">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">openjdk version "1.8.0_222"
 OpenJDK Runtime Environment (build 1.8.0_222-8u222-b10-1ubuntu1~16.04.1-b10)
 OpenJDK 64-Bit Server VM (build 25.222-b10, mixed mode)</code></pre>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="olist arabic">
@@ -576,7 +591,7 @@ For example, to download Cassandra 4.0:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ curl -OL http://apache.mirror.digitalpacific.com.au/cassandra/4.0.0/apache-cassandra-4.0.0-bin.tar.gz</code></pre>
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">$ curl -OL http://apache.mirror.digitalpacific.com.au/cassandra/4.0.0/apache-cassandra-4.0.0-bin.tar.gz</code></pre>
 </div>
 </div>
 <div class="admonitionblock note">
@@ -602,34 +617,64 @@ example, to verify the hash of the downloaded file using GPG:</p>
 </li>
 </ol>
 </div>
+<div class="tabset is-loading">
+<div class="ulist tabs">
+<ul>
+<li>
+<p><a id="tabset2_command"></a>Command</p>
+</li>
+<li>
+<p><a id="tabset2_result"></a>Result</p>
+</li>
+</ul>
+</div>
+<div class="content">
+<div class="tab-pane" aria-labelledby="tabset2_command">
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ gpg --print-md SHA256 apache-cassandra-4.0.0-bin.tar.gz</code></pre>
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">$ gpg --print-md SHA256 apache-cassandra-4.0.0-bin.tar.gz</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>should return:</p>
 </div>
+<div class="tab-pane" aria-labelledby="tabset2_result">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">apache-cassandra-4.0.0-bin.tar.gz: 28757DDE 589F7041 0F9A6A95 C39EE7E6
                                    CDE63440 E2B06B91 AE6B2006 14FA364D</code></pre>
 </div>
 </div>
+</div>
+</div>
+</div>
 <div class="paragraph">
 <p>Compare the signature with the SHA256 file from the Downloads site:</p>
 </div>
+<div class="tabset is-loading">
+<div class="ulist tabs">
+<ul>
+<li>
+<p><a id="tabset3_command"></a>Command</p>
+</li>
+<li>
+<p><a id="tabset3_result"></a>Result</p>
+</li>
+</ul>
+</div>
+<div class="content">
+<div class="tab-pane" aria-labelledby="tabset3_command">
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ curl -L https://downloads.apache.org/cassandra/4.0.0/apache-cassandra-4.0.0-bin.tar.gz.sha256</code></pre>
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">$ curl -L https://downloads.apache.org/cassandra/4.0.0/apache-cassandra-4.0.0-bin.tar.gz.sha256</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>which returns:</p>
 </div>
+<div class="tab-pane" aria-labelledby="tabset3_result">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">28757dde589f70410f9a6a95c39ee7e6cde63440e2b06b91ae6b200614fa364d</code></pre>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="olist arabic">
@@ -641,7 +686,7 @@ example, to verify the hash of the downloaded file using GPG:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ tar xzvf apache-cassandra-4.0.0-bin.tar.gz</code></pre>
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">$ tar xzvf apache-cassandra-4.0.0-bin.tar.gz</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -659,17 +704,38 @@ the scripts, binaries, utilities, configuration, data and log files:</p>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">&lt;tarball_installation&gt;/
-    bin/
-    conf/
-    data/
+    bin/		<i class="conum" data-value="1"></i><b>(1)</b>
+    conf/		<i class="conum" data-value="2"></i><b>(2)</b>
+    data/		<i class="conum" data-value="3"></i><b>(3)</b>
     doc/
     interface/
     javadoc/
     lib/
-    logs/
+    logs/		<i class="conum" data-value="4"></i><b>(4)</b>
     pylib/
-    tools/</code></pre>
+    tools/		<i class="conum" data-value="5"></i><b>(5)</b></code></pre>
 </div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>location of the commands to run cassandra, cqlsh, nodetool, and SSTable tools</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>location of cassandra.yaml and other configuration files</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>location of the commit logs, hints, and SSTables</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>location of system and debug logs
+&lt;5&gt;location of cassandra-stress tool</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
 <p>For information on how to configure your installation, see
@@ -685,7 +751,7 @@ Cassandra</a>.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ cd apache-cassandra-4.0.0/ &amp;&amp; bin/cassandra</code></pre>
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">$ cd apache-cassandra-4.0.0/ &amp;&amp; bin/cassandra</code></pre>
 </div>
 </div>
 <div class="admonitionblock note">
@@ -700,168 +766,76 @@ This will run Cassandra as the authenticated Linux user.
 </tr>
 </table>
 </div>
-<div class="paragraph">
-<p>You can monitor the progress of the startup with:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ tail -f logs/system.log</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Cassandra is ready when you see an entry like this in the <code>system.log</code>:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">INFO  [main] 2019-12-17 03:03:37,526 Server.java:156 - Starting listening for CQL clients on localhost/127.0.0.1:9042 (unencrypted)...</code></pre>
-</div>
-</div>
-<div class="olist arabic">
-<ol class="arabic" start="7">
-<li>
-<p>Check the status of Cassandra:</p>
-</li>
-</ol>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ bin/nodetool status</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>The status column in the output should report UN which stands for
-"Up/Normal".</p>
-</div>
-<div class="paragraph">
-<p>Alternatively, connect to the database with:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ bin/cqlsh</code></pre>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="installing-the-debian-packages"><a class="anchor" href="#installing-the-debian-packages"></a>Installing the Debian packages</h2>
-<div class="sectionbody">
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Verify the version of Java installed. For example:</p>
-</li>
-</ol>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ java -version</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>should return:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">openjdk version "1.8.0_222"
-OpenJDK Runtime Environment (build 1.8.0_222-8u222-b10-1ubuntu1~16.04.1-b10)
-OpenJDK 64-Bit Server VM (build 25.222-b10, mixed mode)</code></pre>
-</div>
-</div>
-<div class="olist arabic">
-<ol class="arabic" start="2">
-<li>
-<p>Add the Apache repository of Cassandra to the file
-<code>cassandra.sources.list</code>. The latest major version is 4.0 and the
-corresponding distribution name is <code>40x</code> (with an "x" as the suffix).
-For older releases use <code>311x</code> for C* 3.11 series, <code>30x</code> for 3.0, <code>22x</code>
-for 2.2 and <code>21x</code> for 2.1. For example, to add the repository for
-version 4.0 (<code>40x</code>):</p>
-</li>
-</ol>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ echo "deb http://www.apache.org/dist/cassandra/debian 40x main" | sudo tee -a /etc/apt/sources.list.d/cassandra.sources.list
-deb http://www.apache.org/dist/cassandra/debian 40x main</code></pre>
-</div>
-</div>
-<div class="olist arabic">
-<ol class="arabic" start="3">
-<li>
-<p>Add the Apache Cassandra repository keys to the list of trusted keys
-on the server:</p>
-</li>
-</ol>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ curl https://www.apache.org/dist/cassandra/KEYS | sudo apt-key add -</code></pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
-                                 Dload  Upload   Total   Spent    Left  Speed
-100  266k  100  266k    0     0   320k      0 --:--:-- --:--:-- --:--:--  320k
-OK</code></pre>
-</div>
-</div>
-<div class="olist arabic">
-<ol class="arabic" start="4">
-<li>
-<p>Update the package index from sources:</p>
-</li>
-</ol>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ sudo apt-get update</code></pre>
-</div>
-</div>
-<div class="olist arabic">
-<ol class="arabic" start="5">
-<li>
-<p>Install Cassandra with APT:</p>
-</li>
-</ol>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ sudo apt-get install cassandra</code></pre>
-</div>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-A new Linux user <code>cassandra</code> will get created as part of the
-installation. The Cassandra service will also be run as this user.
-</td>
-</tr>
-</table>
-</div>
 <div class="olist arabic">
 <ol class="arabic" start="6">
 <li>
-<p>The Cassandra service gets started automatically after installation.
-Monitor the progress of the startup with:</p>
+<p>Monitor the progress of the startup with:</p>
 </li>
 </ol>
 </div>
+<div class="tabset is-loading">
+<div class="ulist tabs">
+<ul>
+<li>
+<p><a id="tabset4_command"></a>Command</p>
+</li>
+<li>
+<p><a id="tabset4_result"></a>Result</p>
+</li>
+</ul>
+</div>
+<div class="content">
+<div class="tab-pane" aria-labelledby="tabset4_command">
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ tail -f /var/log/cassandra/system.log</code></pre>
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">$ tail -f logs/system.log</code></pre>
 </div>
 </div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset4_result">
 <div class="paragraph">
 <p>Cassandra is ready when you see an entry like this in the <code>system.log</code>:</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">INFO  [main] 2019-12-17 03:03:37,526 Server.java:156 - Starting listening for CQL clients on localhost/127.0.0.1:9042 (unencrypted)...</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>You can monitor the progress of the startup with:</p>
+</div>
+<div class="tabset is-loading">
+<div class="ulist tabs">
+<ul>
+<li>
+<p><a id="tabset5_command"></a>Command</p>
+</li>
+<li>
+<p><a id="tabset5_result"></a>Result</p>
+</li>
+</ul>
+</div>
+<div class="content">
+<div class="tab-pane" aria-labelledby="tabset5_command">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">$ tail -f logs/system.log</code></pre>
+</div>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset5_result">
+<div class="paragraph">
+<p>Cassandra is ready when you see an entry like this in the <code>system.log</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">INFO  [main] 2019-12-17 03:03:37,526 Server.java:156 - Starting listening for CQL clients on localhost/127.0.0.1:9042 (unencrypted)...</code></pre>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="admonitionblock note">
@@ -887,7 +861,7 @@ Cassandra</a>.
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ nodetool status</code></pre>
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">$ bin/nodetool status</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -899,7 +873,221 @@ Cassandra</a>.
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ cqlsh</code></pre>
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">$ bin/cqlsh</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="installing-the-debian-packages"><a class="anchor" href="#installing-the-debian-packages"></a>Installing the Debian packages</h2>
+<div class="sectionbody">
+<div class="olist arabic">
+<ol class="arabic" start="1">
+<li>
+<p>Verify the version of Java installed. For example:</p>
+</li>
+</ol>
+</div>
+<div class="tabset is-loading">
+<div class="ulist tabs">
+<ul>
+<li>
+<p><a id="tabset6_command"></a>Command</p>
+</li>
+<li>
+<p><a id="tabset6_result"></a>Result</p>
+</li>
+</ul>
+</div>
+<div class="content">
+<div class="tab-pane" aria-labelledby="tabset6_command">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">$ java -version</code></pre>
+</div>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset6_result">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">openjdk version "1.8.0_222"
+OpenJDK Runtime Environment (build 1.8.0_222-8u222-b10-1ubuntu1~16.04.1-b10)
+OpenJDK 64-Bit Server VM (build 25.222-b10, mixed mode)</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic" start="2">
+<li>
+<p>Add the Apache repository of Cassandra to the file
+<code>cassandra.sources.list</code>.
+The latest major version is 4.0 and the
+corresponding distribution name is <code>40x</code> (with an "x" as the suffix).
+For older releases use <code>311x</code> for C* 3.11 series, <code>30x</code> for 3.0, <code>22x</code>
+for 2.2 and <code>21x</code> for 2.1. For example, to add the repository for
+version 4.0 (<code>40x</code>):</p>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">$ echo "deb http://www.apache.org/dist/cassandra/debian 40x main" | sudo tee -a /etc/apt/sources.list.d/cassandra.sources.list
+deb http://www.apache.org/dist/cassandra/debian 40x main</code></pre>
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic" start="3">
+<li>
+<p>Add the Apache Cassandra repository keys to the list of trusted keys
+on the server:</p>
+</li>
+</ol>
+</div>
+<div class="tabset is-loading">
+<div class="ulist tabs">
+<ul>
+<li>
+<p><a id="tabset7_command"></a>Command</p>
+</li>
+<li>
+<p><a id="tabset7_result"></a>Result</p>
+</li>
+</ul>
+</div>
+<div class="content">
+<div class="tab-pane" aria-labelledby="tabset7_command">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">$ curl https://www.apache.org/dist/cassandra/KEYS | sudo apt-key add -</code></pre>
+</div>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset7_result">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">% Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100  266k  100  266k    0     0   320k      0 --:--:-- --:--:-- --:--:--  320k
+OK</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic" start="4">
+<li>
+<p>Update the package index from sources:</p>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">$ sudo apt-get update</code></pre>
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic" start="5">
+<li>
+<p>Install Cassandra with APT:</p>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">$ sudo apt-get install cassandra</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+For information on how to configure your installation, see
+<a href="http://cassandra.apache.org/doc/latest/getting_started/configuring.html">Configuring
+Cassandra</a>.
+</td>
+</tr>
+</table>
+</div>
+<div class="olist arabic">
+<ol class="arabic" start="6">
+<li>
+<p>Monitor the progress of the startup with:</p>
+</li>
+</ol>
+</div>
+<div class="tabset is-loading">
+<div class="ulist tabs">
+<ul>
+<li>
+<p><a id="tabset8_command"></a>Command</p>
+</li>
+<li>
+<p><a id="tabset8_result"></a>Result</p>
+</li>
+</ul>
+</div>
+<div class="content">
+<div class="tab-pane" aria-labelledby="tabset8_command">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">$ tail -f logs/system.log</code></pre>
+</div>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset8_result">
+<div class="paragraph">
+<p>Cassandra is ready when you see an entry like this in the <code>system.log</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">INFO  [main] 2019-12-17 03:03:37,526 Server.java:156 - Starting listening for CQL clients on localhost/127.0.0.1:9042 (unencrypted)...</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+For information on how to configure your installation, see
+<a href="http://cassandra.apache.org/doc/latest/getting_started/configuring.html">Configuring
+Cassandra</a>.
+</td>
+</tr>
+</table>
+</div>
+<div class="olist arabic">
+<ol class="arabic" start="7">
+<li>
+<p>Check the status of Cassandra:</p>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">$ nodetool status</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The status column in the output should report <code>UN</code> which stands for
+"Up/Normal".</p>
+</div>
+<div class="paragraph">
+<p>Alternatively, connect to the database with:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">$ cqlsh</code></pre>
 </div>
 </div>
 </div>
@@ -908,33 +1096,52 @@ Cassandra</a>.
 <h2 id="installing-the-rpm-packages"><a class="anchor" href="#installing-the-rpm-packages"></a>Installing the RPM packages</h2>
 <div class="sectionbody">
 <div class="olist arabic">
-<ol class="arabic">
+<ol class="arabic" start="1">
 <li>
 <p>Verify the version of Java installed. For example:</p>
 </li>
 </ol>
 </div>
+<div class="tabset is-loading">
+<div class="ulist tabs">
+<ul>
+<li>
+<p><a id="tabset9_command"></a>Command</p>
+</li>
+<li>
+<p><a id="tabset9_result"></a>Result</p>
+</li>
+</ul>
+</div>
+<div class="content">
+<div class="tab-pane" aria-labelledby="tabset9_command">
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ java -version</code></pre>
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">$ java -version</code></pre>
 </div>
 </div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset9_result">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">openjdk version "1.8.0_222"
-OpenJDK Runtime Environment (build 1.8.0_232-b09)
-OpenJDK 64-Bit Server VM (build 25.232-b09, mixed mode)</code></pre>
+OpenJDK Runtime Environment (build 1.8.0_222-8u222-b10-1ubuntu1~16.04.1-b10)
+OpenJDK 64-Bit Server VM (build 25.222-b10, mixed mode)</code></pre>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="olist arabic">
 <ol class="arabic" start="2">
 <li>
 <p>Add the Apache repository of Cassandra to the file
-<code>/etc/yum.repos.d/cassandra.repo</code> (as the <code>root</code> user). The latest major
-version is 4.0 and the corresponding distribution name is <code>40x</code> (with an
-"x" as the suffix). For older releases use <code>311x</code> for C* 3.11 series,
-<code>30x</code> for 3.0, <code>22x</code> for 2.2 and <code>21x</code> for 2.1. For example, to add the
-repository for version 4.0 (<code>40x</code>):</p>
+<code>/etc/yum.repos.d/cassandra.repo</code> (as the <code>root</code> user).
+The latest major version is 4.0 and the
+corresponding distribution name is <code>40x</code> (with an "x" as the suffix).
+For older releases use <code>311x</code> for C* 3.11 series, <code>30x</code> for 3.0, <code>22x</code>
+for 2.2 and <code>21x</code> for 2.1. For example, to add the repository for
+version 4.0 (<code>40x</code>):</p>
 </li>
 </ol>
 </div>
@@ -957,7 +1164,7 @@ gpgkey=https://downloads.apache.org/cassandra/KEYS</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ sudo yum update</code></pre>
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">$ sudo yum update</code></pre>
 </div>
 </div>
 <div class="olist arabic">
@@ -969,7 +1176,7 @@ gpgkey=https://downloads.apache.org/cassandra/KEYS</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ sudo yum install cassandra</code></pre>
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">$ sudo yum install cassandra</code></pre>
 </div>
 </div>
 <div class="admonitionblock note">
@@ -994,7 +1201,7 @@ installation. The Cassandra service will also be run as this user.
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ sudo service cassandra start</code></pre>
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">$ sudo service cassandra start</code></pre>
 </div>
 </div>
 <div class="olist arabic">
@@ -1004,17 +1211,35 @@ installation. The Cassandra service will also be run as this user.
 </li>
 </ol>
 </div>
+<div class="tabset is-loading">
+<div class="ulist tabs">
+<ul>
+<li>
+<p><a id="tabset10_command"></a>Command</p>
+</li>
+<li>
+<p><a id="tabset10_result"></a>Result</p>
+</li>
+</ul>
+</div>
+<div class="content">
+<div class="tab-pane" aria-labelledby="tabset10_command">
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ tail -f /var/log/cassandra/system.log</code></pre>
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">$ tail -f logs/system.log</code></pre>
 </div>
 </div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset10_result">
 <div class="paragraph">
 <p>Cassandra is ready when you see an entry like this in the <code>system.log</code>:</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">INFO  [main] 2019-12-17 03:03:37,526 Server.java:156 - Starting listening for CQL clients on localhost/127.0.0.1:9042 (unencrypted)...</code></pre>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="admonitionblock note">
@@ -1040,7 +1265,7 @@ Cassandra</a>.
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ nodetool status</code></pre>
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">$ nodetool status</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1052,7 +1277,7 @@ Cassandra</a>.
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ cqlsh</code></pre>
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">$ cqlsh</code></pre>
 </div>
 </div>
 </div>
@@ -1068,7 +1293,7 @@ section.</p>
 </div>
 </div>
 </article>
-<aside class="toc sidebar" data-title="Contents" data-levels="2">
+<aside class="toc sidebar" data-title="Contents" data-levels="3">
   <div class="toc-menu"></div>
 </aside>
   </div>

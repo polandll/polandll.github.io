@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Data Types :: Apache Cassandra Documentation</title>
-    <link rel="canonical" href="file:///Users/lorina.poland/docs-site/build/site/Cassandra/4.0/Cassandra/3.11/cassandra/cql/types.html">
+    <link rel="canonical" href="file:///Users/lorina.poland/CLONES/cassandra/build/html/Cassandra/4.0/Cassandra/3.11/cassandra/cql/types.html">
     <meta name="generator" content="Antora 2.3.1">
     <link rel="stylesheet" href="../../../../_/css/site.css">
 <link rel="stylesheet" href="../../../../_/css/search.css">
@@ -13,7 +13,7 @@
 <header class="header">
   <nav class="navbar">
     <div class="navbar-brand">
-      <a class="navbar-item" href="file:///Users/lorina.poland/docs-site/build/site/Cassandra/4.0">&nbsp;&nbsp;&nbsp;<img src="../../../../_/img/cassandra_logo.png"></a>
+      <a class="navbar-item" href="file:///Users/lorina.poland/CLONES/cassandra/build/html/Cassandra/4.0">&nbsp;&nbsp;&nbsp;<img src="../../../../_/img/cassandra_logo.png"></a>
         <div class="navbar-item">
           <input id="search-input" type="text" placeholder="Search docs">
         </div>
@@ -199,7 +199,7 @@
   </li>
   <li class="nav-item" data-depth="2">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="#cql/index.adoc{">CQL</a>
+    <a class="nav-link" href="index.html">Cassandra Query Language (CQL)</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="definitions.html">Definitions</a>
@@ -208,10 +208,13 @@
     <a class="nav-link" href="types.html">Data types</a>
   </li>
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="ddl.html">DDL</a>
+    <a class="nav-link" href="ddl.html">Data definition (DDL)</a>
   </li>
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="dml.html">DML</a>
+    <a class="nav-link" href="dml.html">Data manipulation (DML)</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="operators.html">Operators</a>
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="indexes.html">Secondary indexes</a>
@@ -220,16 +223,13 @@
     <a class="nav-link" href="mvs.html">Materialized views</a>
   </li>
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="security.html">Security</a>
-  </li>
-  <li class="nav-item" data-depth="3">
     <a class="nav-link" href="functions.html">Functions</a>
   </li>
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="operators.html">Operators</a>
+    <a class="nav-link" href="json.html">JSON</a>
   </li>
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="json.html">JSON</a>
+    <a class="nav-link" href="security.html">Security</a>
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="triggers.html">Triggers</a>
@@ -411,14 +411,14 @@
 <div class="nav-panel-explore" data-panel="explore">
   <div class="context">
     <span class="title">Cassandra</span>
-    <span class="version">4.0-rc.5</span>
+    <span class="version">4.0-beta1</span>
   </div>
   <ul class="components">
     <li class="component is-current">
       <span class="title">Cassandra</span>
       <ul class="versions">
         <li class="version is-current">
-          <a href="../../index.html">4.0-rc.5</a>
+          <a href="../../index.html">4.0-beta1</a>
         </li>
         <li class="version is-latest">
           <a href="../../../3.11/index.html">3.11</a>
@@ -436,19 +436,19 @@
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li>Cassandra</li>
-    <li>CQL</li>
+    <li><a href="index.html">Cassandra Query Language (CQL)</a></li>
     <li><a href="types.html">Data types</a></li>
   </ul>
 </nav>
 <div class="page-versions">
-  <button class="version-menu-toggle" title="Show other versions of page">4.0-rc.5</button>
+  <button class="version-menu-toggle" title="Show other versions of page">4.0-beta1</button>
   <div class="version-menu">
-    <a class="version is-current" href="types.html">4.0-rc.5</a>
+    <a class="version is-current" href="types.html">4.0-beta1</a>
     <a class="version" href="../../../3.11/cassandra/cql/types.html">3.11</a>
   </div>
 </div>
-  <div class="edit-this-page"><a href="https://github.com/polandll/cassandra-examples/edit/4.0-rc5/rst-to-asciidoc-tests/ASCIIDOC/modules/cassandra/pages/cql/types.adoc">Edit this Page</a></div>
-  </div>
+  <div class="edit-this-page"><a href="file:///Users/lorina.poland/CLONES/cassandra/doc/source/modules/cassandra/pages/cql/types.adoc">Edit this Page</a></div>
+</div>
   <div class="content">
 <article class="doc">
 <h1 class="page">Data Types</h1>
@@ -456,33 +456,34 @@
 <div class="sectionbody">
 <div class="paragraph">
 <p>CQL is a typed language and supports a rich set of data types, including
-<code>native types &lt;native-types&gt;</code>, <code>collection types &lt;collections&gt;</code>,
-<code>user-defined types &lt;udts&gt;</code>, <code>tuple types &lt;tuples&gt;</code> and <code>custom
-types &lt;custom-types&gt;</code>:</p>
+<a href="#native-types">native types</a>, <a href="#collections">collection types</a>,
+<a href="#udts">user-defined types</a>, <a href="#tuples">tuple types</a>, and <a href="#custom-types">custom
+types</a>:</p>
 </div>
-<div class="paragraph">
-<p>cql_type: <span class="title-ref">native_type</span> | <span class="title-ref">collection_type</span> |
-<span class="title-ref">user_defined_type</span> | <span class="title-ref">tuple_type</span> |
-<span class="title-ref">custom_type</span></p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bnf hljs" data-lang="bnf">cql_type::= native_type| collection_type| user_defined_type | tuple_type | custom_type</code></pre>
+</div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="native-types"><a class="anchor" href="#native-types"></a>Native Types</h2>
+<h2 id="native-types"><a class="anchor" href="#native-types"></a>Native types</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>The native types supported by CQL are:</p>
 </div>
-<div class="paragraph">
-<p>native_type: ASCII : | BIGINT : | BLOB : | BOOLEAN : | COUNTER : | DATE
-: | DECIMAL : | DOUBLE : | DURATION : | FLOAT : | INET : | INT : |
-SMALLINT : | TEXT : | TIME : | TIMESTAMP : | TIMEUUID : | TINYINT : |
-UUID : | VARCHAR : | VARINT</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bnf hljs" data-lang="bnf">native_type::= ASCII | BIGINT | BLOB | BOOLEAN | COUNTER | DATE
+| DECIMAL | DOUBLE | DURATION | FLOAT | INET | INT |
+SMALLINT | TEXT | TIME | TIMESTAMP | TIMEUUID | TINYINT |
+UUID | VARCHAR | VARINT</code></pre>
+</div>
 </div>
 <div class="paragraph">
 <p>The following table gives additional informations on the native data
-types, and on which kind of <code>constants
-&lt;constants&gt;</code> each type supports:</p>
+types, and on which kind of <a href="definitions.html#constants" class="page">constants</a> each type supports:</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
@@ -492,501 +493,120 @@ types, and on which kind of <code>constants
 </colgroup>
 <thead>
 <tr>
-<th class="tableblock halign-left valign-top">type</th>
-<th class="tableblock halign-left valign-top">constants supported</th>
-<th class="tableblock halign-left valign-top">description</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Constants supported</th>
+<th class="tableblock halign-left valign-top">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="quoteblock">
-<blockquote>
-<div class="paragraph">
-<p><code>ascii</code></p>
-</div>
-</blockquote>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="quoteblock">
-<blockquote>
-<div class="paragraph">
-<p><code>string</code></p>
-</div>
-</blockquote>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="quoteblock">
-<blockquote>
-<div class="paragraph">
-<p>ASCII character string</p>
-</div>
-</blockquote>
-</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ascii</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ASCII character string</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="quoteblock">
-<blockquote>
-<div class="paragraph">
-<p><code>bigint</code></p>
-</div>
-</blockquote>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="quoteblock">
-<blockquote>
-<div class="paragraph">
-<p><code>integer</code></p>
-</div>
-</blockquote>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="quoteblock">
-<blockquote>
-<div class="paragraph">
-<p>64-bit signed long</p>
-</div>
-</blockquote>
-</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>bigint</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>integer</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">64-bit signed long</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="quoteblock">
-<blockquote>
-<div class="paragraph">
-<p><code>blob</code></p>
-</div>
-</blockquote>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="quoteblock">
-<blockquote>
-<div class="paragraph">
-<p><code>blob</code></p>
-</div>
-</blockquote>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="quoteblock">
-<blockquote>
-<div class="paragraph">
-<p>Arbitrary bytes (no validation)</p>
-</div>
-</blockquote>
-</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>blob</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>blob</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Arbitrary bytes (no validation)</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="quoteblock">
-<blockquote>
-<div class="paragraph">
-<p><code>boolean</code></p>
-</div>
-</blockquote>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="quoteblock">
-<blockquote>
-<div class="paragraph">
-<p><code>boolean</code></p>
-</div>
-</blockquote>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="quoteblock">
-<blockquote>
-<div class="paragraph">
-<p>Either <code>true</code> or <code>false</code></p>
-</div>
-</blockquote>
-</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Either <code>true</code> or <code>false</code></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="quoteblock">
-<blockquote>
-<div class="paragraph">
-<p><code>counter</code></p>
-</div>
-</blockquote>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="quoteblock">
-<blockquote>
-<div class="paragraph">
-<p><code>integer</code></p>
-</div>
-</blockquote>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="quoteblock">
-<blockquote>
-<div class="paragraph">
-<p>Counter column (64-bit signed value). See <code>counters</code> for details</p>
-</div>
-</blockquote>
-</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>counter</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>integer</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Counter column (64-bit signed value). See <code>counters</code> for details.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="quoteblock">
-<blockquote>
-<div class="paragraph">
-<p><code>date</code></p>
-</div>
-</blockquote>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="quoteblock">
-<blockquote>
-<div class="paragraph">
-<p><code>integer</code>, <code>string</code></p>
-</div>
-</blockquote>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="quoteblock">
-<blockquote>
-<div class="paragraph">
-<p>A date (with no corresponding time value). See <code>dates</code> below for details</p>
-</div>
-</blockquote>
-</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>date</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>integer</code>, <code>string</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A date (with no corresponding time value). See <code>dates</code> below for details.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="quoteblock">
-<blockquote>
-<div class="paragraph">
-<p><code>decimal</code></p>
-</div>
-</blockquote>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="quoteblock">
-<blockquote>
-<div class="paragraph">
-<p><code>integer</code>, <code>float</code></p>
-</div>
-</blockquote>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="quoteblock">
-<blockquote>
-<div class="paragraph">
-<p>Variable-precision decimal</p>
-</div>
-</blockquote>
-</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>decimal</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>integer</code>, <code>float</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Variable-precision decimal</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="quoteblock">
-<blockquote>
-<div class="paragraph">
-<p><code>double</code></p>
-</div>
-</blockquote>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="quoteblock">
-<blockquote>
-<div class="paragraph">
-<p><code>integer</code> <code>float</code></p>
-</div>
-</blockquote>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="quoteblock">
-<blockquote>
-<div class="paragraph">
-<p>64-bit IEEE-754 floating point</p>
-</div>
-</blockquote>
-</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>double</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>integer</code> <code>float</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">64-bit IEEE-754 floating point</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="quoteblock">
-<blockquote>
-<div class="paragraph">
-<p><code>duration</code></p>
-</div>
-</blockquote>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="quoteblock">
-<blockquote>
-<div class="paragraph">
-<p><code>duration</code>,</p>
-</div>
-</blockquote>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="quoteblock">
-<blockquote>
-<div class="paragraph">
-<p>A duration with nanosecond precision. See <code>durations</code> below for details</p>
-</div>
-</blockquote>
-</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>duration</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>duration</code>,</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A duration with nanosecond precision. See <code>durations</code> below for details.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="quoteblock">
-<blockquote>
-<div class="paragraph">
-<p><code>float</code></p>
-</div>
-</blockquote>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="quoteblock">
-<blockquote>
-<div class="paragraph">
-<p><code>integer</code>, <code>float</code></p>
-</div>
-</blockquote>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="quoteblock">
-<blockquote>
-<div class="paragraph">
-<p>32-bit IEEE-754 floating point</p>
-</div>
-</blockquote>
-</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>float</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>integer</code>, <code>float</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">32-bit IEEE-754 floating point</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="quoteblock">
-<blockquote>
-<div class="paragraph">
-<p><code>inet</code></p>
-</div>
-</blockquote>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="quoteblock">
-<blockquote>
-<div class="paragraph">
-<p><code>string</code></p>
-</div>
-</blockquote>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="quoteblock">
-<blockquote>
-<div class="paragraph">
-<p>An IP address, either IPv4 (4 bytes long) or IPv6 (16 bytes long). Note
-that there is no <code>inet</code> constant, IP address should be input as strings</p>
-</div>
-</blockquote>
-</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>inet</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">An IP address, either IPv4 (4 bytes long) or IPv6 (16 bytes long). Note
+that there is no <code>inet</code> constant, IP address should be input as strings.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="quoteblock">
-<blockquote>
-<div class="paragraph">
-<p><code>int</code></p>
-</div>
-</blockquote>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="quoteblock">
-<blockquote>
-<div class="paragraph">
-<p><code>integer</code></p>
-</div>
-</blockquote>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="quoteblock">
-<blockquote>
-<div class="paragraph">
-<p>32-bit signed int</p>
-</div>
-</blockquote>
-</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>int</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>integer</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">32-bit signed int</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="quoteblock">
-<blockquote>
-<div class="paragraph">
-<p><code>smallint</code></p>
-</div>
-</blockquote>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="quoteblock">
-<blockquote>
-<div class="paragraph">
-<p><code>integer</code></p>
-</div>
-</blockquote>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="quoteblock">
-<blockquote>
-<div class="paragraph">
-<p>16-bit signed int</p>
-</div>
-</blockquote>
-</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>smallint</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>integer</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">16-bit signed int</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="quoteblock">
-<blockquote>
-<div class="paragraph">
-<p><code>text</code></p>
-</div>
-</blockquote>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="quoteblock">
-<blockquote>
-<div class="paragraph">
-<p><code>string</code></p>
-</div>
-</blockquote>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="quoteblock">
-<blockquote>
-<div class="paragraph">
-<p>UTF8 encoded string</p>
-</div>
-</blockquote>
-</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>text</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">UTF8 encoded string</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="quoteblock">
-<blockquote>
-<div class="paragraph">
-<p><code>time</code></p>
-</div>
-</blockquote>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="quoteblock">
-<blockquote>
-<div class="paragraph">
-<p><code>integer</code>, <code>string</code></p>
-</div>
-</blockquote>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="quoteblock">
-<blockquote>
-<div class="paragraph">
-<p>A time (with no corresponding date value) with nanosecond precision. See
-<code>times</code> below for details</p>
-</div>
-</blockquote>
-</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>time</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>integer</code>, <code>string</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A time (with no corresponding date value) with nanosecond precision. See
+<code>times</code> below for details.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="quoteblock">
-<blockquote>
-<div class="paragraph">
-<p><code>timestamp</code></p>
-</div>
-</blockquote>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="quoteblock">
-<blockquote>
-<div class="paragraph">
-<p><code>integer</code>, <code>string</code></p>
-</div>
-</blockquote>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="quoteblock">
-<blockquote>
-<div class="paragraph">
-<p>A timestamp (date and time) with millisecond precision. See <code>timestamps</code>
-below for details</p>
-</div>
-</blockquote>
-</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>timestamp</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>integer</code>, <code>string</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A timestamp (date and time) with millisecond precision. See <code>timestamps</code>
+below for details.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="quoteblock">
-<blockquote>
-<div class="paragraph">
-<p><code>timeuuid</code></p>
-</div>
-</blockquote>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="quoteblock">
-<blockquote>
-<div class="paragraph">
-<p><code>uuid</code></p>
-</div>
-</blockquote>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="quoteblock">
-<blockquote>
-<div class="paragraph">
-<p>Version 1
-<a href="https://en.wikipedia.org/wiki/Universally_unique_identifier">UUID</a>,
-generally used as a “conflict-free” timestamp. Also see
-<code>timeuuid-functions</code></p>
-</div>
-</blockquote>
-</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>timeuuid</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>uuid</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Version 1 <a href="https://en.wikipedia.org/wiki/Universally_unique_identifier">UUID</a>,
+generally used as a “conflict-free” timestamp. Also see <code>timeuuid-functions</code>.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="quoteblock">
-<blockquote>
-<div class="paragraph">
-<p><code>tinyint</code></p>
-</div>
-</blockquote>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="quoteblock">
-<blockquote>
-<div class="paragraph">
-<p><code>integer</code></p>
-</div>
-</blockquote>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="quoteblock">
-<blockquote>
-<div class="paragraph">
-<p>8-bit signed int</p>
-</div>
-</blockquote>
-</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>tinyint</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>integer</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">8-bit signed int</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="quoteblock">
-<blockquote>
-<div class="paragraph">
-<p><code>uuid</code></p>
-</div>
-</blockquote>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="quoteblock">
-<blockquote>
-<div class="paragraph">
-<p><code>uuid</code></p>
-</div>
-</blockquote>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="quoteblock">
-<blockquote>
-<div class="paragraph">
-<p>A <a href="https://en.wikipedia.org/wiki/Universally_unique_identifier">UUID</a> (of
-any version)</p>
-</div>
-</blockquote>
-</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>uuid</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>uuid</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A <a href="https://en.wikipedia.org/wiki/Universally_unique_identifier">UUID</a> (of any version)</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="quoteblock">
-<blockquote>
-<div class="paragraph">
-<p><code>varchar</code></p>
-</div>
-</blockquote>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="quoteblock">
-<blockquote>
-<div class="paragraph">
-<p><code>string</code></p>
-</div>
-</blockquote>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="quoteblock">
-<blockquote>
-<div class="paragraph">
-<p>UTF8 encoded string</p>
-</div>
-</blockquote>
-</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>varchar</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">UTF8 encoded string</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="quoteblock">
-<blockquote>
-<div class="paragraph">
-<p><code>varint</code></p>
-</div>
-</blockquote>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="quoteblock">
-<blockquote>
-<div class="paragraph">
-<p><code>integer</code></p>
-</div>
-</blockquote>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="quoteblock">
-<blockquote>
-<div class="paragraph">
-<p>Arbitrary-precision integer</p>
-</div>
-</blockquote>
-</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>varint</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>integer</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Arbitrary-precision integer</p></td>
 </tr>
 </tbody>
 </table>
@@ -996,8 +616,8 @@ any version)</p>
 <p>The <code>counter</code> type is used to define <em>counter columns</em>. A counter column
 is a column whose value is a 64-bit signed integer and on which 2
 operations are supported: incrementing and decrementing (see the
-<code>UPDATE statement
-&lt;update-statement&gt;</code> for syntax). Note that the value of a counter cannot
+<a href="dml.html#update-statement" class="page">UPDATE</a> statement for syntax).
+Note that the value of a counter cannot
 be set: a counter does not exist until first incremented/decremented,
 and that first increment/decrement is made as if the prior value was 0.</p>
 </div>
@@ -1015,7 +635,7 @@ words, either all the columns of a table outside the <code>PRIMARY KEY</code> ha
 the <code>counter</code> type, or none of them have it.</p>
 </li>
 <li>
-<p>Counters do not support <code>expiration &lt;ttls&gt;</code>.</p>
+<p>Counters do not support <a href="dml.html#writetime-and-ttl-function" class="page">expiration</a>.</p>
 </li>
 <li>
 <p>The deletion of counters is supported, but is only guaranteed to work
@@ -1091,12 +711,12 @@ feasible.</p>
 <p>The time of day may also be omitted (<code>'2011-02-03'</code> or
 <code>'2011-02-03+0000'</code>), in which case the time of day will default to
 00:00:00 in the specified or default time zone. However, if only the
-date part is relevant, consider using the <code>date &lt;dates&gt;</code> type.</p>
+date part is relevant, consider using the <a href="#dates">date</a> type.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="dates"><a class="anchor" href="#dates"></a>Working with dates</h2>
+<h2 id="dates"><a class="anchor" href="#dates"></a>Date type</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Values of the <code>date</code> type are encoded as 32-bit unsigned integers
@@ -1104,21 +724,21 @@ representing a number of days with “the epoch” at the center of the
 range (2^31). Epoch is January 1st, 1970</p>
 </div>
 <div class="paragraph">
-<p>As for <code>timestamp &lt;timestamps&gt;</code>, a date can be input either as an
+<p>For <a href="#timestamps">timestamps</a>, a date can be input either as an
 <code>integer</code> or using a date <code>string</code>. In the later case, the format should
 be <code>yyyy-mm-dd</code> (so <code>'2011-02-03'</code> for instance).</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="times"><a class="anchor" href="#times"></a>Working with times</h2>
+<h2 id="times"><a class="anchor" href="#times"></a>Time type</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Values of the <code>time</code> type are encoded as 64-bit signed integers
 representing the number of nanoseconds since midnight.</p>
 </div>
 <div class="paragraph">
-<p>As for <code>timestamp &lt;timestamps&gt;</code>, a time can be input either as an
+<p>For <a href="#timestamps">timestamps</a>, a time can be input either as an
 <code>integer</code> or using a <code>string</code> representing the time. In the later case,
 the format should be <code>hh:mm:ss[.fffffffff]</code> (where the sub-second
 precision is optional and if provided, can be less than the nanosecond).
@@ -1143,7 +763,7 @@ So for instance, the following are valid inputs for a time:</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="durations"><a class="anchor" href="#durations"></a>Working with durations</h2>
+<h2 id="durations"><a class="anchor" href="#durations"></a>Duration type</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Values of the <code>duration</code> type are encoded as 3 signed integer of
@@ -1158,17 +778,10 @@ integer.</p>
 <div class="paragraph">
 <p>A duration can be input as:</p>
 </div>
-<div class="quoteblock">
-<blockquote>
-<div class="olist arabic">
-<ol class="arabic">
+<div class="ulist">
+<ul>
 <li>
 <p><code>(quantity unit)+</code> like <code>12h30m</code> where the unit can be:</p>
-</li>
-</ol>
-</div>
-</blockquote>
-</div>
 <div class="ulist">
 <ul>
 <li>
@@ -1203,28 +816,26 @@ integer.</p>
 </li>
 </ul>
 </div>
-<div class="quoteblock">
-<blockquote>
-<div class="olist arabic">
-<ol class="arabic">
+</li>
 <li>
 <p>ISO 8601 format: <code>P[n]Y[n]M[n]DT[n]H[n]M[n]S or P[n]W</code></p>
 </li>
 <li>
 <p>ISO 8601 alternative format: <code>P[YYYY]-[MM]-[DD]T[hh]:[mm]:[ss]</code></p>
 </li>
-</ol>
-</div>
-</blockquote>
+</ul>
 </div>
 <div class="paragraph">
 <p>For example:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-cql hljs" data-lang="cql">INSERT INTO RiderResults (rider, race, result) VALUES ('Christopher Froome', 'Tour de France', 89h4m48s);
-INSERT INTO RiderResults (rider, race, result) VALUES ('BARDET Romain', 'Tour de France', PT89H8M53S);
-INSERT INTO RiderResults (rider, race, result) VALUES ('QUINTANA Nairo', 'Tour de France', P0000-00-00T89:09:09);</code></pre>
+<pre class="highlightjs highlight"><code class="language-cql hljs" data-lang="cql">INSERT INTO RiderResults (rider, race, result)
+   VALUES ('Christopher Froome', 'Tour de France', 89h4m48s);
+INSERT INTO RiderResults (rider, race, result)
+   VALUES ('BARDET Romain', 'Tour de France', PT89H8M53S);
+INSERT INTO RiderResults (rider, race, result)
+   VALUES ('QUINTANA Nairo', 'Tour de France', P0000-00-00T89:09:09);</code></pre>
 </div>
 </div>
 <div id="duration-limitation" class="paragraph">
@@ -1234,7 +845,7 @@ effectively not possible to know if <code>1mo</code> is greater than <code>29d</
 a date context.</p>
 </div>
 <div class="paragraph">
-<p>A <code>1d</code> duration is not equals to a <code>24h</code> one as the duration type has
+<p>A <code>1d</code> duration is not equal to a <code>24h</code> one as the duration type has
 been created to be able to support daylight saving.</p>
 </div>
 </div>
@@ -1243,24 +854,26 @@ been created to be able to support daylight saving.</p>
 <h2 id="collections"><a class="anchor" href="#collections"></a>Collections</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>CQL supports 3 kind of collections: <code>maps</code>, <code>sets</code> and <code>lists</code>. The
+<p>CQL supports three kinds of collections: <code>maps</code>, <code>sets</code> and <code>lists</code>. The
 types of those collections is defined by:</p>
 </div>
-<div class="paragraph">
-<p>collection_type: MAP '&lt;' <span class="title-ref">cql_type</span> ','
-<span class="title-ref">cql_type</span> '&gt;' : | SET '&lt;' <span class="title-ref">cql_type</span> '&gt;' : |
-LIST '&lt;' <span class="title-ref">cql_type</span> '&gt;'</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bnf hljs" data-lang="bnf">collection_type::= MAP '&lt;' cql_type',' cql_type'&gt;'
+	| SET '&lt;' cql_type '&gt;'
+	| LIST '&lt;' cql_type'&gt;'</code></pre>
+</div>
 </div>
 <div class="paragraph">
 <p>and their values can be inputd using collection literals:</p>
 </div>
-<div class="paragraph">
-<p>collection_literal: <span class="title-ref">map_literal</span> |
-<span class="title-ref">set_literal</span> | <span class="title-ref">list_literal</span> map_literal: '\{'
-<span class="[.title-ref">term</span> ':' <span class="title-ref">term</span> (',' <span class="title-ref">term</span> :
-<span class="title-ref">term</span>)* ] '}' set_literal: '\{' <span class="[.title-ref">term</span> (','
-<span class="title-ref">term</span>)* ] '}' list_literal: '<span class="' [ [.title-ref">term</span> (','
-<span class="title-ref">term</span>)* ] ']'</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bnf hljs" data-lang="bnf">collection_literal::= map_literal | set_literal | list_literal
+map_literal::= '\{' [ term ':' term (',' term : term)* ] '}'
+set_literal::= '\{' [ term (',' term)* ] '}'
+list_literal::= '[' [ term (',' term)* ] ']'</code></pre>
+</div>
 </div>
 <div class="paragraph">
 <p>Note however that neither <code>bind_marker</code> nor <code>NULL</code> are supported inside
@@ -1289,7 +902,7 @@ has to be read (and reading one is not paged internally).</p>
 <p>While insertion operations on sets and maps never incur a
 read-before-write internally, some operations on lists do. Further, some
 lists operations are not idempotent by nature (see the section on
-<code>lists &lt;lists&gt;</code> below for details), making their retry in case of
+<a href="#lists">lists</a> below for details), making their retry in case of
 timeout problematic. It is thus advised to prefer sets over lists when
 possible.</p>
 </li>
@@ -1310,13 +923,13 @@ the map is sorted by its keys. You can define and insert a map with:</p>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-cql hljs" data-lang="cql">CREATE TABLE users (
-    id text PRIMARY KEY,
-    name text,
-    favs map&lt;text, text&gt; // A map of text keys, and text values
+   id text PRIMARY KEY,
+   name text,
+   favs map&lt;text, text&gt; // A map of text keys, and text values
 );
 
 INSERT INTO users (id, name, favs)
-           VALUES ('jsmith', 'John Smith', { 'fruit' : 'Apple', 'band' : 'Beatles' });
+   VALUES ('jsmith', 'John Smith', { 'fruit' : 'Apple', 'band' : 'Beatles' });
 
 // Replace the existing map entirely.
 UPDATE users SET favs = { 'fruit' : 'Banana' } WHERE id = 'jsmith';</code></pre>
@@ -1376,13 +989,13 @@ insert a map with:</p>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-cql hljs" data-lang="cql">CREATE TABLE images (
-    name text PRIMARY KEY,
-    owner text,
-    tags set&lt;text&gt; // A set of text values
+   name text PRIMARY KEY,
+   owner text,
+   tags set&lt;text&gt; // A set of text values
 );
 
 INSERT INTO images (name, owner, tags)
-            VALUES ('cat.jpg', 'jsmith', { 'pet', 'cute' });
+   VALUES ('cat.jpg', 'jsmith', { 'pet', 'cute' });
 
 // Replace the existing set entirely
 UPDATE images SET tags = { 'kitten', 'cat', 'lol' } WHERE name = 'cat.jpg';</code></pre>
@@ -1414,8 +1027,7 @@ removing it is a no-op but no error is thrown):</p>
 </ul>
 </div>
 <div class="paragraph">
-<p>Lastly, as for <code>maps &lt;maps&gt;</code>, TTLs if used only apply to the newly
-inserted values.</p>
+<p>Lastly, for <a href="#sets">sets</a>, TTLs are only applied to newly inserted values.</p>
 </div>
 </div>
 <div class="sect2">
@@ -1432,8 +1044,14 @@ inserted values.</p>
 <p>As mentioned above and further discussed at the end of this section,
 lists have limitations and specific performance considerations that you
 should take into account before using them. In general, if you can use a
-<code>set &lt;sets&gt;</code> instead of list, always prefer a set.
-====A <code>list</code> is a (sorted) collection of non-unique values where
+<a href="#sets">set</a> instead of list, always prefer a set.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>A <code>list</code> is a (sorted) collection of non-unique values where
 elements are ordered by there position in the list. You can define and
 insert a list with:</p>
 </div>
@@ -1467,10 +1085,31 @@ UPDATE plays SET players = 6, scores = [ 3 ] + scores WHERE id = '123-afde';</co
 </div>
 </div>
 </li>
+</ul>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="title">Warning</div>
+<div class="paragraph">
+<p>The append and prepend operations are not idempotent by nature. So in
+particular, if one of these operation timeout, then retrying the
+operation is not safe and it may (or may not) lead to
+appending/prepending the value twice.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="ulist">
+<ul>
 <li>
-<p>Setting the value at a particular position in the list. This imply
-that the list has a pre-existing element for that position or an error
-will be thrown that the list is too small:</p>
+<p>Setting the value at a particular position in a list that has a pre-existing element for that position. An error
+will be thrown if the list does not have the position.:</p>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-cql hljs" data-lang="cql">UPDATE plays SET scores[1] = 7 WHERE id = '123-afde';</code></pre>
@@ -1478,11 +1117,10 @@ will be thrown that the list is too small:</p>
 </div>
 </li>
 <li>
-<p>Removing an element by its position in the list. This imply that the
-list has a pre-existing element for that position or an error will be
-thrown that the list is too small. Further, as the operation removes an
-element from the list, the list size will be diminished by 1, shifting
-the position of all the elements following the one deleted:</p>
+<p>Removing an element by its position in the list that has a pre-existing element for that position. An error
+will be thrown if the list does not have the position. Further, as the operation removes an
+element from the list, the list size will decrease by one element, shifting
+the position of all the following elements one forward:</p>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-cql hljs" data-lang="cql">DELETE scores[1] FROM plays WHERE id = '123-afde';</code></pre>
@@ -1501,53 +1139,58 @@ ignored and no error is thrown):</p>
 </li>
 </ul>
 </div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="title">Warning</div>
+<div class="paragraph">
+<p>Setting and removing an element by position and removing occurences of
+particular values incur an internal <em>read-before-write</em>. These operations will
+run slowly and use more resources than usual updates (with the
+exclusion of conditional write that have their own cost).</p>
+</div>
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>The append and prepend operations are not idempotent by nature. So in
-particular, if one of these operation timeout, then retrying the
-operation is not safe and it may (or may not) lead to
-appending/prepending the value twice.
-====[WARNING]
-.Warning</p>
+<p>Lastly, for <a href="#lists">lists</a>, TTLs only apply to newly inserted values.</p>
 </div>
-<div class="exampleblock">
-<div class="content">
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="udts"><a class="anchor" href="#udts"></a>User-Defined Types (UDTs)</h2>
+<div class="sectionbody">
 <div class="paragraph">
-<p>Setting and removing an element by position and removing occurences of
-particular values incur an internal <em>read-before-write</em>. They will thus
-run more slowly and take more ressources than usual updates (with the
-exclusion of conditional write that have their own cost).
-====Lastly, as for <code>maps &lt;maps&gt;</code>, TTLs when used only apply to the newly
-inserted values.</p>
-</div>
-<div id="udts" class="paragraph">
-<p>== User-Defined Types</p>
-</div>
-<div class="paragraph">
-<p>CQL support the definition of user-defined types (UDT for short). Such a
+<p>CQL support the definition of user-defined types (UDTs). Such a
 type can be created, modified and removed using the
 <code>create_type_statement</code>, <code>alter_type_statement</code> and
 <code>drop_type_statement</code> described below. But once created, a UDT is simply
 referred to by its name:</p>
 </div>
-<div class="paragraph">
-<p>user_defined_type: <span class="title-ref">udt_name</span> udt_name: <span class="[.title-ref">keyspace_name</span> '.' ] <span class="title-ref">identifier</span></p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bnf hljs" data-lang="bnf">user_defined_type::= udt_name
+udt_name::= [ keyspace_name '.' ] identifier</code></pre>
 </div>
-<div class="paragraph">
-<p>=== Creating a UDT</p>
 </div>
+<div class="sect2">
+<h3 id="creating-a-udt"><a class="anchor" href="#creating-a-udt"></a>Creating a UDT</h3>
 <div class="paragraph">
 <p>Creating a new user-defined type is done using a <code>CREATE TYPE</code> statement
 defined by:</p>
 </div>
-<div class="paragraph">
-<p>create_type_statement: CREATE TYPE [ IF NOT EXISTS ]
-<span class="title-ref">udt_name</span> : '(' <span class="title-ref">field_definition</span> ( ','
-<span class="title-ref">field_definition</span> )* ')' field_definition:
-<span class="title-ref">identifier</span> <span class="title-ref">cql_type</span></p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bnf hljs" data-lang="bnf">create_type_statement::= CREATE TYPE [ IF NOT EXISTS ] udt_name
+        '(' field_definition ( ',' field_definition)* ')'
+field_definition::= identifier cql_type</code></pre>
+</div>
 </div>
 <div class="paragraph">
 <p>A UDT has a name (used to declared columns of that type) and is a set of
@@ -1559,23 +1202,23 @@ collections or other UDT. For instance:</p>
 <pre class="highlightjs highlight"><code class="language-cql hljs" data-lang="cql">CREATE TYPE phone (
     country_code int,
     number text,
-)
+);
 
 CREATE TYPE address (
     street text,
     city text,
     zip text,
     phones map&lt;text, phone&gt;
-)
+);
 
 CREATE TABLE user (
     name text PRIMARY KEY,
     addresses map&lt;text, frozen&lt;address&gt;&gt;
-)</code></pre>
+);</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Note that:</p>
+<p>Things to keep in mind about UDTs:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -1593,64 +1236,65 @@ it is created in the current keyspace.</p>
 <li>
 <p>As of Cassandra , UDT have to be frozen in most cases, hence the
 <code>frozen&lt;address&gt;</code> in the table definition above. Please see the section
-on <code>frozen &lt;frozen&gt;</code> for more details.</p>
+on <a href="#frozen">frozen</a> for more details.</p>
 </li>
 </ul>
 </div>
-<div class="paragraph">
-<p>=== UDT literals</p>
 </div>
+<div class="sect2">
+<h3 id="udt-literals"><a class="anchor" href="#udt-literals"></a>UDT literals</h3>
 <div class="paragraph">
 <p>Once a used-defined type has been created, value can be input using a
 UDT literal:</p>
 </div>
-<div class="paragraph">
-<p>udt_literal: '\{' <span class="title-ref">identifier</span> ':' <span class="title-ref">term</span> ( ','
-<span class="title-ref">identifier</span> ':' <span class="title-ref">term</span> )* '}'</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bnf hljs" data-lang="bnf">udt_literal::= '{' identifier ':' term ( ',' identifier ':' term)* '}'</code></pre>
+</div>
 </div>
 <div class="paragraph">
-<p>In other words, a UDT literal is like a <code>map &lt;maps&gt;</code> literal but its
+<p>In other words, a UDT literal is like a <a href="#maps">map</a>` literal but its
 keys are the names of the fields of the type. For instance, one could
 insert into the table define in the previous section using:</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-cql hljs" data-lang="cql">INSERT INTO user (name, addresses)
-          VALUES ('z3 Pr3z1den7', {
-              'home' : {
-                  street: '1600 Pennsylvania Ave NW',
-                  city: 'Washington',
-                  zip: '20500',
-                  phones: { 'cell' : { country_code: 1, number: '202 456-1111' },
-                            'landline' : { country_code: 1, number: '...' } }
-              },
-              'work' : {
-                  street: '1600 Pennsylvania Ave NW',
-                  city: 'Washington',
-                  zip: '20500',
-                  phones: { 'fax' : { country_code: 1, number: '...' } }
-              }
-          })</code></pre>
+   VALUES ('z3 Pr3z1den7', {
+     'home' : {
+        street: '1600 Pennsylvania Ave NW',
+        city: 'Washington',
+        zip: '20500',
+        phones: { 'cell' : { country_code: 1, number: '202 456-1111' },
+                  'landline' : { country_code: 1, number: '...' } }
+     },
+     'work' : {
+        street: '1600 Pennsylvania Ave NW',
+        city: 'Washington',
+        zip: '20500',
+        phones: { 'fax' : { country_code: 1, number: '...' } }
+     }
+  }
+);</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>To be valid, a UDT literal should only include fields defined by the
-type it is a literal of, but it can omit some field (in which case those
-will be <code>null</code>).</p>
+<p>To be valid, a UDT literal can only include fields defined by the
+type it is a literal of, but it can omit some fields (these will be set to <code>NULL</code>).</p>
 </div>
-<div class="paragraph">
-<p>=== Altering a UDT</p>
 </div>
+<div class="sect2">
+<h3 id="altering-a-udt"><a class="anchor" href="#altering-a-udt"></a>Altering a UDT</h3>
 <div class="paragraph">
 <p>An existing user-defined type can be modified using an <code>ALTER TYPE</code>
 statement:</p>
 </div>
-<div class="paragraph">
-<p>alter_type_statement: ALTER TYPE <span class="title-ref">udt_name</span>
-<span class="title-ref">alter_type_modification</span> alter_type_modification: ADD
-<span class="title-ref">field_definition</span> : | RENAME <span class="title-ref">identifier</span> TO
-<span class="title-ref">identifier</span> ( <span class="title-ref">identifier</span> TO
-<span class="title-ref">identifier</span> )*</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bnf hljs" data-lang="bnf">alter_type_statement::= ALTER TYPE udt_name alter_type_modification
+alter_type_modification::= ADD field_definition
+        | RENAME identifier TO identifier( identifier TO identifier )*</code></pre>
+</div>
 </div>
 <div class="paragraph">
 <p>You can:</p>
@@ -1658,25 +1302,31 @@ statement:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>add a new field to the type (<code>ALTER TYPE address ADD country text</code>).
-That new field will be <code>null</code> for any values of the type created before
+<p>Add a new field to the type (<code>ALTER TYPE address ADD country text</code>).
+That new field will be <code>NULL</code> for any values of the type created before
 the addition.</p>
 </li>
 <li>
-<p>rename the fields of the type
-(<code>ALTER TYPE address RENAME zip TO zipcode</code>).</p>
+<p>Rename the fields of the type.</p>
 </li>
 </ul>
 </div>
-<div class="paragraph">
-<p>=== Dropping a UDT</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-cql hljs" data-lang="cql">ALTER TYPE address RENAME zip TO zipcode;</code></pre>
 </div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="dropping-a-udt"><a class="anchor" href="#dropping-a-udt"></a>Dropping a UDT</h3>
 <div class="paragraph">
 <p>You can drop an existing user-defined type using a <code>DROP TYPE</code>
 statement:</p>
 </div>
-<div class="paragraph">
-<p>drop_type_statement: DROP TYPE [ IF EXISTS ] <span class="title-ref">udt_name</span></p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bnf hljs" data-lang="bnf">drop_type_statement::= DROP TYPE [ IF EXISTS ] udt_name</code></pre>
+</div>
 </div>
 <div class="paragraph">
 <p>Dropping a type results in the immediate, irreversible removal of that
@@ -1687,54 +1337,74 @@ type, table or function will result in an error.</p>
 <p>If the type dropped does not exist, an error will be returned unless
 <code>IF EXISTS</code> is used, in which case the operation is a no-op.</p>
 </div>
-<div class="paragraph">
-<p>== Tuples</p>
 </div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="tuples"><a class="anchor" href="#tuples"></a>Tuples</h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>CQL also support tuples and tuple types (where the elements can be of
 different types). Functionally, tuples can be though as anonymous UDT
 with anonymous fields. Tuple types and tuple literals are defined by:</p>
 </div>
-<div class="paragraph">
-<p>tuple_type: TUPLE '&lt;' <span class="title-ref">cql_type</span> ( ','
-<span class="title-ref">cql_type</span> )* '&gt;' tuple_literal: '(' <span class="title-ref">term</span> (
-',' <span class="title-ref">term</span> )* ')'</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bnf hljs" data-lang="bnf">tuple_type::= TUPLE '&lt;' cql_type( ',' cql_type)* '&gt;'
+tuple_literal::= '(' term( ',' term )* ')'</code></pre>
+</div>
 </div>
 <div class="paragraph">
-<p>and can be used thusly:</p>
+<p>and can be created:</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-cql hljs" data-lang="cql">CREATE TABLE durations (
-    event text,
-    duration tuple&lt;int, text&gt;,
-)
+  event text,
+  duration tuple&lt;int, text&gt;,
+);
 
 INSERT INTO durations (event, duration) VALUES ('ev1', (3, 'hours'));</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Unlike other "composed" types (collections and UDT), a tuple is always
-<code>frozen &lt;frozen&gt;</code> (without the need of the <span class="title-ref">frozen</span> keyword)
+<p>Unlike other composed types, like collections and UDTs, a tuple is always
+<code>frozen &lt;frozen&gt;</code> (without the need of the <code>frozen</code> keyword)
 and it is not possible to update only some elements of a tuple (without
 updating the whole tuple). Also, a tuple literal should always have the
 same number of value than declared in the type it is a tuple of (some of
 those values can be null but they need to be explicitly declared as so).</p>
 </div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="custom-types"><a class="anchor" href="#custom-types"></a>Custom Types</h2>
+<div class="sectionbody">
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="title">Note</div>
 <div class="paragraph">
-<p>== Custom Types</p>
-</div>
-</div>
-</div>
-<div class="paragraph">
-<p>Custom types exists mostly for backward compatiliby purposes and their
+<p>Custom types exists mostly for backward compatibility purposes and their
 usage is discouraged. Their usage is complex, not user friendly and the
-other provided types, particularly <code>user-defined types &lt;udts&gt;</code>, should
-almost always be enough.
-====A custom type is defined by:</p>
+other provided types, particularly <a href="#udts">user-defined types</a>, should
+almost always be enough.</p>
+</div>
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
-<p>custom_type: <span class="title-ref">string</span></p>
+<p>A custom type is defined by:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bnf hljs" data-lang="bnf">custom_type::= string</code></pre>
+</div>
 </div>
 <div class="paragraph">
 <p>A custom type is a <code>string</code> that contains the name of Java class that
@@ -1747,9 +1417,8 @@ can in particular be input using the <code>blob</code> literal syntax.</p>
 </div>
 </div>
 </div>
-</div>
 </article>
-<aside class="toc sidebar" data-title="Contents" data-levels="2">
+<aside class="toc sidebar" data-title="Contents" data-levels="3">
   <div class="toc-menu"></div>
 </aside>
   </div>

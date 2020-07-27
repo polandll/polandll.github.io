@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Definitions :: Apache Cassandra Documentation</title>
-    <link rel="canonical" href="file:///Users/lorina.poland/docs-site/build/site/Cassandra/4.0/Cassandra/3.11/cassandra/cql/definitions.html">
+    <link rel="canonical" href="file:///Users/lorina.poland/CLONES/cassandra/build/html/Cassandra/4.0/Cassandra/3.11/cassandra/cql/definitions.html">
     <meta name="generator" content="Antora 2.3.1">
     <link rel="stylesheet" href="../../../../_/css/site.css">
 <link rel="stylesheet" href="../../../../_/css/search.css">
@@ -13,7 +13,7 @@
 <header class="header">
   <nav class="navbar">
     <div class="navbar-brand">
-      <a class="navbar-item" href="file:///Users/lorina.poland/docs-site/build/site/Cassandra/4.0">&nbsp;&nbsp;&nbsp;<img src="../../../../_/img/cassandra_logo.png"></a>
+      <a class="navbar-item" href="file:///Users/lorina.poland/CLONES/cassandra/build/html/Cassandra/4.0">&nbsp;&nbsp;&nbsp;<img src="../../../../_/img/cassandra_logo.png"></a>
         <div class="navbar-item">
           <input id="search-input" type="text" placeholder="Search docs">
         </div>
@@ -199,7 +199,7 @@
   </li>
   <li class="nav-item" data-depth="2">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="#cql/index.adoc{">CQL</a>
+    <a class="nav-link" href="index.html">Cassandra Query Language (CQL)</a>
 <ul class="nav-list">
   <li class="nav-item is-current-page" data-depth="3">
     <a class="nav-link" href="definitions.html">Definitions</a>
@@ -208,10 +208,13 @@
     <a class="nav-link" href="types.html">Data types</a>
   </li>
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="ddl.html">DDL</a>
+    <a class="nav-link" href="ddl.html">Data definition (DDL)</a>
   </li>
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="dml.html">DML</a>
+    <a class="nav-link" href="dml.html">Data manipulation (DML)</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="operators.html">Operators</a>
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="indexes.html">Secondary indexes</a>
@@ -220,16 +223,13 @@
     <a class="nav-link" href="mvs.html">Materialized views</a>
   </li>
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="security.html">Security</a>
-  </li>
-  <li class="nav-item" data-depth="3">
     <a class="nav-link" href="functions.html">Functions</a>
   </li>
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="operators.html">Operators</a>
+    <a class="nav-link" href="json.html">JSON</a>
   </li>
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="json.html">JSON</a>
+    <a class="nav-link" href="security.html">Security</a>
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="triggers.html">Triggers</a>
@@ -411,14 +411,14 @@
 <div class="nav-panel-explore" data-panel="explore">
   <div class="context">
     <span class="title">Cassandra</span>
-    <span class="version">4.0-rc.5</span>
+    <span class="version">4.0-beta1</span>
   </div>
   <ul class="components">
     <li class="component is-current">
       <span class="title">Cassandra</span>
       <ul class="versions">
         <li class="version is-current">
-          <a href="../../index.html">4.0-rc.5</a>
+          <a href="../../index.html">4.0-beta1</a>
         </li>
         <li class="version is-latest">
           <a href="../../../3.11/index.html">3.11</a>
@@ -436,19 +436,19 @@
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li>Cassandra</li>
-    <li>CQL</li>
+    <li><a href="index.html">Cassandra Query Language (CQL)</a></li>
     <li><a href="definitions.html">Definitions</a></li>
   </ul>
 </nav>
 <div class="page-versions">
-  <button class="version-menu-toggle" title="Show other versions of page">4.0-rc.5</button>
+  <button class="version-menu-toggle" title="Show other versions of page">4.0-beta1</button>
   <div class="version-menu">
-    <a class="version is-current" href="definitions.html">4.0-rc.5</a>
+    <a class="version is-current" href="definitions.html">4.0-beta1</a>
     <a class="version" href="../../../3.11/cassandra/cql/definitions.html">3.11</a>
   </div>
 </div>
-  <div class="edit-this-page"><a href="https://github.com/polandll/cassandra-examples/edit/4.0-rc5/rst-to-asciidoc-tests/ASCIIDOC/modules/cassandra/pages/cql/definitions.adoc">Edit this Page</a></div>
-  </div>
+  <div class="edit-this-page"><a href="file:///Users/lorina.poland/CLONES/cassandra/doc/source/modules/cassandra/pages/cql/definitions.adoc">Edit this Page</a></div>
+</div>
   <div class="content">
 <article class="doc">
 <h1 class="page">Definitions</h1>
@@ -502,22 +502,22 @@ expression <code>[a-zA-Z][a-zA-Z0-9_]*</code>.</p>
 <div class="paragraph">
 <p>A number of such identifiers, like <code>SELECT</code> or <code>WITH</code>, are <em>keywords</em>.
 They have a fixed meaning for the language and most are reserved. The
-list of those keywords can be found in <code>appendix-A</code>.</p>
+list of those keywords can be found in <a href="appendices.html#appendix-A" class="page">Appendix A</a>.</p>
 </div>
 <div class="paragraph">
 <p>Identifiers and (unquoted) keywords are case insensitive. Thus <code>SELECT</code>
 is the same than <code>select</code> or <code>sElEcT</code>, and <code>myId</code> is the same than
 <code>myid</code> or <code>MYID</code>. A convention often used (in particular by the samples
-of this documentation) is to use upper case for keywords and lower case
+of this documentation) is to use uppercase for keywords and lowercase
 for other identifiers.</p>
 </div>
 <div class="paragraph">
-<p>There is a second kind of identifiers called <em>quoted identifiers</em>
-defined by enclosing an arbitrary sequence of characters (non empty) in
+<p>There is a second kind of identifier called a <em>quoted identifier</em>
+defined by enclosing an arbitrary sequence of characters (non-empty) in
 double-quotes(<code>"</code>). Quoted identifiers are never keywords. Thus
 <code>"select"</code> is not a reserved keyword and can be used to refer to a
-column (note that using this is particularly advised), while <code>select</code>
-would raise a parsing error. Also, contrarily to unquoted identifiers
+column (note that using this is particularly ill-advised), while <code>select</code>
+would raise a parsing error. Also, unlike unquoted identifiers
 and keywords, quoted identifiers are case sensitive (<code>"My Quoted Id"</code> is
 <em>different</em> from <code>"my quoted id"</code>). A fully lowercase quoted identifier
 that matches <code>[a-zA-Z][a-zA-Z0-9_]*</code> is however <em>equivalent</em> to the
@@ -535,13 +535,13 @@ to escape it, so <code>"foo "" bar"</code> is a valid identifier.</p>
 <td class="content">
 <div class="title">Note</div>
 <div class="paragraph">
-<p><em>quoted identifiers</em> allows to declare columns with arbitrary names, and
-those can sometime clash with specific names used by the server. For
+<p>The <em>quoted identifier</em> can declare columns with arbitrary names, and
+these can sometime clash with specific names used by the server. For
 instance, when using conditional update, the server will respond with a
-result-set containing a special result named <code>"[applied]"</code>. If you’ve
+result set containing a special result named <code>"[applied]"</code>. If you’ve
 declared a column with such a name, this could potentially confuse some
 tools and should be avoided. In general, unquoted identifiers should be
-preferred but if you use quoted identifiers, it is strongly advised to
+preferred but if you use quoted identifiers, it is strongly advised that you
 avoid any name enclosed by squared brackets (like <code>"[applied]"</code>) and any
 name that looks like a function call (like <code>"f(x)"</code>).</p>
 </div>
@@ -552,11 +552,12 @@ name that looks like a function call (like <code>"f(x)"</code>).</p>
 <div class="paragraph">
 <p>More formally, we have:</p>
 </div>
-<div class="paragraph">
-<p>identifier: <span class="title-ref">unquoted_identifier</span> |
-<span class="title-ref">quoted_identifier</span> unquoted_identifier:
-re('[a-zA-Z][<a href="">a-zA-Z0-9</a>]*') quoted_identifier: '"' (any character
-where " can appear if doubled)+ '"'</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bnf hljs" data-lang="bnf">identifier::= unquoted_identifier | quoted_identifier
+unquoted_identifier::= re('[a-zA-Z][link:[a-zA-Z0-9]]*')
+quoted_identifier::= '"' (any character where " can appear if doubled)+ '"'</code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -564,17 +565,19 @@ where " can appear if doubled)+ '"'</p>
 <h2 id="constants"><a class="anchor" href="#constants"></a>Constants</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>CQL defines the following kind of <em>constants</em>:</p>
+<p>CQL defines the following <em>constants</em>:</p>
 </div>
-<div class="paragraph">
-<p>constant: <span class="title-ref">string</span> | <span class="title-ref">integer</span> |
-<span class="title-ref">float</span> | <span class="title-ref">boolean</span> | <span class="title-ref">uuid</span> |
-<span class="title-ref">blob</span> | NULL string: ''' (any character where ' can appear
-if doubled)+ ''' : '' (any character other than '') '$$' integer:
-re('-?<span class="0-9">') float: re('-?[0-9]</span>(.[0-9]*)?([eE][-]?[0-9])?') | NAN |
-INFINITY boolean: TRUE | FALSE uuid:
-<span class="title-ref">hex</span>{8}-<span class="title-ref">hex</span>{4}-<span class="title-ref">hex</span>{4}-<span class="title-ref">hex</span>{4}-<span class="title-ref">hex</span>{12}
-hex: re("[0-9a-fA-F]") blob: '0' ('x' | 'X') <span class="title-ref">hex</span>+</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bnf hljs" data-lang="bnf">constant::= string | integer | float | boolean | uuid | blob | NULL
+string::= ''' (any character where ' can appear if doubled)+ ''' : '$$' (any character other than '$$') '$$'
+integer::= re('-?[0-9]+')
+float::= re('-?[0-9]+(.[0-9]*)?([eE][+-]?[0-9+])?') | NAN | INFINITY
+boolean::= TRUE | FALSE
+uuid::= hex\{8}-hex\{4}-hex\{4}-hex\{4}-hex\{12}
+hex::= re("[0-9a-fA-F]")
+blob::= '0' ('x' | 'X') hex+</code></pre>
+</div>
 </div>
 <div class="paragraph">
 <p>In other words:</p>
@@ -589,7 +592,7 @@ single-quote(<code>'</code>). A single-quote can be included by repeating it, e.
 defined by enclosing the arbitrary sequence of characters by two dollar
 characters, in which case single-quote can be used without escaping
 (<code>It's raining today</code>). That latter form is often used when defining
-<code>user-defined functions &lt;udfs&gt;</code> to avoid having to escape single-quote
+<a href="functions.html#udfs" class="page">user-defined functions</a> to avoid having to escape single-quote
 characters in function body (as they are more likely to occur than
 <code>$$</code>).</p>
 </li>
@@ -611,7 +614,7 @@ constants.</p>
 </ul>
 </div>
 <div class="paragraph">
-<p>For how these constants are typed, see the <code>data-types</code> section.</p>
+<p>For how these constants are typed, see the <a href="types.html" class="page">Data types</a> section.</p>
 </div>
 </div>
 </div>
@@ -622,17 +625,15 @@ constants.</p>
 <p>CQL has the notion of a <em>term</em>, which denotes the kind of values that
 CQL support. Terms are defined by:</p>
 </div>
-<div class="paragraph">
-<p>term: <span class="title-ref">constant</span> | <span class="title-ref">literal</span> |
-<span class="title-ref">function_call</span> | <span class="title-ref">arithmetic_operation</span> |
-<span class="title-ref">type_hint</span> | <span class="title-ref">bind_marker</span> literal:
-<span class="title-ref">collection_literal</span> | <span class="title-ref">udt_literal</span> |
-<span class="title-ref">tuple_literal</span> function_call: <span class="title-ref">identifier</span> '('
-<span class="[.title-ref">term</span> (',' <span class="title-ref">term</span>)* ] ')'
-arithmetic_operation: '-' <span class="title-ref">term</span> | <span class="title-ref">term</span> ('+' |
-'-' | '*' | '/' | '%') <span class="title-ref">term</span> type_hint: '('
-<span class="title-ref">cql_type</span> <span class="title-ref">)</span> term bind_marker: '?' | ':'
-<span class="title-ref">identifier</span></p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bnf hljs" data-lang="bnf">term::= constant | literal | function_call | arithmetic_operation | type_hint | bind_marker
+literal::= collection_literal | udt_literal | tuple_literal
+function_call::= identifier '(' [ term (',' term)* ] ')'
+arithmetic_operation::= '-' term | term ('+' | '-' | '*' | '/' | '%') term
+type_hint::= '(' cql_type ')' term
+bind_marker::= '?' | ':' identifier</code></pre>
+</div>
 </div>
 <div class="paragraph">
 <p>A term is thus one of:</p>
@@ -640,25 +641,21 @@ arithmetic_operation: '-' <span class="title-ref">term</span> | <span class="tit
 <div class="ulist">
 <ul>
 <li>
-<p>A <code>constant &lt;constants&gt;</code>.</p>
+<p>A <a href="#cql/defintions.adoc#constants" class="page unresolved">constant</a></p>
 </li>
 <li>
-<p>A literal for either <code>a collection &lt;collections&gt;</code>,
-<code>a user-defined type &lt;udts&gt;</code> or <code>a tuple &lt;tuples&gt;</code> (see the linked
-sections for details).</p>
+<p>A literal for either a <a href="types.html#collections" class="page">collection</a>,
+a <a href="types.html#udts" class="page">user-defined type</a> or a <a href="types.html#tuples" class="page">tuple</a></p>
 </li>
 <li>
-<p>A function call: see <code>the section on functions &lt;cql-functions&gt;</code> for
-details on which <code>native function
-&lt;native-functions&gt;</code> exists and how to define your own
-<code>user-defined ones &lt;udfs&gt;</code>.</p>
+<p>A <a href="functions.html#cql-functions" class="page">function</a> call, either a <a href="functions.html#scalar-native-functions" class="page">native function</a>
+or a <a href="functions.html#user-defined-scalar-functions" class="page">user-defined function</a></p>
 </li>
 <li>
-<p>An arithmetic operation between terms. see
-<code>the section on arithmetic operations &lt;arithmetic_operators&gt;</code></p>
+<p>An <a href="operators.html#arithmetic_operators" class="page">arithmetic operation</a> between terms</p>
 </li>
 <li>
-<p>A <em>type hint</em>: see the <code>related section &lt;type-hints&gt;</code> for details.</p>
+<p>A type hint</p>
 </li>
 <li>
 <p>A bind marker, which denotes a variable to be bound at execution time.
@@ -722,7 +719,7 @@ data.</p>
 <p><code>cql-permissions</code> statements.</p>
 </li>
 <li>
-<p><code>User-Defined Functions &lt;udfs&gt;</code> statements.</p>
+<p><code>User-Defined Functions (UDFs)</code> statements.</p>
 </li>
 <li>
 <p><code>udts</code> statements.</p>
@@ -736,46 +733,57 @@ data.</p>
 <p>All the statements are listed below and are described in the rest of
 this documentation (see links above):</p>
 </div>
-<div class="paragraph">
-<p>cql_statement: <span class="title-ref">statement</span> [ ';' ] statement:
-<span class="title-ref">ddl_statement</span> : | <span class="title-ref">dml_statement</span> : |
-<span class="title-ref">secondary_index_statement</span> : |
-<span class="title-ref">materialized_view_statement</span> : |
-<span class="title-ref">role_or_permission_statement</span> : |
-<span class="title-ref">udf_statement</span> : | <span class="title-ref">udt_statement</span> : |
-<span class="title-ref">trigger_statement</span> ddl_statement:
-<span class="title-ref">use_statement</span> : | <span class="title-ref">create_keyspace_statement</span>
-: | <span class="title-ref">alter_keyspace_statement</span> : |
-<span class="title-ref">drop_keyspace_statement</span> : |
-<span class="title-ref">create_table_statement</span> : |
-<span class="title-ref">alter_table_statement</span> : |
-<span class="title-ref">drop_table_statement</span> : | <span class="title-ref">truncate_statement</span>
-dml_statement: <span class="title-ref">select_statement</span> : |
-<span class="title-ref">insert_statement</span> : | <span class="title-ref">update_statement</span> : |
-<span class="title-ref">delete_statement</span> : | <span class="title-ref">batch_statement</span>
-secondary_index_statement: <span class="title-ref">create_index_statement</span> : |
-<span class="title-ref">drop_index_statement</span> materialized_view_statement:
-<span class="title-ref">create_materialized_view_statement</span> : |
-<span class="title-ref">drop_materialized_view_statement</span>
-role_or_permission_statement: <span class="title-ref">create_role_statement</span> : |
-<span class="title-ref">alter_role_statement</span> : | <span class="title-ref">drop_role_statement</span>
-: | <span class="title-ref">grant_role_statement</span> : |
-<span class="title-ref">revoke_role_statement</span> : |
-<span class="title-ref">list_roles_statement</span> : |
-<span class="title-ref">grant_permission_statement</span> : |
-<span class="title-ref">revoke_permission_statement</span> : |
-<span class="title-ref">list_permissions_statement</span> : |
-<span class="title-ref">create_user_statement</span> : |
-<span class="title-ref">alter_user_statement</span> : | <span class="title-ref">drop_user_statement</span>
-: | <span class="title-ref">list_users_statement</span> udf_statement:
-<span class="title-ref">create_function_statement</span> : |
-<span class="title-ref">drop_function_statement</span> : |
-<span class="title-ref">create_aggregate_statement</span> : |
-<span class="title-ref">drop_aggregate_statement</span> udt_statement:
-<span class="title-ref">create_type_statement</span> : |
-<span class="title-ref">alter_type_statement</span> : | <span class="title-ref">drop_type_statement</span>
-trigger_statement: <span class="title-ref">create_trigger_statement</span> : |
-<span class="title-ref">drop_trigger_statement</span></p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bnf hljs" data-lang="bnf">cql_statement::= statement [ ';' ]
+statement:=: ddl_statement :
+        | dml_statement
+        | secondary_index_statement
+        | materialized_view_statement
+        | role_or_permission_statement
+        | udf_statement
+        | udt_statement
+        | trigger_statement
+ddl_statement::= use_statement
+        | create_keyspace_statement
+        | alter_keyspace_statement
+        | drop_keyspace_statement
+        | create_table_statement
+        | alter_table_statement
+        | drop_table_statement
+        | truncate_statement
+dml_statement::= select_statement
+        | insert_statement
+        | update_statement
+        | delete_statement
+        | batch_statement
+secondary_index_statement::= create_index_statement
+        | drop_index_statement
+materialized_view_statement::= create_materialized_view_statement
+        | drop_materialized_view_statement
+role_or_permission_statement::= create_role_statement
+        | alter_role_statement
+        | drop_role_statement
+        | grant_role_statement
+        | revoke_role_statement
+        | list_roles_statement
+        | grant_permission_statement
+        | revoke_permission_statement
+        | list_permissions_statement
+        | create_user_statement
+        | alter_user_statement
+        | drop_user_statement
+        | list_users_statement
+udf_statement::= create_function_statement
+        | drop_function_statement
+        | create_aggregate_statement
+        | drop_aggregate_statement
+udt_statement::= create_type_statement
+        | alter_type_statement
+        | drop_type_statement
+trigger_statement::= create_trigger_statement
+        | drop_trigger_statement</code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -797,7 +805,7 @@ used and you should refer to your driver documentation.</p>
 </div>
 </div>
 </article>
-<aside class="toc sidebar" data-title="Contents" data-levels="2">
+<aside class="toc sidebar" data-title="Contents" data-levels="3">
   <div class="toc-menu"></div>
 </aside>
   </div>

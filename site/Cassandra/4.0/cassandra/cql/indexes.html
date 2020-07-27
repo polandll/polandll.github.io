@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Secondary Indexes :: Apache Cassandra Documentation</title>
-    <link rel="canonical" href="file:///Users/lorina.poland/docs-site/build/site/Cassandra/4.0/Cassandra/3.11/cassandra/cql/indexes.html">
+    <link rel="canonical" href="file:///Users/lorina.poland/CLONES/cassandra/build/html/Cassandra/4.0/Cassandra/3.11/cassandra/cql/indexes.html">
     <meta name="generator" content="Antora 2.3.1">
     <link rel="stylesheet" href="../../../../_/css/site.css">
 <link rel="stylesheet" href="../../../../_/css/search.css">
@@ -13,7 +13,7 @@
 <header class="header">
   <nav class="navbar">
     <div class="navbar-brand">
-      <a class="navbar-item" href="file:///Users/lorina.poland/docs-site/build/site/Cassandra/4.0">&nbsp;&nbsp;&nbsp;<img src="../../../../_/img/cassandra_logo.png"></a>
+      <a class="navbar-item" href="file:///Users/lorina.poland/CLONES/cassandra/build/html/Cassandra/4.0">&nbsp;&nbsp;&nbsp;<img src="../../../../_/img/cassandra_logo.png"></a>
         <div class="navbar-item">
           <input id="search-input" type="text" placeholder="Search docs">
         </div>
@@ -199,7 +199,7 @@
   </li>
   <li class="nav-item" data-depth="2">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="#cql/index.adoc{">CQL</a>
+    <a class="nav-link" href="index.html">Cassandra Query Language (CQL)</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="definitions.html">Definitions</a>
@@ -208,10 +208,13 @@
     <a class="nav-link" href="types.html">Data types</a>
   </li>
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="ddl.html">DDL</a>
+    <a class="nav-link" href="ddl.html">Data definition (DDL)</a>
   </li>
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="dml.html">DML</a>
+    <a class="nav-link" href="dml.html">Data manipulation (DML)</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="operators.html">Operators</a>
   </li>
   <li class="nav-item is-current-page" data-depth="3">
     <a class="nav-link" href="indexes.html">Secondary indexes</a>
@@ -220,16 +223,13 @@
     <a class="nav-link" href="mvs.html">Materialized views</a>
   </li>
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="security.html">Security</a>
-  </li>
-  <li class="nav-item" data-depth="3">
     <a class="nav-link" href="functions.html">Functions</a>
   </li>
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="operators.html">Operators</a>
+    <a class="nav-link" href="json.html">JSON</a>
   </li>
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="json.html">JSON</a>
+    <a class="nav-link" href="security.html">Security</a>
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="triggers.html">Triggers</a>
@@ -411,14 +411,14 @@
 <div class="nav-panel-explore" data-panel="explore">
   <div class="context">
     <span class="title">Cassandra</span>
-    <span class="version">4.0-rc.5</span>
+    <span class="version">4.0-beta1</span>
   </div>
   <ul class="components">
     <li class="component is-current">
       <span class="title">Cassandra</span>
       <ul class="versions">
         <li class="version is-current">
-          <a href="../../index.html">4.0-rc.5</a>
+          <a href="../../index.html">4.0-beta1</a>
         </li>
         <li class="version is-latest">
           <a href="../../../3.11/index.html">3.11</a>
@@ -436,19 +436,19 @@
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li>Cassandra</li>
-    <li>CQL</li>
+    <li><a href="index.html">Cassandra Query Language (CQL)</a></li>
     <li><a href="indexes.html">Secondary indexes</a></li>
   </ul>
 </nav>
 <div class="page-versions">
-  <button class="version-menu-toggle" title="Show other versions of page">4.0-rc.5</button>
+  <button class="version-menu-toggle" title="Show other versions of page">4.0-beta1</button>
   <div class="version-menu">
-    <a class="version is-current" href="indexes.html">4.0-rc.5</a>
+    <a class="version is-current" href="indexes.html">4.0-beta1</a>
     <a class="version" href="../../../3.11/cassandra/cql/indexes.html">3.11</a>
   </div>
 </div>
-  <div class="edit-this-page"><a href="https://github.com/polandll/cassandra-examples/edit/4.0-rc5/rst-to-asciidoc-tests/ASCIIDOC/modules/cassandra/pages/cql/indexes.adoc">Edit this Page</a></div>
-  </div>
+  <div class="edit-this-page"><a href="file:///Users/lorina.poland/CLONES/cassandra/doc/source/modules/cassandra/pages/cql/indexes.adoc">Edit this Page</a></div>
+</div>
   <div class="content">
 <article class="doc">
 <h1 class="page">Secondary Indexes</h1>
@@ -459,8 +459,10 @@
 the table to use those indexes. A secondary index is identified by a
 name defined by:</p>
 </div>
-<div class="paragraph">
-<p>index_name: re('[a-zA-Z_0-9]+')</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bnf hljs" data-lang="bnf">index_name::= re('[a-zA-Z_0-9]+')</code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -470,12 +472,14 @@ name defined by:</p>
 <div class="paragraph">
 <p>Creating a secondary index on a table uses the <code>CREATE INDEX</code> statement:</p>
 </div>
-<div class="paragraph">
-<p>create_index_statement: CREATE [ CUSTOM ] INDEX [ IF NOT EXISTS ] <span class="[.title-ref">index_name</span> ] : ON <span class="title-ref">table_name</span> '('
-<span class="title-ref">index_identifier</span> ')' : <span class="USING [.title-ref">string</span> <span class="WITH
-OPTIONS = [.title-ref">map_literal</span> ] ] index_identifier:
-<span class="title-ref">column_name</span> :| ( KEYS | VALUES | ENTRIES | FULL ) '('
-<span class="title-ref">column_name</span> ')'</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bnf hljs" data-lang="bnf">create_index_statement::= CREATE [ CUSTOM ] INDEX [ IF NOT EXISTS ] [ index_name ]
+	ON table_name '(' index_identifier ')'
+	[ USING string [ WITH OPTIONS = map_literal ] ]
+index_identifier::= column_name
+	| ( KEYS | VALUES | ENTRIES | FULL ) '(' column_name ')'</code></pre>
+</div>
 </div>
 <div class="paragraph">
 <p>For instance:</p>
@@ -485,8 +489,11 @@ OPTIONS = [.title-ref">map_literal</span> ] ] index_identifier:
 <pre class="highlightjs highlight"><code class="language-cql hljs" data-lang="cql">CREATE INDEX userIndex ON NerdMovies (user);
 CREATE INDEX ON Mutants (abilityId);
 CREATE INDEX ON users (keys(favs));
-CREATE CUSTOM INDEX ON users (email) USING 'path.to.the.IndexClass';
-CREATE CUSTOM INDEX ON users (email) USING 'path.to.the.IndexClass' WITH OPTIONS = {'storage': '/mnt/ssd/indexes/'};</code></pre>
+CREATE CUSTOM INDEX ON users (email)
+   USING 'path.to.the.IndexClass';
+CREATE CUSTOM INDEX ON users (email)
+   USING 'path.to.the.IndexClass'
+   WITH OPTIONS = {'storage': '/mnt/ssd/indexes/'};</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -520,8 +527,10 @@ map values.</p>
 <div class="paragraph">
 <p>Dropping a secondary index uses the <code>DROP INDEX</code> statement:</p>
 </div>
-<div class="paragraph">
-<p>drop_index_statement: DROP INDEX [ IF EXISTS ] <span class="title-ref">index_name</span></p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bnf hljs" data-lang="bnf">drop_index_statement::= DROP INDEX [ IF EXISTS ] index_name</code></pre>
+</div>
 </div>
 <div class="paragraph">
 <p>The <code>DROP INDEX</code> statement is used to drop an existing secondary index.
@@ -535,7 +544,7 @@ specify the keyspace of the index.</p>
 </div>
 </div>
 </article>
-<aside class="toc sidebar" data-title="Contents" data-levels="2">
+<aside class="toc sidebar" data-title="Contents" data-levels="3">
   <div class="toc-menu"></div>
 </aside>
   </div>

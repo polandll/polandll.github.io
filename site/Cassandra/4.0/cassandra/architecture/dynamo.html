@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Dynamo :: Apache Cassandra Documentation</title>
-    <link rel="canonical" href="file:///Users/lorina.poland/docs-site/build/site/Cassandra/4.0/Cassandra/3.11/cassandra/architecture/dynamo.html">
+    <link rel="canonical" href="file:///Users/lorina.poland/CLONES/cassandra/build/html/Cassandra/4.0/Cassandra/3.11/cassandra/architecture/dynamo.html">
     <meta name="generator" content="Antora 2.3.1">
     <link rel="stylesheet" href="../../../../_/css/site.css">
 <link rel="stylesheet" href="../../../../_/css/search.css">
@@ -13,7 +13,7 @@
 <header class="header">
   <nav class="navbar">
     <div class="navbar-brand">
-      <a class="navbar-item" href="file:///Users/lorina.poland/docs-site/build/site/Cassandra/4.0">&nbsp;&nbsp;&nbsp;<img src="../../../../_/img/cassandra_logo.png"></a>
+      <a class="navbar-item" href="file:///Users/lorina.poland/CLONES/cassandra/build/html/Cassandra/4.0">&nbsp;&nbsp;&nbsp;<img src="../../../../_/img/cassandra_logo.png"></a>
         <div class="navbar-item">
           <input id="search-input" type="text" placeholder="Search docs">
         </div>
@@ -199,7 +199,7 @@
   </li>
   <li class="nav-item" data-depth="2">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="#cql/index.adoc{">CQL</a>
+    <a class="nav-link" href="../cql/index.html">Cassandra Query Language (CQL)</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="../cql/definitions.html">Definitions</a>
@@ -208,10 +208,13 @@
     <a class="nav-link" href="../cql/types.html">Data types</a>
   </li>
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="../cql/ddl.html">DDL</a>
+    <a class="nav-link" href="../cql/ddl.html">Data definition (DDL)</a>
   </li>
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="../cql/dml.html">DML</a>
+    <a class="nav-link" href="../cql/dml.html">Data manipulation (DML)</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../cql/operators.html">Operators</a>
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="../cql/indexes.html">Secondary indexes</a>
@@ -220,16 +223,13 @@
     <a class="nav-link" href="../cql/mvs.html">Materialized views</a>
   </li>
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="../cql/security.html">Security</a>
-  </li>
-  <li class="nav-item" data-depth="3">
     <a class="nav-link" href="../cql/functions.html">Functions</a>
   </li>
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="../cql/operators.html">Operators</a>
+    <a class="nav-link" href="../cql/json.html">JSON</a>
   </li>
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="../cql/json.html">JSON</a>
+    <a class="nav-link" href="../cql/security.html">Security</a>
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="../cql/triggers.html">Triggers</a>
@@ -411,14 +411,14 @@
 <div class="nav-panel-explore" data-panel="explore">
   <div class="context">
     <span class="title">Cassandra</span>
-    <span class="version">4.0-rc.5</span>
+    <span class="version">4.0-beta1</span>
   </div>
   <ul class="components">
     <li class="component is-current">
       <span class="title">Cassandra</span>
       <ul class="versions">
         <li class="version is-current">
-          <a href="../../index.html">4.0-rc.5</a>
+          <a href="../../index.html">4.0-beta1</a>
         </li>
         <li class="version is-latest">
           <a href="../../../3.11/index.html">3.11</a>
@@ -441,14 +441,14 @@
   </ul>
 </nav>
 <div class="page-versions">
-  <button class="version-menu-toggle" title="Show other versions of page">4.0-rc.5</button>
+  <button class="version-menu-toggle" title="Show other versions of page">4.0-beta1</button>
   <div class="version-menu">
-    <a class="version is-current" href="dynamo.html">4.0-rc.5</a>
+    <a class="version is-current" href="dynamo.html">4.0-beta1</a>
     <a class="version" href="../../../3.11/cassandra/architecture/dynamo.html">3.11</a>
   </div>
 </div>
-  <div class="edit-this-page"><a href="https://github.com/polandll/cassandra-examples/edit/4.0-rc5/rst-to-asciidoc-tests/ASCIIDOC/modules/cassandra/pages/architecture/dynamo.adoc">Edit this Page</a></div>
-  </div>
+  <div class="edit-this-page"><a href="file:///Users/lorina.poland/CLONES/cassandra/doc/source/modules/cassandra/pages/architecture/dynamo.adoc">Edit this Page</a></div>
+</div>
   <div class="content">
 <article class="doc">
 <h1 class="page">Dynamo</h1>
@@ -522,9 +522,9 @@ clocks were used to reconcile concurrent updates to a key, Cassandra
 uses a simpler last write wins model where every mutation is timestamped
 (including deletes) and then the latest version of data is the "winning"
 value. Formally speaking, Cassandra uses a Last-Write-Wins Element-Set
-conflict-free replicated data type for each CQL row (a.k.a
-<a href="https://en.wikipedia.org/wiki/Conflict-free_replicated_data_type#LWW-Element-Set_(Last-Write-Wins-Element-Set)">LWW-Element-Set
-CRDT</a>) to resolve conflicting mutations on replica sets.</p>
+conflict-free replicated data type for each CQL row, or
+<a href="https://en.wikipedia.org/wiki/Conflict-free_replicated_data_type" class="bare">en.wikipedia.org/wiki/Conflict-free_replicated_data_type</a> LWW-Element-Set_(Last-Write-Wins-Element-Set)[LWW-Element-Set
+CRDT], to resolve conflicting mutations on replica sets.</p>
 </div>
 <div class="sect2">
 <h3 id="consistent-hashing-using-a-token-ring"><a class="anchor" href="#consistent-hashing-using-a-token-ring"></a>Consistent Hashing using a Token Ring</h3>
@@ -556,7 +556,7 @@ key we first hash that key to generate a token (which is just the hash
 of the key), and then we "walk" the ring in a clockwise fashion until we
 encounter three distinct nodes, at which point we have found all the
 replicas of that key. This example of an eight node cluster with
-<span class="title-ref">RF=3</span> can be visualized as follows:</p>
+gRF=3 can be visualized as follows:</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -567,11 +567,11 @@ replicas of that key. This example of an eight node cluster with
 <p>You can see that in a Dynamo like system, ranges of keys, also known as
 <strong>token ranges</strong>, map to the same physical set of nodes. In this example,
 all keys that fall in the token range excluding token 1 and including
-token 2 (<span class="title-ref">range(t1, t2]</span>) are stored on nodes 2, 3 and 4.</p>
+token 2 (grange(t1, t2]) are stored on nodes 2, 3 and 4.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="multiple-tokens-per-physical-node-a-k-a-vnodes"><a class="anchor" href="#multiple-tokens-per-physical-node-a-k-a-vnodes"></a>Multiple Tokens per Physical Node (a.k.a. <span class="title-ref">vnodes</span>)</h3>
+<h3 id="multiple-tokens-per-physical-node-vnodes"><a class="anchor" href="#multiple-tokens-per-physical-node-vnodes"></a>Multiple Tokens per Physical Node (vnodes)</h3>
 <div class="paragraph">
 <p>Simple single token consistent hashing works well if you have many
 physical nodes to spread data over, but with evenly spaced tokens and a
@@ -599,7 +599,7 @@ even a single node.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Token</strong>: A single position on the <span class="title-ref">dynamo</span> style hash
+<p><strong>Token</strong>: A single position on the dynamo style hash
 ring.</p>
 </li>
 <li>
@@ -607,13 +607,13 @@ ring.</p>
 </li>
 <li>
 <p><strong>Host ID</strong>: A unique identifier for a single "physical" node, usually
-present at one <span class="title-ref">Endpoint</span> and containing one or more
-<span class="title-ref">Tokens</span>.</p>
+present at one gEndpoint and containing one or more
+gTokens.</p>
 </li>
 <li>
-<p><strong>Virtual Node</strong> (or <strong>vnode</strong>): A <span class="title-ref">Token</span> on the hash ring
-owned by the same physical node, one with the same <span class="title-ref">Host
-ID</span>.</p>
+<p><strong>Virtual Node</strong> (or <strong>vnode</strong>): A gToken on the hash ring
+owned by the same physical node, one with the same gHost
+ID.</p>
 </li>
 </ul>
 </div>
@@ -695,7 +695,7 @@ cluster to maintain high availability and durability. When a mutation
 occurs, the coordinator hashes the partition key to determine the token
 range the data belongs to and then replicates the mutation to the
 replicas of that data according to the
-<code>Replication Strategy &lt;replication-strategy&gt;</code>.</p>
+<code>Replication Strategy</code>.</p>
 </div>
 <div class="paragraph">
 <p>All replication strategies have the notion of a <strong>replication factor</strong>
@@ -714,24 +714,24 @@ datacenters of nodes.</p>
 <p>Cassandra supports pluggable <strong>replication strategies</strong>, which determine
 which physical nodes act as replicas for a given token range. Every
 keyspace of data has its own replication strategy. All production
-deployments should use the <code>network-topology-strategy</code> while the
-<code>simple-strategy</code> replication strategy is useful only for testing
+deployments should use the <code>NetworkTopologyStrategy</code> while the
+<code>SimpleStrategy</code> replication strategy is useful only for testing
 clusters where you do not yet know the datacenter layout of the cluster.</p>
 </div>
 <div class="sect3">
 <h4 id="network-topology-strategy"><a class="anchor" href="#network-topology-strategy"></a><code>NetworkTopologyStrategy</code></h4>
 <div class="paragraph">
-<p><code>NetworkTopologyStrategy</code> allows a replication factor to be specified
+<p><code>NetworkTopologyStrategy</code> requires a specified replication factor
 for each datacenter in the cluster. Even if your cluster only uses a
-single datacenter, <code>NetworkTopologyStrategy</code> should be preferred over
+single datacenter, <code>NetworkTopologyStrategy</code> is recommended over
 <code>SimpleStrategy</code> to make it easier to add new physical or virtual
-datacenters to the cluster later.</p>
+datacenters to the cluster later, if required.</p>
 </div>
 <div class="paragraph">
 <p>In addition to allowing the replication factor to be specified
 individually by datacenter, <code>NetworkTopologyStrategy</code> also attempts to
 choose replicas within a datacenter from different racks as specified by
-the <code>Snitch &lt;snitch&gt;</code>. If the number of racks is greater than or equal
+the <code>Snitch</code>. If the number of racks is greater than or equal
 to the replication factor for the datacenter, each replica is guaranteed
 to be chosen from a different rack. Otherwise, each rack will hold at
 least one replica, but some racks may hold more than one. Note that this
@@ -767,34 +767,34 @@ distinct nodes have been added to the set of replicas.</p>
 <h4 id="transient-replication"><a class="anchor" href="#transient-replication"></a>Transient Replication</h4>
 <div class="paragraph">
 <p>Transient replication is an experimental feature in Cassandra 4.0 not
-present in the original Dynamo paper. It allows you to configure a
-subset of replicas to only replicate data that hasn&#8217;t been incrementally
-repaired. This allows you to decouple data redundancy from availability.
-For instance, if you have a keyspace replicated at rf 3, and alter it to
-rf 5 with 2 transient replicas, you go from being able to tolerate one
-failed replica to being able to tolerate two, without corresponding
-increase in storage usage. This is because 3 nodes will replicate all
-the data for a given token range, and the other 2 will only replicate
+present in the original Dynamo paper. This feature allows configuration of a
+subset of replicas to replicate only data that hasn&#8217;t been incrementally
+repaired. This configuration decouples data redundancy from availability.
+For instance, if you have a keyspace replicated at RF=3, and alter it to
+RF=5 with two transient replicas, you go from tolerating one
+failed replica to tolerating two, without corresponding
+increase in storage usage. Now, three nodes will replicate all
+the data for a given token range, and the other two will only replicate
 data that hasn&#8217;t been incrementally repaired.</p>
 </div>
 <div class="paragraph">
-<p>To use transient replication, you first need to enable it in
+<p>To use transient replication, first enable the option in
 <code>cassandra.yaml</code>. Once enabled, both <code>SimpleStrategy</code> and
 <code>NetworkTopologyStrategy</code> can be configured to transiently replicate
-data. You configure it by specifying replication factor as
+data. Configure it by specifying replication factor as
 <code>&lt;total_replicas&gt;/&lt;transient_replicas</code> Both <code>SimpleStrategy</code> and
 <code>NetworkTopologyStrategy</code> support configuring transient replication.</p>
 </div>
 <div class="paragraph">
 <p>Transiently replicated keyspaces only support tables created with
-read_repair set to <code>NONE</code> and monotonic reads are not currently
+<code>read_repair</code> set to <code>NONE</code>; monotonic reads are not currently
 supported. You also can&#8217;t use <code>LWT</code>, logged batches, or counters in 4.0.
 You will possibly never be able to use materialized views with
 transiently replicated keyspaces and probably never be able to use
 secondary indices with them.</p>
 </div>
 <div class="paragraph">
-<p>Transient replication is an experimental feature that may not be ready
+<p>Transient replication is an experimental feature that is not ready
 for production use. The expected audience is experienced users of
 Cassandra capable of fully validating a deployment of their particular
 application. That means being able check that operations like reads,
@@ -803,8 +803,8 @@ your queries, data, configuration, operational practices, and
 availability requirements.</p>
 </div>
 <div class="paragraph">
-<p>It is anticipated that <code>4.next</code> will support monotonic reads with
-transient replication as well as LWT, logged batches, and counters.</p>
+<p>Anticipated additional features in <code>4.next</code> are support for monotonic reads with
+transient replication, as well as LWT, logged batches, and counters.</p>
 </div>
 </div>
 </div>
@@ -835,16 +835,16 @@ maps and sets are guaranteed to resolve as well.</p>
 <p>As replicas in Cassandra can accept mutations independently, it is
 possible for some replicas to have newer data than others. Cassandra has
 many best-effort techniques to drive convergence of replicas including
-<span class="title-ref">Replica read repair &lt;read-repair&gt;</span> in the read path and
-<span class="title-ref">Hinted handoff &lt;hints&gt;</span> in the write path.</p>
+<code>Replica read repair &lt;read-repair&gt;</code> in the read path and
+<code>Hinted handoff &lt;hints&gt;</code> in the write path.</p>
 </div>
 <div class="paragraph">
 <p>These techniques are only best-effort, however, and to guarantee
-eventual consistency Cassandra implements <span class="title-ref">anti-entropy
-repair &lt;repair&gt;</span> where replicas calculate hierarchical hash-trees over
+eventual consistency Cassandra implements <code>anti-entropy
+repair &lt;repair&gt;</code> where replicas calculate hierarchical hash-trees over
 their datasets called <a href="https://en.wikipedia.org/wiki/Merkle_tree">Merkle
-Trees</a> that can then be compared across replicas to identify mismatched
-data. Like the original Dynamo paper Cassandra supports "full" repairs
+trees</a> that can then be compared across replicas to identify mismatched
+data. Like the original Dynamo paper Cassandra supports full repairs
 where replicas hash their entire dataset, create Merkle trees, send them
 to each other and sync any ranges that don&#8217;t match.</p>
 </div>
@@ -1016,11 +1016,11 @@ one exists)</p>
 </div>
 <div class="paragraph">
 <p>When an operator first bootstraps a Cassandra cluster they designate
-certain nodes as "seed" nodes. Any node can be a seed node and the only
+certain nodes as seed nodes. Any node can be a seed node and the only
 difference between seed and non-seed nodes is seed nodes are allowed to
 bootstrap into the ring without seeing any other seed nodes.
 Furthermore, once a cluster is bootstrapped, seed nodes become
-"hotspots" for gossip due to step 4 above.</p>
+hotspots for gossip due to step 4 above.</p>
 </div>
 <div class="paragraph">
 <p>As non-seed nodes must be able to contact at least one seed node in
@@ -1039,9 +1039,15 @@ chosen using existing off-the-shelf service discovery mechanisms.</p>
 <div class="paragraph">
 <p>Nodes do not have to agree on the seed nodes, and indeed once a cluster
 is bootstrapped, newly launched nodes can be configured to use any
-existing nodes as "seeds". The only advantage to picking the same nodes
-as seeds is it increases their usefullness as gossip hotspots.
-====Currently, gossip also propagates token metadata and schema
+existing nodes as seeds. The only advantage to picking the same nodes
+as seeds is it increases their usefullness as gossip hotspots.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Currently, gossip also propagates token metadata and schema
 <em>version</em> information. This information forms the control plane for
 scheduling data movements and schema pulls. For example, if a node sees
 a mismatch in schema version in gossip state, it will schedule a schema
@@ -1049,9 +1055,9 @@ sync task with the other nodes. As token information propagates via
 gossip it is also the control plane for teaching nodes which endpoints
 own what data.</p>
 </div>
-<div class="paragraph">
-<p>=== Ring Membership and Failure Detection</p>
 </div>
+<div class="sect2">
+<h3 id="ring-membership-and-failure-detection"><a class="anchor" href="#ring-membership-and-failure-detection"></a>Ring Membership and Failure Detection</h3>
 <div class="paragraph">
 <p>Gossip forms the basis of ring membership, but the <strong>failure detector</strong>
 ultimately makes decisions about if nodes are <code>UP</code> or <code>DOWN</code>. Every node
@@ -1067,16 +1073,26 @@ written to hints). If/when the node starts heartbeating again, Cassandra
 will try to reach out and connect, and if it can open communication
 channels it will mark that node as available.</p>
 </div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="title">Note</div>
+<div class="paragraph">
+<p><code>UP</code> and <code>DOWN</code> state are local node decisions and are not propagated with
+gossip. Heartbeat state is propagated with gossip, but nodes will not
+consider each other as <code>UP</code> until they can successfully message each
+other over an actual network channel.</p>
+</div>
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>UP and DOWN state are local node decisions and are not propagated with
-gossip. Heartbeat state is propagated with gossip, but nodes will not
-consider each other as "UP" until they can successfully message each
-other over an actual network channel.
-====Cassandra will never remove a node from gossip state without
+<p>Cassandra will never remove a node from gossip state without
 explicit instruction from an operator via a decommission operation or a
 new node bootstrapping with a <code>replace_address_first_boot</code> option. This
 choice is intentional to allow Cassandra nodes to temporarily fail
@@ -1150,7 +1166,7 @@ confident that query performance will not degrade.</p>
 </div>
 </div>
 </article>
-<aside class="toc sidebar" data-title="Contents" data-levels="2">
+<aside class="toc sidebar" data-title="Contents" data-levels="3">
   <div class="toc-menu"></div>
 </aside>
   </div>

@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Untitled :: Apache Cassandra Documentation</title>
-    <link rel="canonical" href="file:///Users/lorina.poland/docs-site/build/site/Cassandra/4.0/Cassandra/3.11/cassandra/tools/nodetool/setcompactionthroughput.html">
+    <link rel="canonical" href="file:///Users/lorina.poland/CLONES/cassandra/build/html/Cassandra/4.0/Cassandra/3.11/cassandra/tools/nodetool/setcompactionthroughput.html">
     <meta name="generator" content="Antora 2.3.1">
     <link rel="stylesheet" href="../../../../../_/css/site.css">
 <link rel="stylesheet" href="../../../../../_/css/search.css">
@@ -13,7 +13,7 @@
 <header class="header">
   <nav class="navbar">
     <div class="navbar-brand">
-      <a class="navbar-item" href="file:///Users/lorina.poland/docs-site/build/site/Cassandra/4.0">&nbsp;&nbsp;&nbsp;<img src="../../../../../_/img/cassandra_logo.png"></a>
+      <a class="navbar-item" href="file:///Users/lorina.poland/CLONES/cassandra/build/html/Cassandra/4.0">&nbsp;&nbsp;&nbsp;<img src="../../../../../_/img/cassandra_logo.png"></a>
         <div class="navbar-item">
           <input id="search-input" type="text" placeholder="Search docs">
         </div>
@@ -199,7 +199,7 @@
   </li>
   <li class="nav-item" data-depth="2">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="#cql/index.adoc{">CQL</a>
+    <a class="nav-link" href="../../cql/index.html">Cassandra Query Language (CQL)</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="../../cql/definitions.html">Definitions</a>
@@ -208,10 +208,13 @@
     <a class="nav-link" href="../../cql/types.html">Data types</a>
   </li>
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="../../cql/ddl.html">DDL</a>
+    <a class="nav-link" href="../../cql/ddl.html">Data definition (DDL)</a>
   </li>
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="../../cql/dml.html">DML</a>
+    <a class="nav-link" href="../../cql/dml.html">Data manipulation (DML)</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../cql/operators.html">Operators</a>
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="../../cql/indexes.html">Secondary indexes</a>
@@ -220,16 +223,13 @@
     <a class="nav-link" href="../../cql/mvs.html">Materialized views</a>
   </li>
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="../../cql/security.html">Security</a>
-  </li>
-  <li class="nav-item" data-depth="3">
     <a class="nav-link" href="../../cql/functions.html">Functions</a>
   </li>
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="../../cql/operators.html">Operators</a>
+    <a class="nav-link" href="../../cql/json.html">JSON</a>
   </li>
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="../../cql/json.html">JSON</a>
+    <a class="nav-link" href="../../cql/security.html">Security</a>
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="../../cql/triggers.html">Triggers</a>
@@ -411,14 +411,14 @@
 <div class="nav-panel-explore" data-panel="explore">
   <div class="context">
     <span class="title">Cassandra</span>
-    <span class="version">4.0-rc.5</span>
+    <span class="version">4.0-beta1</span>
   </div>
   <ul class="components">
     <li class="component is-current">
       <span class="title">Cassandra</span>
       <ul class="versions">
         <li class="version is-current">
-          <a href="../../../index.html">4.0-rc.5</a>
+          <a href="../../../index.html">4.0-beta1</a>
         </li>
         <li class="version is-latest">
           <a href="../../../../3.11/index.html">3.11</a>
@@ -436,18 +436,18 @@
 <nav class="breadcrumbs" aria-label="breadcrumbs">
 </nav>
 <div class="page-versions">
-  <button class="version-menu-toggle" title="Show other versions of page">4.0-rc.5</button>
+  <button class="version-menu-toggle" title="Show other versions of page">4.0-beta1</button>
   <div class="version-menu">
-    <a class="version is-current" href="setcompactionthroughput.html">4.0-rc.5</a>
+    <a class="version is-current" href="setcompactionthroughput.html">4.0-beta1</a>
     <a class="version" href="../../../../3.11/cassandra/tools/nodetool/setcompactionthroughput.html">3.11</a>
   </div>
 </div>
-  <div class="edit-this-page"><a href="https://github.com/polandll/cassandra-examples/edit/4.0-rc5/rst-to-asciidoc-tests/ASCIIDOC/modules/cassandra/pages/tools/nodetool/setcompactionthroughput.adoc">Edit this Page</a></div>
-  </div>
+  <div class="edit-this-page"><a href="file:///Users/lorina.poland/CLONES/cassandra/doc/source/modules/cassandra/pages/tools/nodetool/setcompactionthroughput.adoc">Edit this Page</a></div>
+</div>
   <div class="content">
 <article class="doc">
 <div class="sect1">
-<h2 id="nodetool_setcompactionthroughput"><a class="anchor" href="#nodetool_setcompactionthroughput"></a>setcompactionthroughput</h2>
+<h2 id="setcompactionthroughput"><a class="anchor" href="#setcompactionthroughput"></a>setcompactionthroughput</h2>
 <div class="sectionbody">
 
 </div>
@@ -455,11 +455,51 @@
 <div class="sect1">
 <h2 id="usage"><a class="anchor" href="#usage"></a>Usage</h2>
 <div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-plaintext hljs" data-lang="plaintext">NAME
+        nodetool setcompactionthroughput - Set the MB/s throughput cap for
+        compaction in the system, or 0 to disable throttling
 
+SYNOPSIS
+        nodetool [(-h &lt;host&gt; | --host &lt;host&gt;)] [(-p &lt;port&gt; | --port &lt;port&gt;)]
+                [(-pp | --print-port)] [(-pw &lt;password&gt; | --password &lt;password&gt;)]
+                [(-pwf &lt;passwordFilePath&gt; | --password-file &lt;passwordFilePath&gt;)]
+                [(-u &lt;username&gt; | --username &lt;username&gt;)] setcompactionthroughput [--]
+                &lt;value_in_mb&gt;
+
+OPTIONS
+        -h &lt;host&gt;, --host &lt;host&gt;
+            Node hostname or ip address
+
+        -p &lt;port&gt;, --port &lt;port&gt;
+            Remote jmx agent port number
+
+        -pp, --print-port
+            Operate in 4.0 mode with hosts disambiguated by port number
+
+        -pw &lt;password&gt;, --password &lt;password&gt;
+            Remote jmx agent password
+
+        -pwf &lt;passwordFilePath&gt;, --password-file &lt;passwordFilePath&gt;
+            Path to the JMX password file
+
+        -u &lt;username&gt;, --username &lt;username&gt;
+            Remote jmx agent username
+
+        --
+            This option can be used to separate command-line options from the
+            list of argument, (useful when arguments might be mistaken for
+            command-line options
+
+        &lt;value_in_mb&gt;
+            Value in MB, 0 to disable throttling</code></pre>
+</div>
+</div>
 </div>
 </div>
 </article>
-<aside class="toc sidebar" data-title="Contents" data-levels="2">
+<aside class="toc sidebar" data-title="Contents" data-levels="3">
   <div class="toc-menu"></div>
 </aside>
   </div>

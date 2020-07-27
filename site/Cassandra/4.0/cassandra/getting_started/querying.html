@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Inserting and querying :: Apache Cassandra Documentation</title>
-    <link rel="canonical" href="file:///Users/lorina.poland/docs-site/build/site/Cassandra/4.0/Cassandra/3.11/cassandra/getting_started/querying.html">
+    <link rel="canonical" href="file:///Users/lorina.poland/CLONES/cassandra/build/html/Cassandra/4.0/Cassandra/3.11/cassandra/getting_started/querying.html">
     <meta name="generator" content="Antora 2.3.1">
     <link rel="stylesheet" href="../../../../_/css/site.css">
 <link rel="stylesheet" href="../../../../_/css/search.css">
@@ -13,7 +13,7 @@
 <header class="header">
   <nav class="navbar">
     <div class="navbar-brand">
-      <a class="navbar-item" href="file:///Users/lorina.poland/docs-site/build/site/Cassandra/4.0">&nbsp;&nbsp;&nbsp;<img src="../../../../_/img/cassandra_logo.png"></a>
+      <a class="navbar-item" href="file:///Users/lorina.poland/CLONES/cassandra/build/html/Cassandra/4.0">&nbsp;&nbsp;&nbsp;<img src="../../../../_/img/cassandra_logo.png"></a>
         <div class="navbar-item">
           <input id="search-input" type="text" placeholder="Search docs">
         </div>
@@ -199,7 +199,7 @@
   </li>
   <li class="nav-item" data-depth="2">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="#cql/index.adoc{">CQL</a>
+    <a class="nav-link" href="../cql/index.html">Cassandra Query Language (CQL)</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="../cql/definitions.html">Definitions</a>
@@ -208,10 +208,13 @@
     <a class="nav-link" href="../cql/types.html">Data types</a>
   </li>
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="../cql/ddl.html">DDL</a>
+    <a class="nav-link" href="../cql/ddl.html">Data definition (DDL)</a>
   </li>
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="../cql/dml.html">DML</a>
+    <a class="nav-link" href="../cql/dml.html">Data manipulation (DML)</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../cql/operators.html">Operators</a>
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="../cql/indexes.html">Secondary indexes</a>
@@ -220,16 +223,13 @@
     <a class="nav-link" href="../cql/mvs.html">Materialized views</a>
   </li>
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="../cql/security.html">Security</a>
-  </li>
-  <li class="nav-item" data-depth="3">
     <a class="nav-link" href="../cql/functions.html">Functions</a>
   </li>
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="../cql/operators.html">Operators</a>
+    <a class="nav-link" href="../cql/json.html">JSON</a>
   </li>
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="../cql/json.html">JSON</a>
+    <a class="nav-link" href="../cql/security.html">Security</a>
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="../cql/triggers.html">Triggers</a>
@@ -411,14 +411,14 @@
 <div class="nav-panel-explore" data-panel="explore">
   <div class="context">
     <span class="title">Cassandra</span>
-    <span class="version">4.0-rc.5</span>
+    <span class="version">4.0-beta1</span>
   </div>
   <ul class="components">
     <li class="component is-current">
       <span class="title">Cassandra</span>
       <ul class="versions">
         <li class="version is-current">
-          <a href="../../index.html">4.0-rc.5</a>
+          <a href="../../index.html">4.0-beta1</a>
         </li>
         <li class="version is-latest">
           <a href="../../../3.11/index.html">3.11</a>
@@ -441,30 +441,30 @@
   </ul>
 </nav>
 <div class="page-versions">
-  <button class="version-menu-toggle" title="Show other versions of page">4.0-rc.5</button>
+  <button class="version-menu-toggle" title="Show other versions of page">4.0-beta1</button>
   <div class="version-menu">
-    <a class="version is-current" href="querying.html">4.0-rc.5</a>
+    <a class="version is-current" href="querying.html">4.0-beta1</a>
     <a class="version" href="../../../3.11/cassandra/getting_started/querying.html">3.11</a>
   </div>
 </div>
-  <div class="edit-this-page"><a href="https://github.com/polandll/cassandra-examples/edit/4.0-rc5/rst-to-asciidoc-tests/ASCIIDOC/modules/cassandra/pages/getting_started/querying.adoc">Edit this Page</a></div>
-  </div>
+  <div class="edit-this-page"><a href="file:///Users/lorina.poland/CLONES/cassandra/doc/source/modules/cassandra/pages/getting_started/querying.adoc">Edit this Page</a></div>
+</div>
   <div class="content">
 <article class="doc">
 <h1 class="page">Inserting and querying</h1>
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>The API to Cassandra is <code>CQL &lt;cql&gt;</code>, the Cassandra Query Language. To
-use CQL, you will need to connect to the cluster, which can be done:</p>
+<p>The API for Cassandra is <a href="../cql/ddl.html" class="page"><code>CQL</code>, the Cassandra Query Language</a>. To
+use CQL, you will need to connect to the cluster, using either:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>either using cqlsh,</p>
+<p><code>cqlsh</code>, a shell for CQL</p>
 </li>
 <li>
-<p>or through a client driver for Cassandra.</p>
+<p>through a client driver for Cassandra</p>
 </li>
 </ul>
 </div>
@@ -474,15 +474,19 @@ use CQL, you will need to connect to the cluster, which can be done:</p>
 <h2 id="cqlsh"><a class="anchor" href="#cqlsh"></a>CQLSH</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>cqlsh is a command line shell for interacting with Cassandra through
+<p><code>cqlsh</code> is a command-line shell for interacting with Cassandra using
 CQL. It is shipped with every Cassandra package, and can be found in the
-bin/ directory alongside the cassandra executable. It connects to the
+<code>bin</code> directory alongside the <code>cassandra</code> executable. It connects to the
 single node specified on the command line. For example:</p>
 </div>
-<div class="literalblock">
+<div class="listingblock">
 <div class="content">
-<pre>$ bin/cqlsh localhost
-Connected to Test Cluster at localhost:9042.
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">$ bin/cqlsh localhost</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-cql hljs" data-lang="cql">Connected to Test Cluster at localhost:9042.
 [cqlsh 5.0.1 | Cassandra 3.8 | CQL spec 3.4.2 | Native protocol v4]
 Use HELP for help.
 cqlsh&gt; SELECT cluster_name, listen_address FROM system.local;
@@ -492,11 +496,11 @@ cqlsh&gt; SELECT cluster_name, listen_address FROM system.local;
  Test Cluster |      127.0.0.1
 
 (1 rows)
-cqlsh&gt;</pre>
+cqlsh&gt;</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>See the <code>cqlsh section &lt;cqlsh&gt;</code> for full documentation.</p>
+<p>If the command is used without specifying a node, <code>localhost</code> is the default. See the <a href="../tools/cqlsh.html" class="page"><code>cqlsh</code> section</a> for full documentation.</p>
 </div>
 </div>
 </div>
@@ -504,15 +508,14 @@ cqlsh&gt;</pre>
 <h2 id="client-drivers"><a class="anchor" href="#client-drivers"></a>Client drivers</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>A lot of client drivers are provided by the Community and a list of
-known drivers is provided in <code>the next section
-&lt;client-drivers&gt;</code>. You should refer to the documentation of each drivers
-for more information on how to use them.</p>
+<p>A lot of <a href="drivers.html" class="page">client drivers</a> are provided by the Community and a list of
+known drivers is provided. You should refer to the documentation of each driver
+for more information.</p>
 </div>
 </div>
 </div>
 </article>
-<aside class="toc sidebar" data-title="Contents" data-levels="2">
+<aside class="toc sidebar" data-title="Contents" data-levels="3">
   <div class="toc-menu"></div>
 </aside>
   </div>

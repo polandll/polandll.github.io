@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>JSON Support :: Apache Cassandra Documentation</title>
-    <link rel="canonical" href="file:///Users/lorina.poland/docs-site/build/site/Cassandra/4.0/Cassandra/3.11/cassandra/cql/json.html">
+    <link rel="canonical" href="file:///Users/lorina.poland/CLONES/cassandra/build/html/Cassandra/4.0/Cassandra/3.11/cassandra/cql/json.html">
     <meta name="generator" content="Antora 2.3.1">
     <link rel="stylesheet" href="../../../../_/css/site.css">
 <link rel="stylesheet" href="../../../../_/css/search.css">
@@ -13,7 +13,7 @@
 <header class="header">
   <nav class="navbar">
     <div class="navbar-brand">
-      <a class="navbar-item" href="file:///Users/lorina.poland/docs-site/build/site/Cassandra/4.0">&nbsp;&nbsp;&nbsp;<img src="../../../../_/img/cassandra_logo.png"></a>
+      <a class="navbar-item" href="file:///Users/lorina.poland/CLONES/cassandra/build/html/Cassandra/4.0">&nbsp;&nbsp;&nbsp;<img src="../../../../_/img/cassandra_logo.png"></a>
         <div class="navbar-item">
           <input id="search-input" type="text" placeholder="Search docs">
         </div>
@@ -199,7 +199,7 @@
   </li>
   <li class="nav-item" data-depth="2">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="#cql/index.adoc{">CQL</a>
+    <a class="nav-link" href="index.html">Cassandra Query Language (CQL)</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="definitions.html">Definitions</a>
@@ -208,10 +208,13 @@
     <a class="nav-link" href="types.html">Data types</a>
   </li>
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="ddl.html">DDL</a>
+    <a class="nav-link" href="ddl.html">Data definition (DDL)</a>
   </li>
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="dml.html">DML</a>
+    <a class="nav-link" href="dml.html">Data manipulation (DML)</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="operators.html">Operators</a>
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="indexes.html">Secondary indexes</a>
@@ -220,16 +223,13 @@
     <a class="nav-link" href="mvs.html">Materialized views</a>
   </li>
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="security.html">Security</a>
-  </li>
-  <li class="nav-item" data-depth="3">
     <a class="nav-link" href="functions.html">Functions</a>
-  </li>
-  <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="operators.html">Operators</a>
   </li>
   <li class="nav-item is-current-page" data-depth="3">
     <a class="nav-link" href="json.html">JSON</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="security.html">Security</a>
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="triggers.html">Triggers</a>
@@ -411,14 +411,14 @@
 <div class="nav-panel-explore" data-panel="explore">
   <div class="context">
     <span class="title">Cassandra</span>
-    <span class="version">4.0-rc.5</span>
+    <span class="version">4.0-beta1</span>
   </div>
   <ul class="components">
     <li class="component is-current">
       <span class="title">Cassandra</span>
       <ul class="versions">
         <li class="version is-current">
-          <a href="../../index.html">4.0-rc.5</a>
+          <a href="../../index.html">4.0-beta1</a>
         </li>
         <li class="version is-latest">
           <a href="../../../3.11/index.html">3.11</a>
@@ -436,19 +436,19 @@
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li>Cassandra</li>
-    <li>CQL</li>
+    <li><a href="index.html">Cassandra Query Language (CQL)</a></li>
     <li><a href="json.html">JSON</a></li>
   </ul>
 </nav>
 <div class="page-versions">
-  <button class="version-menu-toggle" title="Show other versions of page">4.0-rc.5</button>
+  <button class="version-menu-toggle" title="Show other versions of page">4.0-beta1</button>
   <div class="version-menu">
-    <a class="version is-current" href="json.html">4.0-rc.5</a>
+    <a class="version is-current" href="json.html">4.0-beta1</a>
     <a class="version" href="../../../3.11/cassandra/cql/json.html">3.11</a>
   </div>
 </div>
-  <div class="edit-this-page"><a href="https://github.com/polandll/cassandra-examples/edit/4.0-rc5/rst-to-asciidoc-tests/ASCIIDOC/modules/cassandra/pages/cql/json.adoc">Edit this Page</a></div>
-  </div>
+  <div class="edit-this-page"><a href="file:///Users/lorina.poland/CLONES/cassandra/doc/source/modules/cassandra/pages/cql/json.adoc">Edit this Page</a></div>
+</div>
   <div class="content">
 <article class="doc">
 <h1 class="page">JSON Support</h1>
@@ -456,10 +456,10 @@
 <div class="sectionbody">
 <div class="paragraph">
 <p>Cassandra 2.2 introduces JSON support to <code>SELECT &lt;select-statement&gt;</code> and
-<code>INSERT &lt;insert-statement&gt;</code> statements. This support does not
-fundamentally alter the CQL API (for example, the schema is still
-enforced), it simply provides a convenient way to work with JSON
-documents.</p>
+<code>INSERT &lt;insert-statement&gt;</code> statements.
+This support does not fundamentally alter the CQL API (for example, the schema is still
+enforced).
+It simply provides a convenient way to work with JSON documents.</p>
 </div>
 </div>
 </div>
@@ -467,22 +467,17 @@ documents.</p>
 <h2 id="select-json"><a class="anchor" href="#select-json"></a>SELECT JSON</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>With <code>SELECT</code> statements, the <code>JSON</code> keyword can be used to return each
-row as a single <code>JSON</code> encoded map. The remainder of the <code>SELECT</code>
-statement behavior is the same.</p>
+<p>With <code>SELECT</code> statements, the <code>JSON</code> keyword is used to return each row as a single <code>JSON</code> encoded map.
+The remainder of the <code>SELECT</code> statement behavior is the same.</p>
 </div>
 <div class="paragraph">
-<p>The result map keys are the same as the column names in a normal result
-set. For example, a statement like <code>SELECT JSON a, ttl(b) FROM &#8230;&#8203;</code>
-would result in a map with keys <code>"a"</code> and <code>"ttl(b)"</code>. However, this is
-one notable exception: for symmetry with <code>INSERT JSON</code> behavior,
-case-sensitive column names with upper-case letters will be surrounded
-with double quotes. For example, <code>SELECT JSON myColumn FROM &#8230;&#8203;</code> would
-result in a map key <code>"\"myColumn\""</code> (note the escaped quotes).</p>
+<p>The result map keys match the column names in a normal result set.
+For example, a statement like <code>SELECT JSON a, ttl(b) FROM &#8230;&#8203;</code> would result in a map with keys <code>"a"</code> and <code>"ttl(b)"</code>.
+However, there is one notable exception: for symmetry with <code>INSERT JSON</code> behavior, case-sensitive column names with upper-case letters will be surrounded with double quotes.
+For example, <code>SELECT JSON myColumn FROM &#8230;&#8203;</code> would result in a map key <code>"\"myColumn\""</code> with escaped quotes).</p>
 </div>
 <div class="paragraph">
-<p>The map values will <code>JSON</code>-encoded representations (as described below)
-of the result set values.</p>
+<p>The map values will JSON-encoded representations (as described below) of the result set values.</p>
 </div>
 </div>
 </div>
@@ -499,7 +494,7 @@ two columns named "myKey" and "value", you would do the following:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-cql hljs" data-lang="cql">INSERT INTO mytable JSON '{ "\"myKey\"": 0, "value": 0}'</code></pre>
+<pre class="highlightjs highlight"><code class="language-cql hljs" data-lang="cql">INSERT INTO mytable JSON '{ "\"myKey\"": 0, "value": 0}';</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -720,7 +715,7 @@ a single column value. It may only be used in the selection clause of a
 </div>
 </div>
 </article>
-<aside class="toc sidebar" data-title="Contents" data-levels="2">
+<aside class="toc sidebar" data-title="Contents" data-levels="3">
   <div class="toc-menu"></div>
 </aside>
   </div>
